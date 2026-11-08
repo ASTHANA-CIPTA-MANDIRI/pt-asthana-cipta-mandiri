@@ -1,4 +1,5 @@
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+import { API_BASE_URL } from "./config.js";
+import { t, LOKAL, jalur } from "./bahasa.js";
 
 // State
 let currentJob = null;
@@ -140,14 +141,14 @@ async function loadJobDetail(slug) {
     console.error("Error loading job detail:", error);
     showLoading(false);
     showError();
-    showAlert("Gagal memuat detail lowongan.", "danger");
+    showAlert(t("Gagal memuat detail lowongan.", "Could not load the job details."), "danger");
   }
 }
 
 // Render job detail
 function renderJobDetail(job) {
   // Update page title
-  document.title = `${job.title} - Detail Lowongan`;
+  document.title = `${job.title} | ${t("Karir", "Careers")} PT. Asthana Cipta Mandiri`;
 
   // Header
   elements.jobTitle.textContent = job.title;
@@ -155,7 +156,7 @@ function renderJobDetail(job) {
   if (job.posted_at) {
     elements.postedDate.innerHTML = `
       <i class="bi bi-calendar-event me-2"></i>
-      Diposting: ${formatDate(job.posted_at)}
+      ${t("Diposting", "Posted")}: ${formatDate(job.posted_at)}
     `;
   }
 
@@ -196,7 +197,7 @@ function goToApplicationForm() {
     job_title: currentJob.title,
   });
 
-  window.location.href = `/karir/formulir.html?${params.toString()}`;
+  window.location.href = `${jalur.karirFormulir}?${params.toString()}`;
 }
 
 // Show/hide loading state
@@ -220,7 +221,7 @@ function showError() {
 // Format date
 function formatDate(dateString) {
   const date = new Date(dateString);
-  return date.toLocaleDateString("id-ID", {
+  return date.toLocaleDateString(LOKAL, {
     year: "numeric",
     month: "long",
     day: "numeric",

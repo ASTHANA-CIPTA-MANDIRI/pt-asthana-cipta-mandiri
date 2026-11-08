@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <!-- @include head padanan="/en/portfolio/detail.html" judul="Detail Portofolio" deskripsi="Detail proyek PT. Asthana Cipta Mandiri." -->
+  </head>
+  <body>
+    <!-- @include header padanan="/en/portfolio/detail.html" aktif="portofolio" -->
+
+    <main id="konten">
+      <section class="kepala-halaman">
+        <div class="container">
+          <ol class="remah" aria-label="Remah roti">
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/portofolio/">Portofolio</a></li>
+            <li aria-current="page">Detail</li>
+          </ol>
+          <div id="kepalaMemuat">
+            <div class="kerangka kerangka-terang mb-3" style="height: 44px; width: min(560px, 90%)"></div>
+            <div class="kerangka kerangka-terang" style="height: 18px; width: 220px"></div>
+          </div>
+          <div id="kepalaIsi" hidden>
+            <span class="lencana mb-3" style="background: #fff" id="lencanaKategori"></span>
+            <h1 id="judulKarya"></h1>
+            <p id="ringkasKarya"></p>
+          </div>
+        </div>
+        <span class="lengkung" aria-hidden="true"></span>
+      </section>
+
+      <section class="bagian pt-5">
+        <div class="container">
+          <div id="isiKarya" hidden>
+            <div class="row g-5">
+              <div class="col-lg-8">
+                <img id="sampulKarya" class="sampul-artikel" alt="" hidden />
+                <div class="prosa" id="prosaKarya"></div>
+                <div id="bagianGaleri" class="mt-5" hidden>
+                  <h2 class="h4 mb-3">Galeri</h2>
+                  <div class="galeri" id="galeriKarya"></div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <aside class="kartu-lamar" style="position: sticky">
+                  <h3>Ringkasan proyek</h3>
+                  <div class="ringkas-proyek mt-3" id="ringkasProyek"></div>
+                  <a href="/kontak/" class="btn btn-warna w-100 mt-4">Diskusikan proyek serupa</a>
+                </aside>
+              </div>
+            </div>
+          </div>
+
+          <div id="galatKarya" class="keadaan-kosong" hidden>
+            <span class="ikon-petak warna-jambu"><i class="bi bi-search"></i></span>
+            <h3>Portofolio tidak ditemukan</h3>
+            <p>Mungkin tautannya sudah berubah atau proyek ini belum dipublikasikan.</p>
+            <a href="/portofolio/" class="btn btn-warna">Lihat semua portofolio</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="bagian bagian-latar" id="bagianLainnya" hidden>
+        <div class="container">
+          <h2 class="judul-bagian mb-4">Proyek lainnya</h2>
+          <div class="row g-4" id="daftarLainnya"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- @include footer -->
+    <script type="module" src="/src/js/portofolio-detail.js"></script>
+  </body>
+</html>

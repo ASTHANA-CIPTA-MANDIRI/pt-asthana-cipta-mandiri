@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <!-- @include head padanan="/en/news/" judul="Berita" deskripsi="Kabar terbaru, kegiatan, dan artikel dari PT. Asthana Cipta Mandiri." -->
+  </head>
+  <body>
+    <!-- @include header padanan="/en/news/" aktif="berita" -->
+
+    <main id="konten">
+      <section class="kepala-halaman">
+        <div class="container">
+          <ol class="remah" aria-label="Remah roti">
+            <li><a href="/">Beranda</a></li>
+            <li aria-current="page">Berita</li>
+          </ol>
+          <h1>Berita</h1>
+          <p>Kabar perusahaan, kegiatan, dan tulisan seputar teknologi serta pariwisata.</p>
+        </div>
+        <span class="lengkung" aria-hidden="true"></span>
+      </section>
+
+      <section class="bagian pt-5">
+        <div class="container">
+          <div class="row g-4" id="daftarBerita"></div>
+          <nav class="halaman-nomor" id="nomorHalaman" aria-label="Halaman berita" hidden></nav>
+
+          <div id="kosongBerita" class="keadaan-kosong" hidden>
+            <span class="ikon-petak warna-hijau"><i class="bi bi-newspaper"></i></span>
+            <h3>Belum ada berita</h3>
+            <p>Kabar terbaru dari kami akan tampil di sini. Sementara itu, kenali kami lebih dekat.</p>
+            <a href="/tentang/" class="btn btn-garis">Tentang Kami</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- @include footer -->
+    <script type="module" src="/src/js/berita.js"></script>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 // contact-form.js
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+import { API_BASE_URL } from "./config.js";
+import { t } from "./bahasa.js";
 
 // State management
 const state = {
@@ -97,7 +98,7 @@ function clearErrors() {
   elements.emailError.textContent = "";
   elements.messageError.textContent = "";
   elements.formMessage.textContent = "";
-  elements.formMessage.className = "d-block mt-2";
+  elements.formMessage.className = "pesan-borang";
 }
 
 // Show error for specific field
@@ -111,7 +112,7 @@ function showFieldError(fieldName, message) {
 // Show form message
 function showFormMessage(message, type = "success") {
   elements.formMessage.textContent = message;
-  elements.formMessage.className = `d-block mt-2 text-${type}`;
+  elements.formMessage.className = `pesan-borang text-${type}`;
 }
 
 // Validate single field
@@ -126,13 +127,13 @@ function validateField(input) {
   if (fieldName === "name") {
     if (!value) {
       isValid = false;
-      message = "Nama wajib diisi";
+      message = t("Nama wajib diisi", "Name is required");
     } else if (value.length < 3) {
       isValid = false;
-      message = "Nama minimal 3 karakter";
+      message = t("Nama minimal 3 karakter", "Name must be at least 3 characters");
     } else if (value.length > 255) {
       isValid = false;
-      message = "Nama maksimal 255 karakter";
+      message = t("Nama maksimal 255 karakter", "Name must be at most 255 characters");
     }
   }
 
@@ -141,13 +142,13 @@ function validateField(input) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!value) {
       isValid = false;
-      message = "Email wajib diisi";
+      message = t("Email wajib diisi", "Email is required");
     } else if (!emailRegex.test(value)) {
       isValid = false;
-      message = "Format email tidak valid";
+      message = t("Format email tidak valid", "Invalid email address");
     } else if (value.length > 255) {
       isValid = false;
-      message = "Email maksimal 255 karakter";
+      message = t("Email maksimal 255 karakter", "Email must be at most 255 characters");
     }
   }
 
@@ -155,13 +156,13 @@ function validateField(input) {
   if (fieldName === "message") {
     if (!value) {
       isValid = false;
-      message = "Pesan wajib diisi";
+      message = t("Pesan wajib diisi", "Message is required");
     } else if (value.length < 10) {
       isValid = false;
-      message = "Pesan minimal 10 karakter";
+      message = t("Pesan minimal 10 karakter", "Message must be at least 10 characters");
     } else if (value.length > 5000) {
       isValid = false;
-      message = "Pesan maksimal 5000 karakter";
+      message = t("Pesan maksimal 5000 karakter", "Message must be at most 5000 characters");
     }
   }
 
@@ -207,23 +208,23 @@ async function handleSubmit(e) {
   // Validate using captured values
   if (!formValues.name || formValues.name.length < 3) {
     elements.nameInput.classList.add("is-invalid");
-    showFieldError("name", "Nama wajib diisi minimal 3 karakter");
-    showFormMessage("Mohon lengkapi semua field dengan benar", "danger");
+    showFieldError("name", t("Nama wajib diisi minimal 3 karakter", "Name is required (at least 3 characters)"));
+    showFormMessage(t("Mohon lengkapi semua field dengan benar", "Please complete all fields correctly"), "danger");
     return;
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!formValues.email || !emailRegex.test(formValues.email)) {
     elements.emailInput.classList.add("is-invalid");
-    showFieldError("email", "Email wajib diisi dengan format yang benar");
-    showFormMessage("Mohon lengkapi semua field dengan benar", "danger");
+    showFieldError("email", t("Email wajib diisi dengan format yang benar", "Please enter a valid email address"));
+    showFormMessage(t("Mohon lengkapi semua field dengan benar", "Please complete all fields correctly"), "danger");
     return;
   }
 
   if (!formValues.message || formValues.message.length < 10) {
     elements.messageInput.classList.add("is-invalid");
-    showFieldError("message", "Pesan wajib diisi minimal 10 karakter");
-    showFormMessage("Mohon lengkapi semua field dengan benar", "danger");
+    showFieldError("message", t("Pesan wajib diisi minimal 10 karakter", "Message is required (at least 10 characters)"));
+    showFormMessage(t("Mohon lengkapi semua field dengan benar", "Please complete all fields correctly"), "danger");
     return;
   }
 
@@ -236,7 +237,7 @@ async function handleSubmit(e) {
   // Update UI - Loading state
   elements.submitBtn.disabled = true;
   elements.submitBtn.innerHTML =
-    '<span class="spinner-border spinner-border-sm me-2"></span>Mengirim...';
+    `<span class="spinner-border spinner-border-sm me-2"></span>${t("Mengirim...", "Sending...")}`;
 
   try {
     // Prepare request body using captured values
@@ -266,7 +267,7 @@ async function handleSubmit(e) {
     // Success
     showFormMessage(
       result.message ||
-        "Pesan Anda berhasil dikirim. Kami akan menghubungi Anda segera.",
+        t("Pesan Anda berhasil dikirim. Kami akan menghubungi Anda segera.", "Your message has been sent. We will get back to you soon."),
       "success"
     );
 
@@ -289,22 +290,22 @@ async function handleSubmit(e) {
       handleValidationErrors(error.data.errors);
       showFormMessage(
         error.data?.message ||
-          "Terdapat kesalahan pada form. Mohon periksa kembali.",
+          t("Terdapat kesalahan pada form. Mohon periksa kembali.", "There are errors in the form. Please check again."),
         "danger"
       );
     } else if (error.response?.status >= 500) {
       showFormMessage(
-        "Terjadi kesalahan pada server. Silakan coba lagi nanti.",
+        t("Terjadi kesalahan pada server. Silakan coba lagi nanti.", "A server error occurred. Please try again later."),
         "danger"
       );
     } else if (!error.response) {
       showFormMessage(
-        "Tidak dapat menghubungi server. Periksa koneksi internet Anda.",
+        t("Tidak dapat menghubungi server. Periksa koneksi internet Anda.", "Could not reach the server. Please check your internet connection."),
         "danger"
       );
     } else {
       showFormMessage(
-        error.data?.message || "Terjadi kesalahan. Silakan coba lagi.",
+        error.data?.message || t("Terjadi kesalahan. Silakan coba lagi.", "Something went wrong. Please try again."),
         "danger"
       );
     }
@@ -312,7 +313,7 @@ async function handleSubmit(e) {
     // Reset UI
     state.isSubmitting = false;
     elements.submitBtn.disabled = false;
-    elements.submitBtn.innerHTML = "Kirim Pesan";
+    elements.submitBtn.innerHTML = `<i class="bi bi-send me-1"></i> ${t("Kirim Pesan", "Send Message")}`;
   }
 }
 

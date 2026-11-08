@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- @include head padanan="/karir/" judul="Careers" deskripsi="Job openings at PT. Asthana Cipta Mandiri. Find career opportunities in technology and tourism." -->
+  </head>
+  <body>
+    <!-- @include header-en padanan="/karir/" aktif="karir" -->
+
+    <main id="konten">
+      <div class="alert-container" id="alertContainer"></div>
+
+      <section class="kepala-halaman">
+        <div class="container">
+          <ol class="remah" aria-label="Breadcrumb">
+            <li><a href="/en/">Home</a></li>
+            <li aria-current="page">Careers</li>
+          </ol>
+          <h1>Grow your career with us</h1>
+          <p>
+            Find the right opportunity and grow your potential in our technology and tourism teams.
+          </p>
+          <a href="#lowongan" class="btn btn-putih mt-4">
+            View Openings <i class="bi bi-arrow-down ms-1"></i>
+          </a>
+        </div>
+        <span class="lengkung" aria-hidden="true"></span>
+      </section>
+
+      <!-- Kenapa bergabung -->
+      <section class="bagian pt-5 pb-0">
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-md-4" data-muncul>
+              <div class="kartu kartu-hidup warna-biru">
+                <span class="ikon-petak"><i class="bi bi-rocket-takeoff"></i></span>
+                <h3>Learn &amp; Grow</h3>
+                <p>Room to try new things and sharpen your skills every day.</p>
+              </div>
+            </div>
+            <div class="col-md-4" data-muncul style="--tunda: 0.08s">
+              <div class="kartu kartu-hidup warna-oranye">
+                <span class="ikon-petak"><i class="bi bi-people"></i></span>
+                <h3>Collaborative Team</h3>
+                <p>A healthy, supportive workplace that is open to ideas.</p>
+              </div>
+            </div>
+            <div class="col-md-4" data-muncul style="--tunda: 0.16s">
+              <div class="kartu kartu-hidup warna-hijau">
+                <span class="ikon-petak"><i class="bi bi-compass"></i></span>
+                <h3>Varied Projects</h3>
+                <p>Work across two worlds at once: technology and tourism.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Daftar lowongan -->
+      <section class="bagian" id="lowongan">
+        <div class="container">
+          <div class="kepala-bagian" data-muncul>
+            <span class="label-bagian warna-ungu">Open Positions</span>
+            <h2 class="judul-bagian mb-0">Roles we are hiring for</h2>
+          </div>
+
+          <!-- Loading State -->
+          <div id="loadingState" class="row g-4">
+            <div class="col-md-6 col-lg-4">
+              <div class="kartu-lowongan">
+                <div class="kerangka mb-4" style="width: 56px; height: 56px; border-radius: 16px"></div>
+                <div class="kerangka kerangka-baris" style="width: 80%"></div>
+                <div class="kerangka kerangka-baris" style="width: 50%"></div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="kartu-lowongan">
+                <div class="kerangka mb-4" style="width: 56px; height: 56px; border-radius: 16px"></div>
+                <div class="kerangka kerangka-baris" style="width: 70%"></div>
+                <div class="kerangka kerangka-baris" style="width: 40%"></div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4 d-none d-lg-block">
+              <div class="kartu-lowongan">
+                <div class="kerangka mb-4" style="width: 56px; height: 56px; border-radius: 16px"></div>
+                <div class="kerangka kerangka-baris" style="width: 75%"></div>
+                <div class="kerangka kerangka-baris" style="width: 45%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jobs List -->
+          <div id="jobsList" class="row g-4" style="display: none"></div>
+
+          <!-- Empty State -->
+          <div id="emptyState" class="keadaan-kosong" style="display: none">
+            <span class="ikon-petak warna-ungu"><i class="bi bi-inbox"></i></span>
+            <h3>No open positions right now</h3>
+            <p>
+              There are no openings at the moment. Please check back later, or get to know us first.
+            </p>
+            <a href="/en/about/" class="btn btn-garis">About Us</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- @include footer-en -->
+    <script type="module" src="/src/js/karir.js"></script>
+  </body>
+</html>

@@ -1,5 +1,5 @@
-// Configuration
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+import { API_BASE_URL } from "./config.js";
+import { t, LOKAL, jalur } from "./bahasa.js";
 
 // DOM Elements
 const elements = {
@@ -39,7 +39,7 @@ async function loadJobs() {
     console.error("Error loading jobs:", error);
     showLoading(false);
     showAlert(
-      "Gagal memuat daftar lowongan. Silakan refresh halaman.",
+      t("Gagal memuat daftar lowongan. Silakan muat ulang halaman.", "Could not load job openings. Please refresh the page."),
       "danger"
     );
     showEmptyState();
@@ -51,41 +51,39 @@ function renderJobs(jobs) {
   elements.jobsList.innerHTML = "";
   elements.jobsList.style.display = "flex";
 
-  jobs.forEach((job) => {
-    const jobCard = createJobCard(job);
-    elements.jobsList.appendChild(jobCard);
+  jobs.forEach((job, i) => {
+    elements.jobsList.appendChild(createJobCard(job, i));
   });
 }
 
+// Warna kartu bergiliran agar daftar tidak monoton
+const WARNA = ["biru", "ungu", "laut", "hijau", "oranye", "jambu"];
+const IKON = ["bi-code-slash", "bi-briefcase", "bi-airplane", "bi-graph-up-arrow", "bi-palette", "bi-headset"];
+
 // Create job card element
-function createJobCard(job) {
+function createJobCard(job, i = 0) {
   const col = document.createElement("div");
-  col.className = "col-md-6 col-lg-4 mb-4";
+  col.className = "col-md-6 col-lg-4";
 
   const postedDate = job.created_at ? formatDate(job.created_at) : "";
+  const href = `${jalur.karirDetail}?slug=${encodeURIComponent(job.slug)}`;
 
   col.innerHTML = `
-    <div class="card job-card h-100" onclick="goToDetail('${job.slug}')">
-      <div class="card-body">
-        <div class="d-flex justify-content-between align-items-start mb-3">
-          <span class="job-badge">
-            <i class="bi bi-briefcase-fill me-1"></i>
-            Dibuka
-          </span>
-          ${postedDate ? `<small class="text-muted">${postedDate}</small>` : ""}
-        </div>
-        <h5 class="card-title fw-bold mt-4">${escapeHtml(job.title)}</h5>
+    <a class="kartu-lowongan warna-${WARNA[i % WARNA.length]}" href="${href}">
+      <div class="d-flex justify-content-between align-items-start">
+        <span class="ikon-petak"><i class="bi ${IKON[i % IKON.length]}"></i></span>
+        <span class="lencana-buka">${t("Dibuka", "Open")}</span>
       </div>
-    </div>
+      <h3>${escapeHtml(job.title)}</h3>
+      <div class="kaki-kartu">
+        <span>${postedDate ? `<i class="bi bi-clock me-1"></i>${postedDate}` : ""}</span>
+        <span class="tautan-panah">${t("Lihat detail", "View details")} <i class="bi bi-arrow-right"></i></span>
+      </div>
+    </a>
   `;
 
   return col;
 }
-
-// Navigate to detail page
-window.goToDetail = function (slug) {
-  window.location.href = `/karir/detail.html?slug=${slug}`;
-};
 
 // Show/hide loading state
 function showLoading(show) {
@@ -106,14 +104,14 @@ function formatDate(dateString) {
   const date = new Date(dateString);
   const now = new Date();
   const diffTime = Math.abs(now - date);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-  if (diffDays === 0) return "Hari ini";
-  if (diffDays === 1) return "Kemarin";
-  if (diffDays < 7) return `${diffDays} hari lalu`;
-  if (diffDays < 30) return `${Math.floor(diffDays / 7)} minggu lalu`;
+  if (diffDays === 0) return t("Hari ini", "Today");
+  if (diffDays === 1) return t("Kemarin", "Yesterday");
+  if (diffDays < 7) return t(`${diffDays} hari lalu`, `${diffDays} days ago`);
+  if (diffDays < 30) return t(`${Math.floor(diffDays / 7)} minggu lalu`, `${Math.floor(diffDays / 7)} week(s) ago`);
 
-  return date.toLocaleDateString("id-ID", {
+  return date.toLocaleDateString(LOKAL, {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -146,7 +144,7 @@ function escapeHtml(text) {
     '"': "&quot;",
     "'": "&#039;",
   };
-  return text.replace(/[&<>"']/g, (m) => map[m]);
+  return String(text ?? "").replace(/[&<>"']/g, (m) => map[m]);
 }
 
 // Initialize on DOM ready

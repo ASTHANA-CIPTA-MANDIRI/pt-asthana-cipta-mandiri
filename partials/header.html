@@ -1,0 +1,53 @@
+    <a class="lompat-konten" href="#konten">Lewati ke konten</a>
+    <header class="navbar navbar-expand-lg navbar-situs" id="navbarSitus">
+      <div class="container">
+        <a class="merek" href="/" aria-label="PT. Asthana Cipta Mandiri — Beranda">
+          <img src="/src/assets/img/asthana-mark.png" alt="" width="44" height="40" />
+          <span>
+            <small>PT.</small>
+            Asthana Cipta Mandiri
+          </span>
+        </a>
+
+        <button
+          class="navbar-toggler tombol-menu"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#menuUtama"
+          aria-controls="menuUtama"
+          aria-expanded="false"
+          aria-label="Buka menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="collapse navbar-collapse" id="menuUtama" aria-label="Menu utama">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" data-nav="beranda" href="/">Beranda</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/tentang/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Tentang
+              </a>
+              <ul class="dropdown-menu menu-turun">
+                <li><a class="dropdown-item" data-nav="tentang" href="/tentang/"><i class="bi bi-building"></i> Profil Perusahaan</a></li>
+                <li><a class="dropdown-item" data-nav="anak-perusahaan" href="/anak-perusahaan/"><i class="bi bi-diagram-2"></i> Anak Perusahaan</a></li>
+                <li><a class="dropdown-item" data-nav="karir" href="/karir/"><i class="bi bi-briefcase"></i> Karir</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" data-nav="layanan" href="/layanan/">Layanan</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="portofolio" href="/portofolio/">Portofolio</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="berita" href="/berita/">Berita</a></li>
+            <li class="nav-item">
+              <a class="nav-link pindah-bahasa" href="{{padanan}}" data-pindah-bahasa hreflang="en" lang="en" title="English version">
+                <i class="bi bi-translate"></i> EN
+              </a>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-warna btn-sm px-4" data-nav="kontak" href="/kontak/">
+                Hubungi Kami <i class="bi bi-arrow-right-short"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>

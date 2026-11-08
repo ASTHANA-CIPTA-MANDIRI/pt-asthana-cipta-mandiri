@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face { font-family: "PJS"; font-weight: 800; src: url("../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2"); }
+  @font-face { font-family: "PJS"; font-weight: 600; src: url("../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2"); }
+  * { margin: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; font-family: "PJS", sans-serif; }
+  .kartu { position: relative; width: 100%; height: 100%; padding: 72px 80px; color: #fff; overflow: hidden;
+    background: linear-gradient(120deg, #2455e6 0%, #7b5cff 55%, #0ea5c6 100%); }
+  .kartu::before { content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 85% 10%, rgba(240,80,138,.45), transparent 35%),
+                radial-gradient(rgba(255,255,255,.16) 1.6px, transparent 2px); background-size: auto, 26px 26px; }
+  .cincin { position: absolute; right: -120px; bottom: -180px; width: 560px; height: 560px; border-radius: 50%; border: 70px solid rgba(255,255,255,.1); }
+  .logo { position: absolute; right: 110px; top: 50%; transform: translateY(-50%); width: 330px; height: 330px; border-radius: 64px;
+    background: #fff; display: grid; place-items: center; box-shadow: 0 40px 80px -30px rgba(0,0,0,.45); }
+  .logo img { width: 240px; }
+  .isi { position: relative; max-width: 640px; }
+  .pt { font-size: 22px; font-weight: 800; letter-spacing: .3em; color: #dbe4ff; }
+  h1 { font-size: 70px; line-height: 1.04; font-weight: 800; letter-spacing: -.03em; margin: 10px 0 28px; }
+  p { font-size: 28px; line-height: 1.45; font-weight: 600; color: #e6ecff; }
+  .chip { display: flex; gap: 14px; margin-top: 44px; }
+  .chip span { padding: 12px 24px; border-radius: 999px; font-size: 22px; font-weight: 800; background: rgba(255,255,255,.16); border: 2px solid rgba(255,255,255,.35); }
+</style>
+</head>
+<body>
+  <div class="kartu">
+    <div class="cincin"></div>
+    <div class="isi">
+      <div class="pt">PT.</div>
+      <h1>Asthana Cipta Mandiri</h1>
+      <p>Solusi teknologi &amp; perjalanan wisata yang inovatif, efisien, dan terpercaya.</p>
+      <div class="chip"><span>Teknologi</span><span>Pariwisata</span></div>
+    </div>
+    <div class="logo"><img src="../src/assets/img/asthana-logo-transparan.png" alt="" /></div>
+  </div>
+</body>
+</html>

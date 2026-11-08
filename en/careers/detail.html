@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- @include head padanan="/karir/detail.html" judul="Job Details" deskripsi="Job details at PT. Asthana Cipta Mandiri." -->
+  </head>
+  <body>
+    <!-- @include header-en padanan="/karir/detail.html" aktif="karir" -->
+
+    <main id="konten">
+      <div class="alert-container" id="alertContainer"></div>
+
+      <section class="kepala-halaman">
+        <div class="container">
+          <ol class="remah" aria-label="Breadcrumb">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/careers/">Careers</a></li>
+            <li aria-current="page">Job Details</li>
+          </ol>
+
+          <div id="headerLoading">
+            <div class="kerangka kerangka-terang mb-3" style="height: 44px; width: min(520px, 90%)"></div>
+            <div class="kerangka kerangka-terang" style="height: 18px; width: 200px"></div>
+          </div>
+
+          <div id="headerContent" style="display: none">
+            <span class="lencana-buka mb-3" style="background: #fff">Now hiring</span>
+            <h1 id="jobTitle"></h1>
+            <p id="postedDate"></p>
+          </div>
+        </div>
+        <span class="lengkung" aria-hidden="true"></span>
+      </section>
+
+      <section class="bagian pt-5">
+        <div class="container">
+          <!-- Loading -->
+          <div id="contentLoading">
+            <div class="row g-4">
+              <div class="col-lg-8">
+                <div class="isi-lowongan">
+                  <div class="kerangka kerangka-baris mb-4" style="width: 40%; height: 22px"></div>
+                  <div class="kerangka kerangka-baris"></div>
+                  <div class="kerangka kerangka-baris" style="width: 92%"></div>
+                  <div class="kerangka kerangka-baris" style="width: 85%"></div>
+                  <div class="kerangka kerangka-baris" style="width: 60%"></div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="isi-lowongan">
+                  <div class="kerangka kerangka-baris" style="width: 70%"></div>
+                  <div class="kerangka" style="height: 48px; border-radius: 999px"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Isi -->
+          <div id="detailContent" style="display: none">
+            <div class="row g-4">
+              <div class="col-lg-8">
+                <article class="isi-lowongan" id="descriptionsSection">
+                  <h2>
+                    <span class="ikon-petak warna-biru"><i class="bi bi-card-text"></i></span>
+                    Job Description
+                  </h2>
+                  <div class="teks-lowongan" id="descriptions"></div>
+                </article>
+                <article class="isi-lowongan" id="requirementsSection">
+                  <h2>
+                    <span class="ikon-petak warna-oranye"><i class="bi bi-list-check"></i></span>
+                    Requirements
+                  </h2>
+                  <div class="teks-lowongan" id="requirements"></div>
+                </article>
+              </div>
+              <div class="col-lg-4">
+                <aside class="kartu-lamar">
+                  <h3>Interested in this role?</h3>
+                  <p>
+                    Send your application with your CV and cover letter in PDF format.
+                  </p>
+                  <button type="button" class="btn btn-warna btn-lg w-100" id="applyBtn">
+                    <i class="bi bi-send me-1"></i> Apply Now
+                  </button>
+                  <a href="/en/careers/" class="btn btn-kaca w-100 mt-3">
+                    <i class="bi bi-arrow-left me-1"></i> Other openings
+                  </a>
+                </aside>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error -->
+          <div id="errorState" class="keadaan-kosong" style="display: none">
+            <span class="ikon-petak warna-jambu"><i class="bi bi-search"></i></span>
+            <h3>Job not found</h3>
+            <p>
+              The position may have closed, or the link is incomplete.
+            </p>
+            <a href="/en/careers/" class="btn btn-warna">View all openings</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- @include footer-en -->
+    <script type="module" src="/src/js/karir-detail.js"></script>
+  </body>
+</html>

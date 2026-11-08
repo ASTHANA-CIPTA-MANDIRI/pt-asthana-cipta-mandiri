@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- @include head padanan="/karir/formulir.html" judul="Job Application" deskripsi="Apply for a job at PT. Asthana Cipta Mandiri." -->
+  </head>
+  <body>
+    <!-- @include header-en padanan="/karir/formulir.html" aktif="karir" -->
+
+    <main id="konten">
+      <div class="alert-container" id="alertContainer"></div>
+
+      <div class="loading-overlay" id="loadingOverlay">
+        <div>
+          <div class="spinner-border" role="status" style="width: 3rem; height: 3rem"></div>
+          <p class="mt-3 mb-0 fw-semibold">Sending your application...</p>
+        </div>
+      </div>
+
+      <section class="kepala-halaman">
+        <div class="container">
+          <ol class="remah" aria-label="Breadcrumb">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/careers/" id="backLink">Careers</a></li>
+            <li aria-current="page">Application</li>
+          </ol>
+          <h1>Job Application</h1>
+          <p>Join our team and grow your career.</p>
+        </div>
+        <span class="lengkung" aria-hidden="true"></span>
+      </section>
+
+      <section class="bagian pt-5">
+        <div class="container">
+          <div class="row g-4 justify-content-center">
+            <div class="col-lg-8">
+              <div class="kartu-borang">
+                <div class="info-posisi" id="jobInfoBadge" style="display: none">
+                  <span class="ikon-petak"><i class="bi bi-briefcase"></i></span>
+                  <div>
+                    <small class="d-block text-secondary">Applying for</small>
+                    <strong class="fs-5 text-dark" id="jobTitleDisplay"></strong>
+                  </div>
+                </div>
+
+                <form id="applicationForm" novalidate>
+                  <div class="row g-4">
+                    <div class="col-12 medan" id="jobSelectWrapper">
+                      <label for="jobId" class="form-label">Position <span class="wajib">*</span></label>
+                      <select class="form-select" id="jobId" name="job_id" required>
+                        <option value="" selected disabled>Loading positions...</option>
+                      </select>
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-12 medan">
+                      <label for="name" class="form-label">Full Name <span class="wajib">*</span></label>
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" maxlength="120" autocomplete="name" required />
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-6 medan">
+                      <label for="email" class="form-label">Email <span class="wajib">*</span></label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="name@email.com" maxlength="150" autocomplete="email" required />
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-6 medan">
+                      <label for="phone" class="form-label">Phone Number <span class="wajib">*</span></label>
+                      <input type="tel" class="form-control" id="phone" name="phone" placeholder="0812-3456-7890" maxlength="30" autocomplete="tel" required />
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-6 medan">
+                      <label for="cv" class="form-label">CV <span class="wajib">*</span></label>
+                      <div class="unggah" id="cvUploadWrapper">
+                        <input type="file" id="cv" name="cv" accept=".pdf,application/pdf" required />
+                        <span class="ikon-petak warna-biru"><i class="bi bi-cloud-arrow-up"></i></span>
+                        <p>Click or drop your CV</p>
+                        <small class="text-secondary">PDF, max 2 MB</small>
+                        <div class="file-info" id="cvFileInfo">
+                          <div class="d-flex justify-content-between align-items-center gap-2">
+                            <div>
+                              <i class="bi bi-file-earmark-pdf text-danger me-1"></i>
+                              <span id="cvFileName"></span>
+                              <small class="text-secondary d-block" id="cvFileSize"></small>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="clearFile('cv')" aria-label="Remove CV file">
+                              <i class="bi bi-x-lg"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-6 medan">
+                      <label for="coverLetter" class="form-label">Cover Letter <span class="wajib">*</span></label>
+                      <div class="unggah" id="clUploadWrapper">
+                        <input type="file" id="coverLetter" name="cover_letter" accept=".pdf,application/pdf" required />
+                        <span class="ikon-petak warna-oranye"><i class="bi bi-file-earmark-text"></i></span>
+                        <p>Click or drop your cover letter</p>
+                        <small class="text-secondary">PDF, max 2 MB</small>
+                        <div class="file-info" id="clFileInfo">
+                          <div class="d-flex justify-content-between align-items-center gap-2">
+                            <div>
+                              <i class="bi bi-file-earmark-pdf text-danger me-1"></i>
+                              <span id="clFileName"></span>
+                              <small class="text-secondary d-block" id="clFileSize"></small>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="clearFile('coverLetter')" aria-label="Remove cover letter file">
+                              <i class="bi bi-x-lg"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="invalid-feedback"></div>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-warna btn-lg w-100 mt-5" id="submitBtn">
+                    <i class="bi bi-send me-1"></i> Submit Application
+                  </button>
+                  <p class="text-center text-secondary small mt-3 mb-0">
+                    By submitting this form, you agree that we may use your details for recruitment in line with our
+                    <a href="/en/privacy/">Privacy Policy</a>.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- @include footer-en -->
+    <script type="module" src="/src/js/karir-form.js"></script>
+  </body>
+</html>

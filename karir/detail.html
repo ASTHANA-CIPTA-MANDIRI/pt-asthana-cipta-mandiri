@@ -1,297 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="PT. Asthana Cipta Mandiri - Perusahaan yang bergerak di bidang teknologi dan pariwisata dengan komitmen menghadirkan layanan inovatif, efisien dan terpercaya."
-    />
-    <meta
-      name="keywords"
-      content="technology, tourism, software, digital products, travel agency, account marketplace"
-    />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="/android-chrome-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="/android-chrome-512x512.png"
-    />
-
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="author" content="Reka Teknologi" />
-    <title>PT. Asthana Cipta Mandiri | Technology & Tourism Solutions</title>
-    <link
-      rel="stylesheet"
-      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/node_modules/bootstrap-icons/font/bootstrap-icons.css"
-    />
-    <link rel="stylesheet" href="/src/css/style.css" />
-    <link rel="stylesheet" href="/src/css/custom.css" />
-    <link rel="stylesheet" href="/src/css/karir-detail.css" />
+    <!-- @include head padanan="/en/careers/detail.html" judul="Detail Lowongan" deskripsi="Detail lowongan kerja di PT. Asthana Cipta Mandiri." -->
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm navbar-bg">
-      <div class="container-lg px-4 py-2">
-        <a class="navbar-brand d-none d-lg-block fw-bold" href="/">
-          PT. Asthana Cipta Mandiri
-        </a>
-        <div
-          class="d-block d-lg-none"
-          style="height: 100px; width: 100px; overflow: hidden"
-        >
-          <img
-            src="/src/assets/img/asthana-logo.png"
-            alt=""
-            class="h-100 w-100"
-            style="object-fit: cover"
-          />
-        </div>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- @include header padanan="/en/careers/detail.html" aktif="karir" -->
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto d-flex align-items-center gap-3">
-            <li class="nav-item">
-              <a class="nav-link" href="/#home">Beranda</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#about">Profil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#subsidiaries">Afiliasi</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#services">Layanan</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#whychoose">Keunggulan</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/karir/index.html">Karir</a>
-            </li>
-            <li
-              class="nav-item d-flex align-items-center justify-content-center"
-            >
-              <a
-                class="btn btn-brand-1 rounded-pill px-4 btn-sm w-100"
-                href="#contact"
-                >Hubungi Kami</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <main id="konten">
+      <div class="alert-container" id="alertContainer"></div>
 
-    <!-- Main Content -->
-    <main style="min-height: 100vh">
-      <!-- Alert Container -->
-      <div
-        class="alert-container position-fixed top-0 start-50 translate-middle-x p-3"
-        style="z-index: 9999; min-width: 300px"
-        id="alertContainer"
-      ></div>
-
-      <!-- Header -->
-      <div class="detail-header">
+      <section class="kepala-halaman">
         <div class="container">
-          <div
-            id="headerLoading"
-            style="padding-top: 160px; padding-bottom: 100px"
-          >
-            <div class="skeleton skeleton-title" style="width: 60%"></div>
-            <div class="skeleton skeleton-text" style="width: 40%"></div>
+          <ol class="remah" aria-label="Remah roti">
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/karir/">Karir</a></li>
+            <li aria-current="page">Detail Lowongan</li>
+          </ol>
+
+          <div id="headerLoading">
+            <div class="kerangka kerangka-terang mb-3" style="height: 44px; width: min(520px, 90%)"></div>
+            <div class="kerangka kerangka-terang" style="height: 18px; width: 200px"></div>
           </div>
 
-          <!-- Header Content -->
-          <div
-            id="headerContent"
-            style="display: none; padding-top: 160px; padding-bottom: 100px"
-          >
-            <h1 class="display-5 fw-bold mb-3" id="jobTitle"></h1>
-            <div class="d-flex align-items-center gap-3">
-              <span class="badge badge-active">
-                <i class="bi bi-circle-fill me-2"></i>
-                Lowongan Aktif
-              </span>
-              <span id="postedDate"></span>
-            </div>
+          <div id="headerContent" style="display: none">
+            <span class="lencana-buka mb-3" style="background: #fff">Lowongan dibuka</span>
+            <h1 id="jobTitle"></h1>
+            <p id="postedDate"></p>
           </div>
         </div>
-      </div>
+        <span class="lengkung" aria-hidden="true"></span>
+      </section>
 
-      <!-- Main Content -->
-      <div class="container mb-5">
-        <div class="row justify-content-center">
-          <div class="col-lg-10">
-            <div class="card detail-card">
-              <div class="card-body p-4 p-md-5">
-                <!-- Loading State -->
-                <div id="contentLoading">
-                  <div class="mb-5">
-                    <div
-                      class="skeleton skeleton-title"
-                      style="width: 40%"
-                    ></div>
-                    <div class="skeleton skeleton-text"></div>
-                    <div class="skeleton skeleton-text"></div>
-                    <div
-                      class="skeleton skeleton-text"
-                      style="width: 80%"
-                    ></div>
-                  </div>
-                  <div class="mb-5">
-                    <div
-                      class="skeleton skeleton-title"
-                      style="width: 40%"
-                    ></div>
-                    <div class="skeleton skeleton-text"></div>
-                    <div class="skeleton skeleton-text"></div>
-                    <div
-                      class="skeleton skeleton-text"
-                      style="width: 60%"
-                    ></div>
-                  </div>
+      <section class="bagian pt-5">
+        <div class="container">
+          <!-- Loading -->
+          <div id="contentLoading">
+            <div class="row g-4">
+              <div class="col-lg-8">
+                <div class="isi-lowongan">
+                  <div class="kerangka kerangka-baris mb-4" style="width: 40%; height: 22px"></div>
+                  <div class="kerangka kerangka-baris"></div>
+                  <div class="kerangka kerangka-baris" style="width: 92%"></div>
+                  <div class="kerangka kerangka-baris" style="width: 85%"></div>
+                  <div class="kerangka kerangka-baris" style="width: 60%"></div>
                 </div>
-
-                <!-- Detail Content -->
-                <div id="detailContent" style="display: none">
-                  <!-- Descriptions Section -->
-                  <div class="mb-5" id="descriptionsSection">
-                    <h3 class="section-title text-dark">
-                      <i class="bi bi-file-text me-2"></i>
-                      Deskripsi Pekerjaan
-                    </h3>
-                    <div class="content-text" id="descriptions"></div>
-                  </div>
-
-                  <!-- Requirements Section -->
-                  <div class="mb-5" id="requirementsSection">
-                    <h3 class="section-title">
-                      <i class="bi bi-list-check me-2"></i>
-                      Persyaratan
-                    </h3>
-                    <div class="content-text" id="requirements"></div>
-                  </div>
-
-                  <!-- Apply Button -->
-                  <div class="text-center mt-5 pt-4 border-top">
-                    <h4 class="mb-4">Tertarik dengan posisi ini?</h4>
-                    <button
-                      style="font-weight: normal"
-                      class="btn btn-primary btn-lg rounded-pill btn-brand-1 px-5"
-                      id="applyBtn"
-                    >
-                      <i class="bi bi-send-fill me-2"></i>
-                      Ajukan Lamaran Sekarang
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Error State -->
-                <div
-                  id="errorState"
-                  class="text-center py-5"
-                  style="display: none"
-                >
-                  <i
-                    class="bi bi-exclamation-triangle display-1 text-warning"
-                  ></i>
-                  <h3 class="mt-3">Lowongan Tidak Ditemukan</h3>
-                  <p class="text-muted mb-4">
-                    Lowongan yang Anda cari tidak tersedia atau sudah ditutup.
-                  </p>
-                  <a href="/karir/index.html" class="btn btn-primary">
-                    <i class="bi bi-arrow-left me-2"></i>
-                    Kembali ke Daftar Lowongan
-                  </a>
+              </div>
+              <div class="col-lg-4">
+                <div class="isi-lowongan">
+                  <div class="kerangka kerangka-baris" style="width: 70%"></div>
+                  <div class="kerangka" style="height: 48px; border-radius: 999px"></div>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Isi -->
+          <div id="detailContent" style="display: none">
+            <div class="row g-4">
+              <div class="col-lg-8">
+                <article class="isi-lowongan" id="descriptionsSection">
+                  <h2>
+                    <span class="ikon-petak warna-biru"><i class="bi bi-card-text"></i></span>
+                    Deskripsi Pekerjaan
+                  </h2>
+                  <div class="teks-lowongan" id="descriptions"></div>
+                </article>
+                <article class="isi-lowongan" id="requirementsSection">
+                  <h2>
+                    <span class="ikon-petak warna-oranye"><i class="bi bi-list-check"></i></span>
+                    Kualifikasi
+                  </h2>
+                  <div class="teks-lowongan" id="requirements"></div>
+                </article>
+              </div>
+              <div class="col-lg-4">
+                <aside class="kartu-lamar">
+                  <h3>Tertarik dengan posisi ini?</h3>
+                  <p>
+                    Kirim lamaran Anda lengkap dengan CV dan surat lamaran
+                    dalam format PDF.
+                  </p>
+                  <button type="button" class="btn btn-warna btn-lg w-100" id="applyBtn">
+                    <i class="bi bi-send me-1"></i> Lamar Sekarang
+                  </button>
+                  <a href="/karir/" class="btn btn-kaca w-100 mt-3">
+                    <i class="bi bi-arrow-left me-1"></i> Lowongan lainnya
+                  </a>
+                </aside>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error -->
+          <div id="errorState" class="keadaan-kosong" style="display: none">
+            <span class="ikon-petak warna-jambu"><i class="bi bi-search"></i></span>
+            <h3>Lowongan tidak ditemukan</h3>
+            <p>
+              Lowongan yang Anda cari mungkin sudah ditutup atau tautannya
+              tidak lengkap.
+            </p>
+            <a href="/karir/" class="btn btn-warna">Lihat semua lowongan</a>
+          </div>
         </div>
-      </div>
+      </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="py-3">
-      <div class="text-center text-white">
-        <p class="p-0 m-0" style="font-size: 14px">
-          &copy; 2024 PT. Asthana Cipta Mandiri. All rights reserved.
-        </p>
-        <p class="p-0 m-0" style="font-size: 14px">
-          Built with ❤️ by Reka Teknologi
-        </p>
-      </div>
-    </footer>
-
-    <!-- Scroll to Top Button -->
-    <button
-      class="scroll-top-btn bg-brand-3"
-      id="scrollTopBtn"
-      title="Back to Top"
-    >
-      <i class="bi bi-chevron-up"></i>
-    </button>
-
-    <!-- Organization Schema for SEO -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "PT Digital Nusantara Group",
-        "url": "https://digitalnusantara.id",
-        "logo": "https://digitalnusantara.id/logo.png",
-        "description": "Leading technology and tourism solutions provider in Southeast Asia",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Jl. Digital Nusantara No. 123",
-          "addressLocality": "Pontianak",
-          "addressRegion": "West Kalimantan",
-          "postalCode": "78124",
-          "addressCountry": "ID"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "Customer Service",
-          "telephone": "+62-561-123-4567",
-          "email": "info@digitalnusantara.id"
-        },
-        "sameAs": [
-          "https://www.facebook.com/digitalnusantara",
-          "https://www.linkedin.com/company/digitalnusantara",
-          "https://twitter.com/digitalnusantara",
-          "https://www.instagram.com/digitalnusantara"
-        ]
-      }
-    </script>
-
-    <!-- Main Application JS -->
+    <!-- @include footer -->
     <script type="module" src="/src/js/karir-detail.js"></script>
   </body>
 </html>

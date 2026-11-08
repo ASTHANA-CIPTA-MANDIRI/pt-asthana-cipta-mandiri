@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<title>Company Profile — PT. Asthana Cipta Mandiri</title>
+<link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css" />
+<style>
+  @font-face { font-family: "PJS"; font-weight: 400; src: url("../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-400-normal.woff2"); }
+  @font-face { font-family: "PJS"; font-weight: 600; src: url("../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2"); }
+  @font-face { font-family: "PJS"; font-weight: 800; src: url("../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2"); }
+  @page { size: A4; margin: 0; }
+  :root { --biru:#2455e6; --laut:#0ea5c6; --oranye:#ff8a3d; --hijau:#17a974; --ungu:#7b5cff; --jambu:#f0508a; --tinta:#0f1b3d; --teks:#4a5578; --garis:#e4e8f1; --latar:#f6f8fc;
+    --gradien: linear-gradient(120deg,#2455e6 0%,#7b5cff 55%,#0ea5c6 100%); }
+  * { box-sizing: border-box; margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: "PJS", sans-serif; color: var(--teks); font-size: 10.5pt; line-height: 1.6; }
+  .hal { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; padding: 18mm 20mm 24mm; }
+  .hal:last-child { page-break-after: auto; }
+  h1, h2, h3 { color: var(--tinta); font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+  h2 { font-size: 24pt; margin-bottom: 4mm; }
+  h3 { font-size: 12pt; margin-bottom: 1.5mm; }
+  .label { display: inline-block; padding: 1.2mm 3.5mm; border-radius: 99px; font-size: 8pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--c,var(--biru)); background: color-mix(in srgb, var(--c,var(--biru)) 12%, #fff); margin-bottom: 4mm; }
+  .lead { font-size: 12pt; color: var(--teks); }
+  .kaki { position: absolute; left: 20mm; right: 20mm; bottom: 12mm; display: flex; justify-content: space-between; font-size: 8pt; color: #9aa3bd; border-top: 1px solid var(--garis); padding-top: 3mm; }
+
+  /* Sampul */
+  .sampul { background: var(--gradien); color: #fff; padding: 26mm 22mm; display: flex; flex-direction: column; }
+  .sampul::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 85% 8%, rgba(240,80,138,.45), transparent 32%), radial-gradient(rgba(255,255,255,.16) 1.4px, transparent 1.8px); background-size: auto, 7mm 7mm; }
+  .sampul > * { position: relative; }
+  .cincin { position: absolute; right: -40mm; bottom: -50mm; width: 150mm; height: 150mm; border-radius: 50%; border: 18mm solid rgba(255,255,255,.1); }
+  .logo-sampul { width: 46mm; height: 46mm; border-radius: 12mm; background: #fff; display: grid; place-items: center; box-shadow: 0 10mm 20mm -8mm rgba(0,0,0,.4); }
+  .logo-sampul img { width: 34mm; }
+  .sampul .judul { margin-top: auto; }
+  .sampul .pt { font-weight: 800; letter-spacing: .3em; color: #dbe4ff; font-size: 13pt; }
+  .sampul h1 { color: #fff; font-size: 42pt; line-height: 1.05; margin: 2mm 0 6mm; }
+  .sampul p { color: #e6ecff; font-size: 14pt; max-width: 130mm; }
+  .sampul .tahun { margin-top: 16mm; font-weight: 800; font-size: 11pt; color: #fff; letter-spacing: .2em; }
+
+  .foto { width: 100%; height: 40mm; object-fit: cover; border-radius: 6mm; margin: 6mm 0; }
+  .kutip { padding: 4mm 6mm; border-left: 1.4mm solid var(--oranye); background: #fff1e6; border-radius: 0 4mm 4mm 0; color: var(--tinta); font-weight: 600; font-size: 12pt; margin: 2mm 0 5mm; }
+  .misi { list-style: none; padding: 0; display: grid; gap: 2.5mm; }
+  .misi li { display: flex; gap: 3.5mm; align-items: flex-start; padding: 2.4mm 4mm; border: 1px solid var(--garis); border-radius: 3mm; color: var(--tinta); }
+  .misi b { flex-shrink: 0; width: 7mm; height: 7mm; border-radius: 2mm; display: grid; place-items: center; color: #fff; background: var(--c); font-size: 9pt; }
+
+  .kisi { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .kisi.tiga { grid-template-columns: 1fr 1fr 1fr; }
+  .kisi.empat { grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+  .kisi.empat .kotak { padding: 4mm; }
+  .kotak { border: 1px solid var(--garis); border-radius: 4mm; padding: 5mm; break-inside: avoid; }
+  .kotak p { font-size: 9.5pt; }
+  .ikon { width: 10mm; height: 10mm; border-radius: 3mm; display: grid; place-items: center; font-size: 14pt; color: var(--c); background: color-mix(in srgb, var(--c) 12%, #fff); margin-bottom: 3mm; }
+  .kategori { display: flex; align-items: center; gap: 3mm; margin: 6mm 0 4mm; }
+  .kategori .ikon { margin: 0; color: #fff; background: var(--c); }
+  .kategori h3 { font-size: 15pt; margin: 0; }
+
+  .afiliasi { display: flex; gap: 5mm; align-items: center; padding: 5mm; border-radius: 4mm; background: color-mix(in srgb, var(--c) 8%, #fff); border: 1px solid var(--garis); margin-bottom: 4mm; }
+  .afiliasi img { width: 46mm; flex-shrink: 0; }
+  .kontak { background: var(--tinta); color: #c9d1e8; border-radius: 6mm; padding: 7mm 8mm; margin-top: 6mm; display: grid; grid-template-columns: 1fr 1fr; column-gap: 6mm; }
+  .kontak h3 { grid-column: 1 / -1; }
+  .kontak h3 { color: #fff; font-size: 16pt; margin-bottom: 4mm; }
+  .kontak .baris { display: flex; gap: 3mm; margin-bottom: 2.5mm; }
+  .kontak i { color: var(--oranye); }
+</style>
+</head>
+<body>
+  <!-- 1. Sampul -->
+  <section class="hal sampul">
+    <div class="cincin"></div>
+    <div class="logo-sampul"><img src="../src/assets/img/asthana-logo-transparan.png" alt="" /></div>
+    <div class="judul">
+      <div class="pt">COMPANY PROFILE</div>
+      <h1>PT. Asthana<br />Cipta Mandiri</h1>
+      <p>Solusi teknologi dan perjalanan wisata yang inovatif, efisien, dan terpercaya untuk Indonesia.</p>
+      <div class="tahun">{{tahun}}</div>
+    </div>
+  </section>
+
+  <!-- 2. Tentang -->
+  <section class="hal">
+    <span class="label">Tentang Kami</span>
+    <h2>Teknologi dan pariwisata, dikerjakan dengan sepenuh hati</h2>
+    <p class="lead">PT. Asthana Cipta Mandiri adalah perusahaan yang bergerak di bidang teknologi dan pariwisata, dengan komitmen menghadirkan layanan yang inovatif, efisien, dan terpercaya. Kami berfokus pada pengembangan sistem informasi, layanan TI, dan jasa pariwisata Indonesia.</p>
+    <img class="foto" src="../src/assets/img/foto/tim-diskusi.webp" alt="" />
+    <span class="label" style="--c: var(--ungu)">Visi</span>
+    <div class="kutip">“Menjadi perusahaan yang inovatif, profesional, dan berdaya saing global dalam memberikan solusi dan layanan terbaik bagi masyarakat.”</div>
+    <span class="label" style="--c: var(--hijau)">Misi</span>
+    <ol class="misi">
+      <li style="--c: var(--biru)"><b>1</b>Menjalankan usaha dengan mengedepankan inovasi, kreativitas, dan profesionalisme.</li>
+      <li style="--c: var(--ungu)"><b>2</b>Memberikan layanan dan produk yang berkualitas serta berorientasi pada kepuasan pelanggan.</li>
+      <li style="--c: var(--laut)"><b>3</b>Menciptakan ekosistem kerja yang sehat, kolaboratif, dan mendukung.</li>
+      <li style="--c: var(--hijau)"><b>4</b>Menjaga keberlanjutan perusahaan dengan tata kelola yang baik, transparan, dan berintegritas.</li>
+      <li style="--c: var(--oranye)"><b>5</b>Berkontribusi terhadap pembangunan ekonomi dan sosial melalui kegiatan usaha yang bermanfaat luas.</li>
+    </ol>
+    <div class="kaki"><span>PT. Asthana Cipta Mandiri</span><span>2</span></div>
+  </section>
+
+  <!-- 3. Layanan -->
+  <section class="hal">
+    <span class="label" style="--c: var(--hijau)">Layanan</span>
+    <h2>Dua keahlian, satu standar kualitas</h2>
+    <div class="kategori" style="--c: var(--biru)"><span class="ikon"><i class="bi bi-cpu"></i></span><h3>Teknologi</h3></div>
+    <div class="kisi tiga">
+      <div class="kotak" style="--c: var(--biru)"><span class="ikon"><i class="bi bi-code-slash"></i></span><h3>Perangkat Lunak Kustom</h3><p>Aplikasi dan platform yang dibuat khusus untuk kebutuhan bisnis Anda.</p></div>
+      <div class="kotak" style="--c: var(--ungu)"><span class="ikon"><i class="bi bi-diagram-3"></i></span><h3>Sistem Informasi</h3><p>Pengelolaan data dan proses kerja, dari administrasi hingga laporan.</p></div>
+      <div class="kotak" style="--c: var(--laut)"><span class="ikon"><i class="bi bi-phone"></i></span><h3>Website &amp; Aplikasi Mobile</h3><p>Cepat, rapi, dan nyaman di semua perangkat.</p></div>
+      <div class="kotak" style="--c: var(--hijau)"><span class="ikon"><i class="bi bi-arrow-repeat"></i></span><h3>Transformasi Digital</h3><p>Memodernkan operasional dan merangkul inovasi digital.</p></div>
+      <div class="kotak" style="--c: var(--jambu)"><span class="ikon"><i class="bi bi-headset"></i></span><h3>Konsultasi &amp; Dukungan TI</h3><p>Strategi teknologi dan dukungan teknis berkelanjutan.</p></div>
+      <div class="kotak" style="--c: var(--oranye)"><span class="ikon"><i class="bi bi-palette"></i></span><h3>Desain Profesional</h3><p>Antarmuka, identitas visual, dan materi promosi.</p></div>
+    </div>
+    <div class="kategori" style="--c: var(--laut)"><span class="ikon"><i class="bi bi-airplane"></i></span><h3>Pariwisata</h3></div>
+    <div class="kisi">
+      <div class="kotak" style="--c: var(--laut)"><span class="ikon"><i class="bi bi-geo-alt"></i></span><h3>Paket Wisata Domestik</h3><p>Menjelajahi keindahan Indonesia dengan paket yang tertata rapi.</p></div>
+      <div class="kotak" style="--c: var(--biru)"><span class="ikon"><i class="bi bi-globe-asia-australia"></i></span><h3>Paket Wisata Internasional</h3><p>Liburan ke luar negeri tanpa repot mengurus detailnya sendiri.</p></div>
+      <div class="kotak" style="--c: var(--oranye)"><span class="ikon"><i class="bi bi-map"></i></span><h3>Perencanaan Perjalanan</h3><p>Itinerary personal sesuai keinginan dan anggaran.</p></div>
+      <div class="kotak" style="--c: var(--hijau)"><span class="ikon"><i class="bi bi-ticket-perforated"></i></span><h3>Tiket, Hotel &amp; Tur</h3><p>Pemesanan tiket, akomodasi, dan tur dalam satu pintu.</p></div>
+    </div>
+    <div class="kaki"><span>PT. Asthana Cipta Mandiri</span><span>3</span></div>
+  </section>
+
+  <!-- 4. Anak perusahaan, keunggulan, kontak -->
+  <section class="hal">
+    <span class="label" style="--c: var(--laut)">Anak Perusahaan</span>
+    <h2>Keluarga besar Asthana</h2>
+    <div class="afiliasi" style="--c: var(--laut)">
+      <img src="../src/assets/img/logo-orcha-wide.png" alt="Orcha Journey" />
+      <div><h3>Orcha Journey</h3><p>Layanan perjalanan wisata yang nyaman, personal, dan berkesan, dengan beragam paket liburan domestik maupun internasional. {{p.orcha_url}}</p></div>
+    </div>
+    <div class="afiliasi" style="--c: var(--hijau)">
+      <img src="../src/assets/img/logo-reka-wide.png" alt="Reka Teknologi" />
+      <div><h3>Reka Teknologi</h3><p>Pembuatan website, aplikasi mobile, sistem digital, serta desain profesional untuk mendukung transformasi bisnis.</p></div>
+    </div>
+    <span class="label" style="--c: var(--oranye); margin-top: 3mm">Keunggulan</span>
+    <div class="kisi empat">
+      <div class="kotak" style="--c: var(--oranye)"><span class="ikon"><i class="bi bi-tags"></i></span><h3>Harga Terjangkau</h3><p>Biaya kompetitif tanpa mengorbankan kualitas.</p></div>
+      <div class="kotak" style="--c: var(--biru)"><span class="ikon"><i class="bi bi-award"></i></span><h3>Tim Profesional</h3><p>Ahli teknologi &amp; pariwisata yang memberi hasil tepercaya.</p></div>
+      <div class="kotak" style="--c: var(--hijau)"><span class="ikon"><i class="bi bi-lightning-charge"></i></span><h3>Cepat &amp; Responsif</h3><p>Dukungan sigap di setiap kanal.</p></div>
+      <div class="kotak" style="--c: var(--ungu)"><span class="ikon"><i class="bi bi-stars"></i></span><h3>Terintegrasi &amp; Inovatif</h3><p>Layanan saling terhubung berbasis teknologi terbaru.</p></div>
+    </div>
+    <div class="kontak">
+      <h3>Hubungi Kami</h3>
+      <div class="baris"><i class="bi bi-geo-alt"></i><span>{{p.alamat_jalan}}, {{p.alamat_kota}}</span></div>
+      <div class="baris"><i class="bi bi-whatsapp"></i><span>{{p.whatsapp_tampil}}</span></div>
+      <div class="baris"><i class="bi bi-envelope"></i><span>{{p.email}}</span></div>
+      <div class="baris"><i class="bi bi-clock"></i><span>{{p.jam_kerja}}</span></div>
+      <!--situs--><div class="baris"><i class="bi bi-globe2"></i><span>{{situs}}</span></div><!--/situs-->
+    </div>
+    <div class="kaki"><span>PT. Asthana Cipta Mandiri</span><span>4</span></div>
+  </section>
+</body>
+</html>

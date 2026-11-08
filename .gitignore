@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Konfigurasi lokal & berkas sementara
+.env
+alat/.profil-sementara.html

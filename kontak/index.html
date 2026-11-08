@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <!-- @include head padanan="/en/contact/" judul="Hubungi Kami" deskripsi="Hubungi PT. Asthana Cipta Mandiri untuk konsultasi layanan teknologi, pariwisata, atau peluang kerja sama." -->
+  </head>
+  <body>
+    <!-- @include header padanan="/en/contact/" aktif="kontak" -->
+
+    <main id="konten">
+      <section class="kepala-halaman">
+        <div class="container">
+          <ol class="remah" aria-label="Remah roti">
+            <li><a href="/">Beranda</a></li>
+            <li aria-current="page">Hubungi Kami</li>
+          </ol>
+          <h1>Hubungi Kami</h1>
+          <p>
+            Kami sangat terbuka untuk berkolaborasi menciptakan inovasi yang
+            bermanfaat. Kirim pesan, kami akan segera membalas.
+          </p>
+        </div>
+        <span class="lengkung" aria-hidden="true"></span>
+      </section>
+
+      <section class="bagian pt-5">
+        <div class="container">
+          <div class="row g-4 mb-5">
+            <div class="col-md-4" data-muncul>
+              <div class="kartu-kontak warna-biru">
+                <span class="ikon-petak"><i class="bi bi-geo-alt"></i></span>
+                <div>
+                  <h3>Alamat Kantor</h3>
+                  <p>{{p.alamat_jalan}}, {{p.alamat_kota}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4" data-muncul style="--tunda: 0.08s">
+              <div class="kartu-kontak warna-hijau">
+                <span class="ikon-petak"><i class="bi bi-whatsapp"></i></span>
+                <div>
+                  <h3>WhatsApp</h3>
+                  <a href="https://wa.me/{{p.whatsapp}}?text={{p.whatsapp_sapaan|url}}" target="_blank" rel="noopener">{{p.whatsapp_tampil}}</a>
+                  <p class="small mt-1">{{p.jam_kerja}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4" data-muncul style="--tunda: 0.16s">
+              <div class="kartu-kontak warna-oranye">
+                <span class="ikon-petak"><i class="bi bi-envelope"></i></span>
+                <div>
+                  <h3>Email</h3>
+                  <a href="mailto:{{p.email}}">{{p.email}}</a><br />
+                  <a data-jika="email_2" href="mailto:{{p.email_2}}">{{p.email_2}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-5">
+            <div class="col-lg-7" data-muncul>
+              <div class="kartu-borang">
+                <span class="label-bagian">Kirim Pesan</span>
+                <h2 class="h3 mb-4">Ada yang bisa kami bantu?</h2>
+                <form id="contactForm" novalidate>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="name" class="form-label">Nama <span class="wajib">*</span></label>
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Nama lengkap Anda" autocomplete="name" required />
+                      <small class="pesan-galat" id="nameError"></small>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="email" class="form-label">Email <span class="wajib">*</span></label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="contoh@email.com" autocomplete="email" required />
+                      <small class="pesan-galat" id="emailError"></small>
+                    </div>
+                    <div class="col-12">
+                      <label for="message" class="form-label">Pesan <span class="wajib">*</span></label>
+                      <textarea class="form-control" id="message" name="message" rows="6" placeholder="Ceritakan kebutuhan Anda..." required></textarea>
+                      <small class="pesan-galat" id="messageError"></small>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-warna btn-lg w-100 mt-4">
+                    <i class="bi bi-send me-1"></i> Kirim Pesan
+                  </button>
+                  <p class="text-center text-secondary small mt-3 mb-0">
+                    Data Anda hanya dipakai untuk membalas pesan ini. Baca
+                    <a href="/kebijakan-privasi/">Kebijakan Privasi</a>.
+                  </p>
+                  <div id="formMessage" class="pesan-borang" role="status" aria-live="polite"></div>
+                </form>
+              </div>
+            </div>
+
+            <div class="col-lg-5 d-flex flex-column gap-4" data-muncul style="--tunda: 0.1s">
+              <div class="bingkai-aksen d-none d-lg-block">
+                <span class="titik" aria-hidden="true"></span>
+                <img
+                  src="/src/assets/img/foto/rapat.webp"
+                  alt="Diskusi kerja di depan laptop"
+                  loading="lazy"
+                />
+              </div>
+              <div class="panel-sosial mt-lg-3">
+                <h3>Terhubung dengan kami</h3>
+                <p class="mb-3">Kabar terbaru, proyek, dan promo perjalanan.</p>
+                <div class="sosial">
+                  <a data-jika="instagram" href="{{p.instagram}}" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                  <a data-jika="linkedin" href="{{p.linkedin}}" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a data-jika="facebook" href="{{p.facebook}}" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a data-jika="x" href="{{p.x}}" target="_blank" rel="noopener" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+                  <a href="https://wa.me/{{p.whatsapp}}" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pb-5 mb-4">
+        <div class="container">
+          <div class="peta" data-muncul>
+            <iframe
+              title="Peta lokasi kantor PT. Asthana Cipta Mandiri"
+              src="https://maps.google.com/maps?q={{p.peta_kueri|url}}&z=15&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- @include footer -->
+    <script type="module" src="/src/js/message.js"></script>
+  </body>
+</html>

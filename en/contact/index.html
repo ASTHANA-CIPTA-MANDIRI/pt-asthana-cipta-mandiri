@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- @include head padanan="/kontak/" judul="Contact Us" deskripsi="Contact PT. Asthana Cipta Mandiri about technology or tourism services, or partnership opportunities." -->
+  </head>
+  <body>
+    <!-- @include header-en padanan="/kontak/" aktif="kontak" -->
+
+    <main id="konten">
+      <section class="kepala-halaman">
+        <div class="container">
+          <ol class="remah" aria-label="Breadcrumb">
+            <li><a href="/en/">Home</a></li>
+            <li aria-current="page">Contact Us</li>
+          </ol>
+          <h1>Contact Us</h1>
+          <p>
+            We are always open to working together on useful innovations. Send us a message and we will reply soon.
+          </p>
+        </div>
+        <span class="lengkung" aria-hidden="true"></span>
+      </section>
+
+      <section class="bagian pt-5">
+        <div class="container">
+          <div class="row g-4 mb-5">
+            <div class="col-md-4" data-muncul>
+              <div class="kartu-kontak warna-biru">
+                <span class="ikon-petak"><i class="bi bi-geo-alt"></i></span>
+                <div>
+                  <h3>Office Address</h3>
+                  <p>{{p.alamat_jalan}}, {{p.alamat_kota}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4" data-muncul style="--tunda: 0.08s">
+              <div class="kartu-kontak warna-hijau">
+                <span class="ikon-petak"><i class="bi bi-whatsapp"></i></span>
+                <div>
+                  <h3>WhatsApp</h3>
+                  <a href="https://wa.me/{{p.whatsapp}}?text={{p.whatsapp_sapaan_en|url}}" target="_blank" rel="noopener">{{p.whatsapp_tampil}}</a>
+                  <p class="small mt-1">{{p.jam_kerja_en}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4" data-muncul style="--tunda: 0.16s">
+              <div class="kartu-kontak warna-oranye">
+                <span class="ikon-petak"><i class="bi bi-envelope"></i></span>
+                <div>
+                  <h3>Email</h3>
+                  <a href="mailto:{{p.email}}">{{p.email}}</a><br />
+                  <a data-jika="email_2" href="mailto:{{p.email_2}}">{{p.email_2}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-5">
+            <div class="col-lg-7" data-muncul>
+              <div class="kartu-borang">
+                <span class="label-bagian">Send a Message</span>
+                <h2 class="h3 mb-4">How can we help?</h2>
+                <form id="contactForm" novalidate>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="name" class="form-label">Name <span class="wajib">*</span></label>
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Your full name" autocomplete="name" required />
+                      <small class="pesan-galat" id="nameError"></small>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="email" class="form-label">Email <span class="wajib">*</span></label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="name@email.com" autocomplete="email" required />
+                      <small class="pesan-galat" id="emailError"></small>
+                    </div>
+                    <div class="col-12">
+                      <label for="message" class="form-label">Message <span class="wajib">*</span></label>
+                      <textarea class="form-control" id="message" name="message" rows="6" placeholder="Tell us what you need..." required></textarea>
+                      <small class="pesan-galat" id="messageError"></small>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-warna btn-lg w-100 mt-4">
+                    <i class="bi bi-send me-1"></i> Send Message
+                  </button>
+                  <p class="text-center text-secondary small mt-3 mb-0">
+                    Your details are only used to reply to this message. Read our
+                    <a href="/en/privacy/">Privacy Policy</a>.
+                  </p>
+                  <div id="formMessage" class="pesan-borang" role="status" aria-live="polite"></div>
+                </form>
+              </div>
+            </div>
+
+            <div class="col-lg-5 d-flex flex-column gap-4" data-muncul style="--tunda: 0.1s">
+              <div class="bingkai-aksen d-none d-lg-block">
+                <span class="titik" aria-hidden="true"></span>
+                <img
+                  src="/src/assets/img/foto/rapat.webp"
+                  alt="A work discussion in front of a laptop"
+                  loading="lazy"
+                />
+              </div>
+              <div class="panel-sosial mt-lg-3">
+                <h3>Stay in touch</h3>
+                <p class="mb-3">Latest news, projects, and travel deals.</p>
+                <div class="sosial">
+                  <a data-jika="instagram" href="{{p.instagram}}" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                  <a data-jika="linkedin" href="{{p.linkedin}}" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a data-jika="facebook" href="{{p.facebook}}" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a data-jika="x" href="{{p.x}}" target="_blank" rel="noopener" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+                  <a href="https://wa.me/{{p.whatsapp}}" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pb-5 mb-4">
+        <div class="container">
+          <div class="peta" data-muncul>
+            <iframe
+              title="Map of the PT. Asthana Cipta Mandiri office"
+              src="https://maps.google.com/maps?q={{p.peta_kueri|url}}&z=15&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- @include footer-en -->
+    <script type="module" src="/src/js/message.js"></script>
+  </body>
+</html>

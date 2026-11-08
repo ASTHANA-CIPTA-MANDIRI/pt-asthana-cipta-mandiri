@@ -1,0 +1,92 @@
+    <footer class="kaki-situs">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-4">
+            <a class="merek merek-terang" href="/">
+              <span class="merek-bingkai">
+                <img src="/src/assets/img/asthana-mark.png" alt="" width="40" height="36" />
+              </span>
+              <span><small>PT.</small> Asthana Cipta Mandiri</span>
+            </a>
+            <p class="mt-3 mb-4">
+              Perusahaan teknologi dan pariwisata yang menghadirkan layanan
+              inovatif, efisien, dan terpercaya untuk Indonesia.
+            </p>
+            <div class="sosial">
+              <a data-jika="instagram" href="{{p.instagram}}" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a data-jika="linkedin" href="{{p.linkedin}}" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a data-jika="facebook" href="{{p.facebook}}" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a data-jika="x" href="{{p.x}}" target="_blank" rel="noopener" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://wa.me/{{p.whatsapp}}" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h3 class="judul-kaki">Perusahaan</h3>
+            <ul class="daftar-kaki">
+              <li><a href="/tentang/">Tentang Kami</a></li>
+              <li><a href="/portofolio/">Portofolio</a></li>
+              <li><a href="/berita/">Berita</a></li>
+              <li><a href="/karir/">Karir</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h3 class="judul-kaki">Layanan</h3>
+            <ul class="daftar-kaki">
+              <li><a href="/layanan/#teknologi">Teknologi</a></li>
+              <li><a href="/layanan/#pariwisata">Pariwisata</a></li>
+              <li><a href="/anak-perusahaan/#orcha">Orcha Journey</a></li>
+              <li><a href="/anak-perusahaan/#reka">Reka Teknologi</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4">
+            <h3 class="judul-kaki">Kantor</h3>
+            <ul class="daftar-kaki daftar-kontak">
+              <li>
+                <i class="bi bi-geo-alt"></i>
+                <span>{{p.alamat_jalan}},<br />{{p.alamat_kota}}</span>
+              </li>
+              <li>
+                <i class="bi bi-whatsapp"></i>
+                <a href="https://wa.me/{{p.whatsapp}}" target="_blank" rel="noopener">{{p.whatsapp_tampil}}</a>
+              </li>
+              <li>
+                <i class="bi bi-envelope"></i>
+                <a href="mailto:{{p.email}}">{{p.email}}</a>
+              </li>
+              <li>
+                <i class="bi bi-clock"></i>
+                <span>{{p.jam_kerja}}</span>
+              </li>
+            </ul>
+            <a href="/company-profile-asthana.pdf" class="btn btn-kaca btn-sm mt-3" download>
+              <i class="bi bi-file-earmark-arrow-down me-1"></i> Unduh Company Profile
+            </a>
+          </div>
+        </div>
+
+        <div class="kaki-bawah">
+          <span>&copy; <span data-tahun>2026</span> PT. Asthana Cipta Mandiri. Hak cipta dilindungi.</span>
+          <span><a href="/kebijakan-privasi/">Kebijakan Privasi</a> · Dibangun oleh Reka Teknologi</span>
+        </div>
+      </div>
+    </footer>
+
+    <a
+      class="wa-apung"
+      href="https://wa.me/{{p.whatsapp}}?text={{p.whatsapp_sapaan|url}}"
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat WhatsApp"
+    >
+      <i class="bi bi-whatsapp"></i>
+      <span>Chat kami</span>
+    </a>
+
+    <button class="tombol-atas" id="tombolAtas" type="button" aria-label="Kembali ke atas">
+      <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <script type="module" src="/src/main.js"></script>

@@ -1,637 +1,432 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="PT. Asthana Cipta Mandiri - Perusahaan yang bergerak di bidang teknologi dan pariwisata dengan komitmen menghadirkan layanan inovatif, efisien dan terpercaya."
-    />
-    <meta
-      name="keywords"
-      content="technology, tourism, software, digital products, travel agency, account marketplace"
-    />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="/android-chrome-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="/android-chrome-512x512.png"
-    />
-
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="author" content="Reka Teknologi" />
-    <title>PT. Asthana Cipta Mandiri | Technology & Tourism Solutions</title>
-    <link
-      rel="stylesheet"
-      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/node_modules/bootstrap-icons/font/bootstrap-icons.css"
-    />
-    <link rel="stylesheet" href="/src/css/custom.css" />
-    <link rel="stylesheet" href="/src/css/style.css" />
+    <!-- @include head padanan="/en/" judul="Solusi Teknologi & Pariwisata" deskripsi="PT. Asthana Cipta Mandiri — perusahaan teknologi dan pariwisata yang menghadirkan layanan inovatif, efisien, dan terpercaya: sistem informasi, layanan TI, dan perjalanan wisata Indonesia." -->
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm navbar-bg">
-      <div class="container-lg px-4 py-2">
-        <a class="navbar-brand d-none d-lg-block fw-bold" href="/">
-          PT. Asthana Cipta Mandiri
-        </a>
-        <div
-          class="d-block d-lg-none"
-          style="height: 100px; width: 100px; overflow: hidden"
-        >
-          <img
-            src="/src/assets/img/asthana-logo.png"
-            alt=""
-            class="h-100 w-100"
-            style="object-fit: cover"
-          />
-        </div>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- @include header padanan="/en/" aktif="beranda" -->
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto d-flex align-items-center gap-3">
-            <li class="nav-item">
-              <a class="nav-link" href="/#home">Beranda</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#about">Profil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#subsidiaries">Afiliasi</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#services">Layanan</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#whychoose">Keunggulan</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/karir/index.html">Karir</a>
-            </li>
-            <li
-              class="nav-item d-flex align-items-center justify-content-center"
-            >
-              <a
-                class="btn btn-brand-1 rounded-pill px-4 btn-sm w-100"
-                href="#contact"
-                >Hubungi Kami</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main>
-      <!-- Hero Section Start -->
-      <section id="home">
-        <div class="circle circle-1"></div>
-        <div class="circle circle-2"></div>
-        <div class="hero">
-          <div class="hero-content container-lg mx-auto row">
-            <div class="col-12 col-lg-6">
-              <h1 class="text-dark mb-3">
-                Memberikan Layanan
-                <span class="caret-mobile"
-                  >Inovatif, Efisien, dan Terpercaya</span
-                ><br />
-                <span id="typewriter" class="type-caret text-brand-1"></span>
+    <main id="konten">
+      <!-- Hero -->
+      <section class="hero">
+        <span class="gumpal" aria-hidden="true"></span>
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+              <span class="label-bagian" data-muncul>Teknologi &amp; Pariwisata Indonesia</span>
+              <h1 data-muncul style="--tunda: 0.08s">
+                Memberikan layanan yang
+                <span class="teks-gradien ketik" id="typewriter">inovatif</span>
               </h1>
-              <p class="text-dark mb-3 fs-5">
-                Perusahaan yang bergerak di bidang teknologi dan pariwisata
-                dengan komitmen menghadirkan layanan inovatif, efisien dan
-                terpercaya. Kami berfokus pada pengembangan sistem informasi,
-                layanan IT dan juga jasa pariwisata Indonesia
+              <p class="lead" data-muncul style="--tunda: 0.16s">
+                Kami membangun sistem informasi dan layanan TI yang memajukan
+                bisnis, sekaligus menghadirkan perjalanan wisata yang nyaman
+                dan berkesan — dua keahlian, satu komitmen pada kualitas.
               </p>
-
-              <a
-                href="#about"
-                class="btn btn-lg btn-brand-1 rounded-pill w-50 my-3"
-              >
-                Hubungi Kami
-              </a>
+              <div class="d-flex flex-wrap gap-3 mt-4" data-muncul style="--tunda: 0.24s">
+                <a href="/layanan/" class="btn btn-warna btn-lg">
+                  Jelajahi Layanan <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+                <a href="/kontak/" class="btn btn-garis btn-lg">
+                  <i class="bi bi-chat-dots me-1"></i> Konsultasi Gratis
+                </a>
+              </div>
+              <div class="grup-merek" data-muncul style="--tunda: 0.32s">
+                <span>Bagian dari grup kami:</span>
+                <img src="/src/assets/img/logo-orcha-wide.png" alt="Orcha Journey" />
+                <img src="/src/assets/img/logo-reka-wide.png" alt="Reka Teknologi" />
+              </div>
             </div>
-            <div class="col-12 col-lg-6 hero-images">
-              <div class="hero-single-image">
+
+            <div class="col-lg-6">
+              <div class="kolase" data-muncul style="--tunda: 0.2s">
+                <figure class="besar">
+                  <img
+                    src="/src/assets/img/foto/tim-diskusi.webp"
+                    alt="Tim sedang berdiskusi di depan laptop"
+                  />
+                </figure>
+                <figure class="atas">
+                  <img
+                    src="/src/assets/img/foto/bali-pura.webp"
+                    alt="Pura di tepi danau, Bali"
+                  />
+                </figure>
+                <figure class="bawah">
+                  <img
+                    src="/src/assets/img/foto/dasbor.webp"
+                    alt="Dasbor analitik di layar laptop"
+                  />
+                </figure>
+                <div class="lencana-apung kiri">
+                  <span class="ikon-petak warna-biru"><i class="bi bi-cpu"></i></span>
+                  <span>Sistem Informasi<small>Web, mobile &amp; TI</small></span>
+                </div>
+                <div class="lencana-apung kanan">
+                  <span class="ikon-petak warna-oranye"><i class="bi bi-airplane"></i></span>
+                  <span>Paket Wisata<small>Domestik &amp; internasional</small></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Angka pencapaian (dari lemon; tersembunyi bila kosong) -->
+      <section id="pitaAngka" class="pb-2" hidden>
+        <div class="container">
+          <div class="pita-angka" data-muncul>
+            <div class="row g-3" id="daftarAngka"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dua pilar bisnis -->
+      <section class="bagian bagian-latar">
+        <div class="container">
+          <div class="kepala-bagian tengah" data-muncul>
+            <span class="label-bagian warna-ungu">Bidang Usaha</span>
+            <h2 class="judul-bagian">Dua keahlian, satu standar kualitas</h2>
+            <p class="sub-bagian">
+              Kami bergerak di dua bidang yang saling melengkapi — teknologi
+              yang memudahkan, dan perjalanan yang menyenangkan.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-lg-6" data-muncul>
+              <article class="pilar warna-biru">
+                <div class="pilar-gambar">
+                  <img
+                    src="/src/assets/img/foto/pengembang.webp"
+                    alt="Pengembang bekerja di depan komputer"
+                    loading="lazy"
+                  />
+                  <span class="label-bagian">Teknologi</span>
+                </div>
+                <div class="pilar-isi">
+                  <h3>Solusi Digital &amp; Layanan TI</h3>
+                  <p>
+                    Pengembangan sistem informasi, website, dan aplikasi yang
+                    dirancang sesuai kebutuhan bisnis Anda.
+                  </p>
+                  <ul class="daftar-centang">
+                    <li>Perangkat lunak &amp; sistem informasi kustom</li>
+                    <li>Website, aplikasi mobile, dan desain profesional</li>
+                    <li>Konsultasi &amp; dukungan TI berkelanjutan</li>
+                  </ul>
+                  <a href="/layanan/#teknologi" class="tautan-panah">
+                    Lihat layanan teknologi <i class="bi bi-arrow-right"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-6" data-muncul style="--tunda: 0.1s">
+              <article class="pilar warna-laut">
+                <div class="pilar-gambar">
+                  <img
+                    src="/src/assets/img/foto/orcha-snorkeling.webp"
+                    alt="Peserta Orcha Journey snorkeling di antara terumbu karang, Banyuwangi"
+                    loading="lazy"
+                  />
+                  <span class="label-bagian">Pariwisata</span>
+                </div>
+                <div class="pilar-isi">
+                  <h3>Perjalanan Wisata yang Berkesan</h3>
+                  <p>
+                    Paket liburan yang nyaman dan personal, ditangani tim yang
+                    memahami setiap detail perjalanan Anda.
+                  </p>
+                  <ul class="daftar-centang">
+                    <li>Paket wisata domestik &amp; internasional</li>
+                    <li>Perencanaan rencana perjalanan yang personal</li>
+                    <li>Pemesanan tiket, hotel, dan tur</li>
+                  </ul>
+                  <a href="/layanan/#pariwisata" class="tautan-panah">
+                    Lihat layanan pariwisata <i class="bi bi-arrow-right"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portofolio unggulan -->
+      <section class="bagian" id="bagianPortofolio" hidden>
+        <div class="container">
+          <div class="row align-items-end g-4 kepala-bagian">
+            <div class="col-lg-7" data-muncul>
+              <span class="label-bagian warna-biru">Portofolio</span>
+              <h2 class="judul-bagian mb-0">Hasil kerja yang bisa Anda lihat</h2>
+            </div>
+            <div class="col-lg-5 text-lg-end" data-muncul>
+              <a href="/portofolio/" class="tautan-panah">Semua portofolio <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="row g-4" id="daftarPortofolio"></div>
+        </div>
+      </section>
+
+      <!-- Klien & mitra -->
+      <section class="py-5 border-top border-bottom" id="bagianKlien" hidden>
+        <div class="container">
+          <p class="text-center fw-bold text-uppercase small mb-4" style="letter-spacing: 0.12em; color: var(--teks-pudar)">
+            Dipercaya oleh klien &amp; mitra
+          </p>
+          <div class="deret-klien"><div class="jalur" id="daftarKlien"></div></div>
+        </div>
+      </section>
+
+      <!-- Tentang ringkas -->
+      <section class="bagian">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-muncul>
+              <div class="bingkai-aksen me-lg-4">
+                <span class="titik" aria-hidden="true"></span>
                 <img
-                  src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
-                  alt=""
-                  class="img-hero"
+                  src="/src/assets/img/foto/kolaborasi.webp"
+                  alt="Dua rekan kerja merayakan keberhasilan"
+                  loading="lazy"
                 />
               </div>
-              <div class="hero-multiple-images row gap-3">
-                <div
-                  class="overflow-hidden col-6 bg-secondary p-0"
-                  style="border-radius: 200px 10px 200px 10px"
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
-                    alt=""
-                    class="w-100 h-100 img-hero"
-                  />
-                </div>
-                <div class="overflow-hidden col-6 p-0 row gap-1">
-                  <div
-                    class="col-12 overflow-hidden p-0"
-                    style="border-radius: 50px 10px 50px 10px"
-                  >
-                    <img
-                      src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
-                      alt=""
-                      class="w-100 h-100 img-hero"
-                    />
-                  </div>
-                  <div
-                    class="col-12 overflow-hidden p-0"
-                    style="border-radius: 50px 10px 50px 10px"
-                  >
-                    <img
-                      src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
-                      alt=""
-                      class="w-100 h-100 img-hero"
-                    />
-                  </div>
-                </div>
+            </div>
+            <div class="col-lg-6" data-muncul style="--tunda: 0.1s">
+              <span class="label-bagian warna-oranye">Tentang Kami</span>
+              <h2 class="judul-bagian">Tumbuh bersama, berkarya untuk Indonesia</h2>
+              <p class="sub-bagian">
+                PT. Asthana Cipta Mandiri bergerak di bidang teknologi dan
+                pariwisata. Kami berfokus pada pengembangan sistem informasi,
+                layanan TI, dan jasa pariwisata Indonesia.
+              </p>
+              <blockquote class="kutipan-visi">
+                “Menjadi perusahaan yang inovatif, profesional, dan berdaya
+                saing global dalam memberikan solusi dan layanan terbaik bagi
+                masyarakat.”
+              </blockquote>
+              <a href="/tentang/" class="btn btn-warna">
+                Kenali Kami Lebih Dekat <i class="bi bi-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Layanan unggulan -->
+      <section class="bagian bagian-latar">
+        <div class="container">
+          <div class="row align-items-end g-4 kepala-bagian">
+            <div class="col-lg-7" data-muncul>
+              <span class="label-bagian warna-hijau">Layanan</span>
+              <h2 class="judul-bagian mb-0">Apa yang bisa kami bantu?</h2>
+            </div>
+            <div class="col-lg-5 text-lg-end" data-muncul>
+              <a href="/layanan/" class="tautan-panah">
+                Semua layanan <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4" data-muncul>
+              <div class="kartu kartu-hidup warna-biru">
+                <span class="ikon-petak"><i class="bi bi-code-slash"></i></span>
+                <h3>Pengembangan Perangkat Lunak</h3>
+                <p>Aplikasi dan platform yang dibuat khusus untuk tantangan bisnis Anda dan siap tumbuh bersama Anda.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-muncul style="--tunda: 0.08s">
+              <div class="kartu kartu-hidup warna-ungu">
+                <span class="ikon-petak"><i class="bi bi-phone"></i></span>
+                <h3>Website &amp; Aplikasi Mobile</h3>
+                <p>Situs dan aplikasi yang cepat, rapi, dan nyaman dipakai di semua perangkat.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-muncul style="--tunda: 0.16s">
+              <div class="kartu kartu-hidup warna-hijau">
+                <span class="ikon-petak"><i class="bi bi-arrow-repeat"></i></span>
+                <h3>Transformasi Digital</h3>
+                <p>Pendampingan strategis untuk memodernkan operasional dan merangkul inovasi digital.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-muncul>
+              <div class="kartu kartu-hidup warna-jambu">
+                <span class="ikon-petak"><i class="bi bi-headset"></i></span>
+                <h3>Konsultasi &amp; Dukungan TI</h3>
+                <p>Arahan strategi teknologi, optimasi infrastruktur, dan dukungan teknis berkelanjutan.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-muncul style="--tunda: 0.08s">
+              <div class="kartu kartu-hidup warna-laut">
+                <span class="ikon-petak"><i class="bi bi-map"></i></span>
+                <h3>Perencanaan Perjalanan</h3>
+                <p>Rencana perjalanan menyeluruh: tiket pesawat, hotel, tur, hingga itinerary yang personal.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-muncul style="--tunda: 0.16s">
+              <div class="kartu kartu-hidup warna-oranye">
+                <span class="ikon-petak"><i class="bi bi-globe-asia-australia"></i></span>
+                <h3>Paket Wisata</h3>
+                <p>Beragam paket liburan domestik maupun internasional yang nyaman dan berkesan.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <!-- Hero Section End -->
 
-      <!-- About Section Start -->
-      <section id="about">
-        <div class="container-lg mx-auto about-wrapper">
-          <div class="about-image">
-            <img
-              src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
-              alt=""
-              class="img-hero"
-              style="object-fit: cover"
-            />
-          </div>
-          <div class="about-content shadow">
-            <h2 class="text-dark">Tentang Kami</h2>
-            <p class="fs-6 text-dark">
-              Perusahaan yang bergerak di bidang teknologi dan pariwisata dengan
-              komitmen menghadirkan layanan inovatif, efisien dan terpercaya.
-              Kami berfokus pada pengembangan sistem informasi, layanan IT dan
-              juga jasa pariwisata Indonesia
+      <!-- Keunggulan -->
+      <section class="bagian bagian-gelap">
+        <div class="container">
+          <div class="kepala-bagian tengah" data-muncul>
+            <span class="label-bagian">Keunggulan</span>
+            <h2 class="judul-bagian">Kenapa memilih kami?</h2>
+            <p class="sub-bagian">
+              Solusi digital &amp; pariwisata yang unggul, tepercaya, dan
+              berorientasi hasil.
             </p>
-            <div class="vision-mission">
-              <div>
-                <h4>Visi</h4>
-                <ul>
-                  <li>
-                    Menjadi perusahaan yang inovatif, profesional, dan berdaya
-                    saing globa dalam memberikan solusi dan layanan terbaik bagi
-                    masyarakat
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4>Misi</h4>
-                <ul>
-                  <li>
-                    Menjalankan usaha dengan mengedepankan inovasi, kreativitas,
-                    dan profesionalisme.
-                  </li>
-                  <li>
-                    Memberikan layanan dan produk yang berkualitas serta
-                    berorientasi pada kepuasan pelanggan.
-                  </li>
-                  <li>
-                    Menciptakan ekosistem kerja yang sehat, kolaboratif, dan
-                    mengukung.
-                  </li>
-                  <li>
-                    Menjaga keberlanjutan perusahaan dengan tata kelola yang
-                    baik, transparan, dan berintergritas.
-                  </li>
-                  <li>
-                    Berkontribusi terhadap pembangunan ekonomi dan sosial
-                    melalui kegiatan usaha yang bermanfaat luas.
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
-        </div>
-      </section>
-      <!-- About Section End -->
-
-      <!-- Subsidiaries Section Start -->
-      <section id="subsidiaries">
-        <div class="container-lg" style="padding: 50px 0">
-          <h2 class="text-center mb-5">Anak Perusahaan</h2>
-          <div class="row g-4 position-relative">
-            <div class="ornamen-wrapper">
-              <img
-                src="/src/assets/img/ornamen-lingkaran.png"
-                class="ornamen"
-                alt=""
-              />
-            </div>
-            <!-- Orcha Journey Card -->
-            <article class="col-lg-6">
-              <div class="subsidiary-card subsidiary-card-orcha scroll-animate">
-                <div class="subsidiary-blur"></div>
-                <div class="subsidiary-logo-wrapper">
-                  <img
-                    src="/src/assets/img/logo-orcha-wide.png"
-                    class="subsidiary-logo"
-                    alt=""
-                  />
-                </div>
-                <div class="subsidiary-content">
-                  <h3 class="text-dark">Orcha Journey</h3>
-                  <p class="text-dark">
-                    Orcha Journey menghadirkan layanan perjalanan wisata yang
-                    nyaman, personal, dan berkesan, dengan beragam paket liburan
-                    domestik maupun internasional
-                  </p>
-                  <a
-                    href="https://orchajourney.com"
-                    target="_blank"
-                    class="btn px-5 my-3 rounded-pill btn-brand-1"
-                    >kunjungin website</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- Reka Teknologi Card -->
-            <article class="col-lg-6">
-              <div class="subsidiary-card subsidiary-card-reka scroll-animate">
-                <div class="subsidiary-blur"></div>
-                <div class="subsidiary-logo-wrapper">
-                  <img
-                    src="/src/assets/img/logo-reka-wide.png"
-                    class="subsidiary-logo"
-                    alt=""
-                  />
-                </div>
-                <div class="subsidiary-content">
-                  <h3 class="text-dark">Reka Teknologi</h3>
-                  <p>
-                    Reka Technology menyediakan layanan pembuatan website,
-                    aplikasi mobile, sistem digital, serta desain profesional
-                    untuk mendukung transformasi bisnis
-                  </p>
-                  <a
-                    href="#"
-                    target="_blank"
-                    class="btn px-5 my-3 rounded-pill btn-brand-1"
-                    >Visit Website</a
-                  >
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-      <!-- Subsidiaries Section End -->
-
-      <!-- Services & Solutions Section Start -->
-      <section id="services">
-        <div class="bg-services"></div>
-        <div class="bg-services2"></div>
-        <div class="bg-services3"></div>
-        <div class="container-lg position-relative z-3">
-          <h2 class="text-center text-white">Layanan Kami</h2>
-          <p class="text-white fs-5 text-center mb-5">
-            Comprehensive offerings across technology and tourism
-          </p>
-
           <div class="row g-4">
-            <!-- Custom Software Development -->
-            <article class="col-md-6">
-              <div class="service-card scroll-animate">
-                <div class="service-icon">
-                  <i class="bi bi-laptop"></i>
-                </div>
-                <h4>Custom Software Development</h4>
-                <p>
-                  Tailored applications and platforms designed to solve your
-                  unique business challenges and scale with your growth.
-                </p>
+            <div class="col-sm-6 col-lg-3" data-muncul>
+              <div class="kartu-gelap warna-oranye">
+                <span class="ikon-petak"><i class="bi bi-tags"></i></span>
+                <h3>Harga Terjangkau</h3>
+                <p>Biaya kompetitif untuk website, aplikasi, dan paket wisata — tanpa mengorbankan kualitas.</p>
               </div>
-            </article>
-
-            <!-- Travel Planning & Booking -->
-            <article class="col-md-6">
-              <div class="service-card scroll-animate">
-                <div class="service-icon">
-                  <i class="bi bi-calendar-check"></i>
-                </div>
-                <h4>Travel Planning & Booking</h4>
-                <p>
-                  End-to-end travel solutions including flight bookings, hotel
-                  reservations, tours, and personalized itinerary planning.
-                </p>
+            </div>
+            <div class="col-sm-6 col-lg-3" data-muncul style="--tunda: 0.08s">
+              <div class="kartu-gelap warna-biru">
+                <span class="ikon-petak"><i class="bi bi-award"></i></span>
+                <h3>Tim Profesional</h3>
+                <p>Ahli teknologi &amp; pariwisata yang memahami kebutuhan Anda dan memberi hasil tepercaya.</p>
               </div>
-            </article>
-
-            <!-- Digital Transformation -->
-            <article class="col-md-6">
-              <div class="service-card scroll-animate">
-                <div class="service-icon">
-                  <i class="bi bi-arrow-repeat"></i>
-                </div>
-                <h4>Digital Transformation</h4>
-                <p>
-                  Strategic consulting and implementation to modernize your
-                  business operations and embrace digital innovation.
-                </p>
+            </div>
+            <div class="col-sm-6 col-lg-3" data-muncul style="--tunda: 0.16s">
+              <div class="kartu-gelap warna-hijau">
+                <span class="ikon-petak"><i class="bi bi-lightning-charge"></i></span>
+                <h3>Cepat &amp; Responsif</h3>
+                <p>Dukungan ramah dan sigap di setiap kanal, agar urusan Anda selesai lebih cepat.</p>
               </div>
-            </article>
-
-            <!-- IT Consulting & Support -->
-            <article class="col-md-6">
-              <div class="service-card scroll-animate">
-                <div class="service-icon">
-                  <i class="bi bi-gear"></i>
-                </div>
-                <h4>IT Consulting & Support</h4>
-                <p>
-                  Expert guidance on technology strategy, infrastructure
-                  optimization, and ongoing technical support services.
-                </p>
+            </div>
+            <div class="col-sm-6 col-lg-3" data-muncul style="--tunda: 0.24s">
+              <div class="kartu-gelap warna-ungu">
+                <span class="ikon-petak"><i class="bi bi-stars"></i></span>
+                <h3>Terintegrasi &amp; Inovatif</h3>
+                <p>Layanan saling terhubung berbasis teknologi terbaru — efisien, aman, dan mengikuti tren.</p>
               </div>
-            </article>
+            </div>
           </div>
         </div>
       </section>
-      <!-- Services & Solutions Section End -->
 
-      <!-- Why Choose Us Section Start -->
-      <section id="whychoose">
-        <div class="container-lg">
-          <h2 class="text-center">Kenapa Harus Kami?</h2>
-          <p class="fs-5 text-muted mb-5 text-center">
-            Kami menghadirkan solusi digital & pariwisata yang unggul,
-            tepercaya, dan berorientasi hasil.
-          </p>
+      <!-- Testimoni -->
+      <section class="bagian bagian-latar" id="bagianTestimoni" hidden>
+        <div class="container">
+          <div class="kepala-bagian tengah" data-muncul>
+            <span class="label-bagian warna-jambu">Testimoni</span>
+            <h2 class="judul-bagian">Kata mereka tentang kami</h2>
+          </div>
+          <div class="row g-4 justify-content-center" id="daftarTestimoni"></div>
+        </div>
+      </section>
 
+      <!-- Anak perusahaan -->
+      <section class="bagian">
+        <div class="container">
+          <div class="kepala-bagian tengah" data-muncul>
+            <span class="label-bagian warna-laut">Anak Perusahaan</span>
+            <h2 class="judul-bagian">Keluarga besar Asthana</h2>
+            <p class="sub-bagian">
+              Dua merek yang menjalankan keahlian kami langsung untuk Anda.
+            </p>
+          </div>
           <div class="row g-4">
-            <article class="col-md-6">
-              <div class="strength-card scroll-animate">
-                <div class="strength-icon">💰</div>
-                <h4 class="text-dark">Harga Terjangkau</h4>
-                <p class="text-muted fs-6 w-75">
-                  Solusi website, aplikasi, dan paket wisata dengan biaya
-                  kompetitif—tanpa mengorbankan kualitas.
+            <div class="col-lg-6" data-muncul>
+              <article class="kartu-afiliasi warna-laut">
+                <img src="/src/assets/img/logo-orcha-wide.png" alt="Orcha Journey" class="logo-afiliasi" loading="lazy" />
+                <span class="lencana mb-3"><i class="bi bi-airplane"></i> Pariwisata</span>
+                <h3>Orcha Journey</h3>
+                <p>
+                  Layanan perjalanan wisata yang nyaman, personal, dan berkesan,
+                  dengan beragam paket liburan domestik maupun internasional.
                 </p>
-              </div>
-            </article>
-
-            <article class="col-md-6">
-              <div class="strength-card scroll-animate">
-                <div class="strength-icon">🏅</div>
-                <h4 class="text-dark">Tim Profesional & Berpengalaman</h4>
-                <p class="text-muted fs-6 w-75">
-                  Tim ahli teknologi & pariwisata yang memahami kebutuhan Anda
-                  dan memberikan hasil tepercaya.
+                <a href="/anak-perusahaan/#orcha" class="tautan-panah">
+                  Selengkapnya <i class="bi bi-arrow-right"></i>
+                </a>
+              </article>
+            </div>
+            <div class="col-lg-6" data-muncul style="--tunda: 0.1s">
+              <article class="kartu-afiliasi warna-hijau">
+                <img src="/src/assets/img/logo-reka-wide.png" alt="Reka Teknologi" class="logo-afiliasi" loading="lazy" />
+                <span class="lencana mb-3"><i class="bi bi-cpu"></i> Teknologi</span>
+                <h3>Reka Teknologi</h3>
+                <p>
+                  Pembuatan website, aplikasi mobile, sistem digital, serta
+                  desain profesional untuk mendukung transformasi bisnis.
                 </p>
-              </div>
-            </article>
-
-            <article class="col-md-6">
-              <div class="strength-card scroll-animate">
-                <div class="strength-icon">⚡</div>
-                <h4 class="text-dark">Pelayanan Cepat & Responsif</h4>
-                <p class="text-muted fs-6 w-75">
-                  Dukungan ramah dan sigap di setiap kanal, agar urusan Anda
-                  selesai lebih cepat.
-                </p>
-              </div>
-            </article>
-
-            <article class="col-md-6">
-              <div class="strength-card scroll-animate">
-                <div class="strength-icon">🏆</div>
-                <h4 class="text-dark">Solusi Terintegrasi & Inovatif</h4>
-                <p class="text-muted fs-6 w-75">
-                  Layanan saling terhubung berbasis teknologi terbaru, efisien,
-                  aman, dan mengikuti tren.
-                </p>
-              </div>
-            </article>
+                <a href="/anak-perusahaan/#reka" class="tautan-panah">
+                  Selengkapnya <i class="bi bi-arrow-right"></i>
+                </a>
+              </article>
+            </div>
           </div>
         </div>
       </section>
-      <!-- Why Choose Us Section End -->
 
-      <!-- Contact Section Start -->
-      <section id="contact">
-        <div class="container-lg contact-content">
-          <h2 class="text-center text-white">Hubungi Kami</h2>
-          <p class="text-center text-white mb-5">
-            Kami sangat terbuka untuk ruang berkolaborasi untuk menciptakan
-            inovasi yang bermanfaat.
-          </p>
-
-          <div class="contact row g-5">
-            <!-- Contact Form -->
-            <div class="col-lg-6">
-              <form id="contactForm" novalidate>
-                <div class="mb-3">
-                  <label for="name" class="form-label text-white"
-                    >Nama <span class="text-danger">*</span></label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="name"
-                    name="name"
-                    placeholder="Masukkan nama Anda"
-                    required
-                  />
-                  <small
-                    class="text-danger d-block mt-1"
-                    id="nameError"
-                  ></small>
-                </div>
-
-                <div class="mb-3">
-                  <label for="email" class="form-label text-white"
-                    >Email <span class="text-danger">*</span></label
-                  >
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="contoh@email.com"
-                    required
-                  />
-                  <small
-                    class="text-danger d-block mt-1"
-                    id="emailError"
-                  ></small>
-                </div>
-
-                <div class="mb-3">
-                  <label for="message" class="form-label text-white"
-                    >Pesan <span class="text-danger">*</span></label
-                  >
-                  <textarea
-                    class="form-control"
-                    id="message"
-                    name="message"
-                    placeholder="Tulis pesan Anda di sini..."
-                    rows="5"
-                    required
-                  ></textarea>
-                  <small
-                    class="text-danger d-block mt-1"
-                    id="messageError"
-                  ></small>
-                </div>
-
-                <button
-                  type="submit"
-                  class="btn btn-primary btn-lg w-100 rounded-pill"
-                >
-                  Kirim Pesan
-                </button>
-
-                <small
-                  id="formMessage"
-                  class="d-block mt-2 text-center"
-                ></small>
-              </form>
+      <!-- Berita terbaru -->
+      <section class="bagian pt-0" id="bagianBerita" hidden>
+        <div class="container">
+          <div class="row align-items-end g-4 kepala-bagian">
+            <div class="col-lg-7" data-muncul>
+              <span class="label-bagian warna-hijau">Berita</span>
+              <h2 class="judul-bagian mb-0">Kabar terbaru dari kami</h2>
             </div>
-            <div class="col-lg-6 d-flex flex-column justify-content-between">
-              <div>
-                <div class="contact-info-item">
-                  <i class="bi bi-geo-alt fs-6"></i>
-                  <div>
-                    <p>
-                      Jl. Digital Nusantara No. 123<br />Pontianak, West
-                      Kalimantan 78124<br />Indonesia
-                    </p>
-                  </div>
-                </div>
-                <div class="contact-info-item">
-                  <i class="bi bi-whatsapp fs-6"></i>
-                  <div>
-                    <p>+62 561 123 4567</p>
-                  </div>
-                </div>
-                <div class="contact-info-item">
-                  <i class="bi bi-envelope fs-6"></i>
-                  <div>
-                    <p>
-                      info@digitalnusantara.id<br />contact@digitalnusantara.id
-                    </p>
-                  </div>
-                </div>
+            <div class="col-lg-5 text-lg-end" data-muncul>
+              <a href="/berita/" class="tautan-panah">Semua berita <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="row g-4" id="daftarBerita"></div>
+        </div>
+      </section>
+
+      <!-- Ajakan -->
+      <section class="pb-5 mb-4">
+        <div class="container">
+          <div class="ajakan" data-muncul>
+            <div class="row align-items-center g-4">
+              <div class="col-lg-8">
+                <h2>Siap berkolaborasi dengan kami?</h2>
+                <p>
+                  Ceritakan kebutuhan Anda — tim kami akan menghubungi Anda
+                  untuk membahas solusi terbaik.
+                </p>
               </div>
-              <div
-                class="d-flex align-items-center gap-4 align-self-center py-3 align-self-lg-end"
-              >
-                <a href="#" title="Facebook" aria-label="Facebook"
-                  ><i class="bi bi-facebook fs-2 text-white"></i
-                ></a>
-                <a href="#" title="LinkedIn" aria-label="LinkedIn"
-                  ><i class="bi bi-linkedin fs-2 text-white"></i
-                ></a>
-                <a href="#" title="Twitter" aria-label="Twitter"
-                  ><i class="bi bi-twitter fs-2 text-white"></i
-                ></a>
-                <a href="#" title="Instagram" aria-label="Instagram"
-                  ><i class="bi bi-instagram fs-2 text-white"></i
-                ></a>
+              <div class="col-lg-4 text-lg-end">
+                <a href="/kontak/" class="btn btn-putih btn-lg">
+                  Hubungi Kami <i class="bi bi-arrow-right ms-1"></i>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <!-- Contact Section End -->
     </main>
 
-    <!-- Footer -->
-    <footer class="py-3">
-      <div class="text-center text-white">
-        <p class="p-0 m-0" style="font-size: 14px">
-          &copy; 2024 PT. Asthana Cipta Mandiri. All rights reserved.
-        </p>
-        <p class="p-0 m-0" style="font-size: 14px">
-          Built with ❤️ by Reka Teknologi
-        </p>
-      </div>
-    </footer>
+    <!-- @include footer -->
+    <script type="module" src="/src/js/beranda.js"></script>
 
-    <!-- Scroll to Top Button -->
-    <button
-      class="scroll-top-btn bg-brand-3"
-      id="scrollTopBtn"
-      title="Back to Top"
-    >
-      <i class="bi bi-chevron-up"></i>
-    </button>
-
-    <!-- Organization Schema for SEO -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "PT Digital Nusantara Group",
-        "url": "https://digitalnusantara.id",
-        "logo": "https://digitalnusantara.id/logo.png",
-        "description": "Leading technology and tourism solutions provider in Southeast Asia",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Jl. Digital Nusantara No. 123",
-          "addressLocality": "Pontianak",
-          "addressRegion": "West Kalimantan",
-          "postalCode": "78124",
-          "addressCountry": "ID"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "Customer Service",
-          "telephone": "+62-561-123-4567",
-          "email": "info@digitalnusantara.id"
-        },
-        "sameAs": [
-          "https://www.facebook.com/digitalnusantara",
-          "https://www.linkedin.com/company/digitalnusantara",
-          "https://twitter.com/digitalnusantara",
-          "https://www.instagram.com/digitalnusantara"
+        "name": "PT. Asthana Cipta Mandiri",
+        "description": "Perusahaan teknologi dan pariwisata yang menghadirkan layanan inovatif, efisien, dan terpercaya.",
+        "subOrganization": [
+          { "@type": "Organization", "name": "Orcha Journey", "url": "https://orchajourney.com" },
+          { "@type": "Organization", "name": "Reka Teknologi" }
         ]
       }
     </script>
-
-    <!-- Main Application JS -->
-    <script type="module" src="/src/main.js"></script>
-    <script type="module" src="/src/js/message.js"></script>
   </body>
 </html>

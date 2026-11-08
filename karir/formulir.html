@@ -1,405 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="PT. Asthana Cipta Mandiri - Perusahaan yang bergerak di bidang teknologi dan pariwisata dengan komitmen menghadirkan layanan inovatif, efisien dan terpercaya."
-    />
-    <meta
-      name="keywords"
-      content="technology, tourism, software, digital products, travel agency, account marketplace"
-    />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="/android-chrome-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="/android-chrome-512x512.png"
-    />
-
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="author" content="Reka Teknologi" />
-    <title>PT. Asthana Cipta Mandiri | Technology & Tourism Solutions</title>
-    <link
-      rel="stylesheet"
-      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/node_modules/bootstrap-icons/font/bootstrap-icons.css"
-    />
-    <link rel="stylesheet" href="/src/css/style.css" />
-    <link rel="stylesheet" href="/src/css/custom.css" />
-    <link rel="stylesheet" href="/src/css/karir-form.css" />
+    <!-- @include head padanan="/en/careers/apply.html" judul="Formulir Lamaran" deskripsi="Kirim lamaran kerja ke PT. Asthana Cipta Mandiri." -->
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm navbar-bg">
-      <div class="container-lg px-4 py-2">
-        <a class="navbar-brand d-none d-lg-block fw-bold" href="/">
-          PT. Asthana Cipta Mandiri
-        </a>
-        <div
-          class="d-block d-lg-none"
-          style="height: 100px; width: 100px; overflow: hidden"
-        >
-          <img
-            src="/src/assets/img/asthana-logo.png"
-            alt=""
-            class="h-100 w-100"
-            style="object-fit: cover"
-          />
-        </div>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- @include header padanan="/en/careers/apply.html" aktif="karir" -->
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto d-flex align-items-center gap-3">
-            <li class="nav-item">
-              <a class="nav-link" href="/#home">Beranda</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#about">Profil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#subsidiaries">Afiliasi</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#services">Layanan</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#whychoose">Keunggulan</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/karir/index.html">Karir</a>
-            </li>
-            <li
-              class="nav-item d-flex align-items-center justify-content-center"
-            >
-              <a
-                class="btn btn-brand-1 rounded-pill px-4 btn-sm w-100"
-                href="#contact"
-                >Hubungi Kami</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <main id="konten">
+      <div class="alert-container" id="alertContainer"></div>
 
-    <!-- Main Content -->
-    <main style="min-height: 100vh">
-      <!-- Alert Container -->
-      <div
-        class="alert-container position-fixed top-0 start-50 translate-middle-x p-3"
-        style="z-index: 9999; min-width: 300px"
-        id="alertContainer"
-      ></div>
-
-      <!-- Loading Overlay -->
       <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-content">
-          <div
-            class="spinner-border loading-spinner text-light"
-            role="status"
-          ></div>
-          <p class="mt-3">Mengirim lamaran Anda...</p>
+        <div>
+          <div class="spinner-border" role="status" style="width: 3rem; height: 3rem"></div>
+          <p class="mt-3 mb-0 fw-semibold">Mengirim lamaran Anda...</p>
         </div>
       </div>
 
-      <div
-        class="form-header"
-        style="padding-top: 160px; padding-bottom: 100px"
-      >
+      <section class="kepala-halaman">
         <div class="container">
-          <h1 class="display-5 fw-bold mb-3">Formulir Lamaran Kerja</h1>
-          <p class="mb-0">
-            Bergabunglah dengan tim kami dan kembangkan karir Anda
-          </p>
+          <ol class="remah" aria-label="Remah roti">
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/karir/" id="backLink">Karir</a></li>
+            <li aria-current="page">Formulir Lamaran</li>
+          </ol>
+          <h1>Formulir Lamaran Kerja</h1>
+          <p>Bergabunglah dengan tim kami dan kembangkan karir Anda.</p>
         </div>
-      </div>
-      <div class="container mb-5 py-4 row justify-content-center mx-auto">
-        <div class="form-container col-md-10">
-          <div class="card card-form">
-            <div class="card-body">
-              <div
-                class="job-info-badge"
-                id="jobInfoBadge"
-                style="display: none"
-              >
-                <div class="d-flex align-items-center">
-                  <i
-                    class="bi bi-briefcase-fill text-primary me-3"
-                    style="font-size: 2rem"
-                  ></i>
+        <span class="lengkung" aria-hidden="true"></span>
+      </section>
+
+      <section class="bagian pt-5">
+        <div class="container">
+          <div class="row g-4 justify-content-center">
+            <div class="col-lg-8">
+              <div class="kartu-borang">
+                <div class="info-posisi" id="jobInfoBadge" style="display: none">
+                  <span class="ikon-petak"><i class="bi bi-briefcase"></i></span>
                   <div>
-                    <small class="text-muted d-block"
-                      >Melamar untuk posisi:</small
-                    >
-                    <strong class="text-primary" id="jobTitleDisplay"></strong>
-                  </div>
-                </div>
-              </div>
-
-              <form id="applicationForm" novalidate>
-                <!-- Job Position (Hidden when from detail) -->
-                <div class="mb-4" id="jobSelectWrapper">
-                  <label for="jobId" class="form-label">
-                    Posisi yang Dilamar
-                    <span class="required">*</span>
-                  </label>
-                  <select class="form-select" id="jobId" name="job_id" required>
-                    <option value="" selected disabled>
-                      Pilih posisi yang tersedia...
-                    </option>
-                  </select>
-                  <div class="invalid-feedback"></div>
-                </div>
-
-                <!-- Full Name -->
-                <div class="mb-4">
-                  <label for="name" class="form-label">
-                    Nama Lengkap
-                    <span class="required">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="name"
-                    name="name"
-                    placeholder="Masukkan nama lengkap Anda"
-                    maxlength="120"
-                    required
-                  />
-                  <div class="invalid-feedback"></div>
-                </div>
-
-                <!-- Email -->
-                <div class="mb-4">
-                  <label for="email" class="form-label">
-                    Email
-                    <span class="required">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="contoh@email.com"
-                    maxlength="150"
-                    required
-                  />
-                  <div class="invalid-feedback"></div>
-                </div>
-
-                <!-- Phone -->
-                <div class="mb-4">
-                  <label for="phone" class="form-label">
-                    Nomor Telepon
-                    <span class="required">*</span>
-                  </label>
-                  <input
-                    type="tel"
-                    class="form-control"
-                    id="phone"
-                    name="phone"
-                    placeholder="+62 812-3456-7890"
-                    maxlength="30"
-                    required
-                  />
-                  <div class="invalid-feedback"></div>
-                  <div class="form-text">
-                    Format: +62, 08xx, atau dengan tanda baca lainnya
+                    <small class="d-block text-secondary">Melamar untuk posisi</small>
+                    <strong class="fs-5 text-dark" id="jobTitleDisplay"></strong>
                   </div>
                 </div>
 
-                <!-- CV Upload -->
-                <div class="mb-4">
-                  <label class="form-label">
-                    Upload CV
-                    <span class="required">*</span>
-                  </label>
-                  <div class="file-upload-wrapper" id="cvUploadWrapper">
-                    <input
-                      type="file"
-                      id="cv"
-                      name="cv"
-                      accept=".pdf"
-                      required
-                    />
-                    <i class="bi bi-cloud-upload file-upload-icon"></i>
-                    <p class="mb-1">Klik atau drag & drop file CV Anda</p>
-                    <small class="text-muted">Format: PDF, Maksimal 2MB</small>
+                <form id="applicationForm" novalidate>
+                  <div class="row g-4">
+                    <div class="col-12 medan" id="jobSelectWrapper">
+                      <label for="jobId" class="form-label">Posisi yang Dilamar <span class="wajib">*</span></label>
+                      <select class="form-select" id="jobId" name="job_id" required>
+                        <option value="" selected disabled>Memuat posisi...</option>
+                      </select>
+                      <div class="invalid-feedback"></div>
+                    </div>
 
-                    <div class="file-info" id="cvFileInfo">
-                      <div
-                        class="d-flex justify-content-between align-items-center"
-                      >
-                        <div>
-                          <i class="bi bi-file-pdf text-danger"></i>
-                          <span id="cvFileName"></span>
-                          <small
-                            class="text-muted d-block"
-                            id="cvFileSize"
-                          ></small>
+                    <div class="col-12 medan">
+                      <label for="name" class="form-label">Nama Lengkap <span class="wajib">*</span></label>
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama lengkap Anda" maxlength="120" autocomplete="name" required />
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-6 medan">
+                      <label for="email" class="form-label">Email <span class="wajib">*</span></label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="contoh@email.com" maxlength="150" autocomplete="email" required />
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-6 medan">
+                      <label for="phone" class="form-label">Nomor Telepon <span class="wajib">*</span></label>
+                      <input type="tel" class="form-control" id="phone" name="phone" placeholder="0812-3456-7890" maxlength="30" autocomplete="tel" required />
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-6 medan">
+                      <label for="cv" class="form-label">CV <span class="wajib">*</span></label>
+                      <div class="unggah" id="cvUploadWrapper">
+                        <input type="file" id="cv" name="cv" accept=".pdf,application/pdf" required />
+                        <span class="ikon-petak warna-biru"><i class="bi bi-cloud-arrow-up"></i></span>
+                        <p>Klik atau seret berkas CV</p>
+                        <small class="text-secondary">PDF, maksimal 2 MB</small>
+                        <div class="file-info" id="cvFileInfo">
+                          <div class="d-flex justify-content-between align-items-center gap-2">
+                            <div>
+                              <i class="bi bi-file-earmark-pdf text-danger me-1"></i>
+                              <span id="cvFileName"></span>
+                              <small class="text-secondary d-block" id="cvFileSize"></small>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="clearFile('cv')" aria-label="Hapus berkas CV">
+                              <i class="bi bi-x-lg"></i>
+                            </button>
+                          </div>
                         </div>
-                        <button
-                          type="button"
-                          class="btn btn-sm btn-outline-danger"
-                          onclick="clearFile('cv')"
-                        >
-                          <i class="bi bi-x-lg"></i>
-                        </button>
                       </div>
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-6 medan">
+                      <label for="coverLetter" class="form-label">Surat Lamaran <span class="wajib">*</span></label>
+                      <div class="unggah" id="clUploadWrapper">
+                        <input type="file" id="coverLetter" name="cover_letter" accept=".pdf,application/pdf" required />
+                        <span class="ikon-petak warna-oranye"><i class="bi bi-file-earmark-text"></i></span>
+                        <p>Klik atau seret surat lamaran</p>
+                        <small class="text-secondary">PDF, maksimal 2 MB</small>
+                        <div class="file-info" id="clFileInfo">
+                          <div class="d-flex justify-content-between align-items-center gap-2">
+                            <div>
+                              <i class="bi bi-file-earmark-pdf text-danger me-1"></i>
+                              <span id="clFileName"></span>
+                              <small class="text-secondary d-block" id="clFileSize"></small>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="clearFile('coverLetter')" aria-label="Hapus berkas surat lamaran">
+                              <i class="bi bi-x-lg"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="invalid-feedback"></div>
                     </div>
                   </div>
-                  <div class="invalid-feedback"></div>
-                </div>
 
-                <!-- Cover Letter Upload -->
-                <div class="mb-4">
-                  <label class="form-label">
-                    Upload Cover Letter
-                    <span class="required">*</span>
-                  </label>
-                  <div class="file-upload-wrapper" id="clUploadWrapper">
-                    <input
-                      type="file"
-                      id="coverLetter"
-                      name="cover_letter"
-                      accept=".pdf"
-                      required
-                    />
-                    <i class="bi bi-cloud-upload file-upload-icon"></i>
-                    <p class="mb-1">
-                      Klik atau drag & drop file Cover Letter Anda
-                    </p>
-                    <small class="text-muted">Format: PDF, Maksimal 2MB</small>
-
-                    <div class="file-info" id="clFileInfo">
-                      <div
-                        class="d-flex justify-content-between align-items-center"
-                      >
-                        <div>
-                          <i class="bi bi-file-pdf text-danger"></i>
-                          <span id="clFileName"></span>
-                          <small
-                            class="text-muted d-block"
-                            id="clFileSize"
-                          ></small>
-                        </div>
-                        <button
-                          type="button"
-                          class="btn btn-sm btn-outline-danger"
-                          onclick="clearFile('coverLetter')"
-                        >
-                          <i class="bi bi-x-lg"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="invalid-feedback"></div>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="d-grid gap-2 mt-5">
-                  <button
-                    type="submit"
-                    class="btn rounded-pill btn-lg btn-primary btn-submit"
-                    id="submitBtn"
-                  >
-                    <i class="bi bi-send-fill me-2"></i> Kirim Lamaran
+                  <button type="submit" class="btn btn-warna btn-lg w-100 mt-5" id="submitBtn">
+                    <i class="bi bi-send me-1"></i> Kirim Lamaran
                   </button>
-                </div>
-
-                <p class="text-center text-muted mt-3 mb-0">
-                  <small
-                    >Dengan mengirim formulir ini, Anda menyetujui kebijakan
-                    privasi kami</small
-                  >
-                </p>
-              </form>
+                  <p class="text-center text-secondary small mt-3 mb-0">
+                    Dengan mengirim formulir ini, Anda menyetujui data Anda kami
+                    gunakan untuk proses rekrutmen sesuai
+                    <a href="/kebijakan-privasi/">Kebijakan Privasi</a>.
+                  </p>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="py-3">
-      <div class="text-center text-white">
-        <p class="p-0 m-0" style="font-size: 14px">
-          &copy; 2024 PT. Asthana Cipta Mandiri. All rights reserved.
-        </p>
-        <p class="p-0 m-0" style="font-size: 14px">
-          Built with ❤️ by Reka Teknologi
-        </p>
-      </div>
-    </footer>
-
-    <!-- Scroll to Top Button -->
-    <button
-      class="scroll-top-btn bg-brand-3"
-      id="scrollTopBtn"
-      title="Back to Top"
-    >
-      <i class="bi bi-chevron-up"></i>
-    </button>
-
-    <!-- Organization Schema for SEO -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "PT Digital Nusantara Group",
-        "url": "https://digitalnusantara.id",
-        "logo": "https://digitalnusantara.id/logo.png",
-        "description": "Leading technology and tourism solutions provider in Southeast Asia",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Jl. Digital Nusantara No. 123",
-          "addressLocality": "Pontianak",
-          "addressRegion": "West Kalimantan",
-          "postalCode": "78124",
-          "addressCountry": "ID"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "Customer Service",
-          "telephone": "+62-561-123-4567",
-          "email": "info@digitalnusantara.id"
-        },
-        "sameAs": [
-          "https://www.facebook.com/digitalnusantara",
-          "https://www.linkedin.com/company/digitalnusantara",
-          "https://twitter.com/digitalnusantara",
-          "https://www.instagram.com/digitalnusantara"
-        ]
-      }
-    </script>
-
-    <!-- Main Application JS -->
+    <!-- @include footer -->
     <script type="module" src="/src/js/karir-form.js"></script>
   </body>
 </html>

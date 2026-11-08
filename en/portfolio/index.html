@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- @include head padanan="/portofolio/" judul="Portfolio" deskripsi="Technology and travel projects PT. Asthana Cipta Mandiri has delivered with our clients." -->
+  </head>
+  <body>
+    <!-- @include header-en padanan="/portofolio/" aktif="portofolio" -->
+
+    <main id="konten">
+      <section class="kepala-halaman">
+        <div class="container">
+          <ol class="remah" aria-label="Breadcrumb">
+            <li><a href="/en/">Home</a></li>
+            <li aria-current="page">Portfolio</li>
+          </ol>
+          <h1>Portfolio</h1>
+          <p>A selection of technology and travel projects we have delivered with our clients.</p>
+        </div>
+        <span class="lengkung" aria-hidden="true"></span>
+      </section>
+
+      <section class="bagian pt-5">
+        <div class="container">
+          <div class="saring" role="group" aria-label="Filter by category" id="saringPortofolio">
+            <button type="button" data-kategori="" aria-pressed="true">All</button>
+            <button type="button" data-kategori="teknologi" aria-pressed="false"><i class="bi bi-cpu me-1"></i>Technology</button>
+            <button type="button" data-kategori="pariwisata" aria-pressed="false"><i class="bi bi-airplane me-1"></i>Tourism</button>
+          </div>
+
+          <div class="row g-4" id="daftarPortofolio"></div>
+
+          <div id="kosongPortofolio" class="keadaan-kosong" hidden>
+            <span class="ikon-petak warna-biru"><i class="bi bi-grid-1x2"></i></span>
+            <h3>Portfolio coming soon</h3>
+            <p>We are putting our projects together. Wondering whether we are a good fit? Just tell us.</p>
+            <a href="/en/contact/" class="btn btn-warna">Contact Us</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="pb-5 mb-4">
+        <div class="container">
+          <div class="ajakan" data-muncul>
+            <div class="row align-items-center g-4">
+              <div class="col-lg">
+                <h2>Your next project?</h2>
+                <p>We can help from the first consultation through to support after delivery.</p>
+              </div>
+              <div class="col-lg-auto">
+                <a href="/en/contact/" class="btn btn-putih btn-lg">Free Consultation <i class="bi bi-arrow-right ms-1"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- @include footer-en -->
+    <script type="module" src="/src/js/portofolio.js"></script>
+  </body>
+</html>

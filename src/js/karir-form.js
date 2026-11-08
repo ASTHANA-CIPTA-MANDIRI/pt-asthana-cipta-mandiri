@@ -1,4 +1,5 @@
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+import { API_BASE_URL } from "./config.js";
+import { t, jalur } from "./bahasa.js";
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB in bytes
 
 // State management
@@ -81,7 +82,7 @@ async function loadJobs() {
 
     // Populate job select
     elements.jobSelect.innerHTML =
-      '<option value="" selected disabled>Pilih posisi yang tersedia...</option>';
+      `<option value="" selected disabled>${t("Pilih posisi yang tersedia...", "Choose an open position...")}</option>`;
 
     state.jobs.forEach((job) => {
       const option = document.createElement("option");
@@ -103,7 +104,7 @@ async function loadJobs() {
     }
   } catch (error) {
     console.error("Error loading jobs:", error);
-    showAlert("Gagal memuat daftar posisi. Silakan refresh halaman.", "danger");
+    showAlert(t("Gagal memuat daftar posisi. Silakan muat ulang halaman.", "Could not load positions. Please refresh the page."), "danger");
   }
 }
 
@@ -165,7 +166,7 @@ function handleFileSelect(file, input, fileInfo, fileName, fileSize) {
   // Validate file type
   if (file.type !== "application/pdf") {
     input.value = "";
-    showAlert("File harus berformat PDF", "warning");
+    showAlert(t("File harus berformat PDF", "The file must be a PDF"), "warning");
     return;
   }
 
@@ -173,7 +174,7 @@ function handleFileSelect(file, input, fileInfo, fileName, fileSize) {
   if (file.size > MAX_FILE_SIZE) {
     input.value = "";
     showAlert(
-      `Ukuran file maksimal 2MB. File Anda: ${formatFileSize(file.size)}`,
+      t(`Ukuran file maksimal 2MB. File Anda: ${formatFileSize(file.size)}`, `Maximum file size is 2MB. Your file: ${formatFileSize(file.size)}`),
       "warning"
     );
     return;
@@ -185,8 +186,7 @@ function handleFileSelect(file, input, fileInfo, fileName, fileSize) {
   fileInfo.classList.add("show");
 
   // Mark as valid
-  input.classList.remove("is-invalid");
-  input.classList.add("is-valid");
+  tandaiMedan(input, true);
 }
 
 // Clear file selection
@@ -194,6 +194,7 @@ window.clearFile = function (inputId) {
   const input = document.getElementById(inputId);
   input.value = "";
   input.classList.remove("is-valid", "is-invalid");
+  input.closest(".unggah")?.classList.remove("is-invalid-wrap");
 
   const prefix = inputId === "cv" ? "cv" : "cl";
   document.getElementById(`${prefix}FileInfo`).classList.remove("show");
@@ -213,9 +214,7 @@ function validateField(input) {
   // Required validation
   if (input.hasAttribute("required") && !value) {
     isValid = false;
-    message = `${input.previousElementSibling.textContent
-      .replace("*", "")
-      .trim()} wajib diisi`;
+    message = t(`${namaMedan(input)} wajib diisi`, `${namaMedan(input)} is required`);
   }
 
   // Email validation
@@ -223,7 +222,7 @@ function validateField(input) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(value)) {
       isValid = false;
-      message = "Format email tidak valid";
+      message = t("Format email tidak valid", "Invalid email address");
     }
   }
 
@@ -232,7 +231,7 @@ function validateField(input) {
     const phoneRegex = /^[\d\s\+\-\(\)]+$/;
     if (!phoneRegex.test(value)) {
       isValid = false;
-      message = "Format nomor telepon tidak valid";
+      message = t("Format nomor telepon tidak valid", "Invalid phone number");
     }
   }
 
@@ -241,25 +240,37 @@ function validateField(input) {
     const file = input.files[0];
     if (file.type !== "application/pdf") {
       isValid = false;
-      message = "File harus berformat PDF";
+      message = t("File harus berformat PDF", "The file must be a PDF");
     } else if (file.size > MAX_FILE_SIZE) {
       isValid = false;
-      message = "Ukuran file maksimal 2MB";
+      message = t("Ukuran file maksimal 2MB", "Maximum file size is 2MB");
     }
   }
 
-  // Update UI
-  const feedback = input.parentElement.querySelector(".invalid-feedback");
-  if (!isValid) {
-    input.classList.add("is-invalid");
-    input.classList.remove("is-valid");
-    if (feedback) feedback.textContent = message;
-  } else {
-    input.classList.remove("is-invalid");
-    input.classList.add("is-valid");
-  }
-
+  tandaiMedan(input, isValid, message);
   return isValid;
+}
+
+// Nama medan diambil dari <label for="...">; input berkas tidak punya
+// saudara label tepat di depannya, jadi jangan pakai previousElementSibling.
+function namaMedan(input) {
+  const label = elements.form.querySelector(`label[for="${input.id}"]`);
+  return label ? label.textContent.replace("*", "").trim() : t("Kolom ini", "This field");
+}
+
+// Tandai medan valid/tidak valid dan tampilkan pesannya. Pesan dicari lewat
+// pembungkus .medan karena input berkas tersembunyi di dalam kotak unggah,
+// sehingga aturan Bootstrap ".is-invalid ~ .invalid-feedback" tidak berlaku.
+function tandaiMedan(input, isValid, message = "") {
+  input.classList.toggle("is-invalid", !isValid);
+  input.classList.toggle("is-valid", isValid);
+  input.closest(".unggah")?.classList.toggle("is-invalid-wrap", !isValid);
+
+  const feedback = input.closest(".medan")?.querySelector(".invalid-feedback");
+  if (feedback) {
+    feedback.textContent = isValid ? "" : message;
+    feedback.style.display = isValid ? "" : "block";
+  }
 }
 
 // Validate entire form
@@ -287,7 +298,7 @@ async function handleSubmit(e) {
 
   // Validate form
   if (!validateForm()) {
-    showAlert("Mohon lengkapi semua field yang wajib diisi", "warning");
+    showAlert(t("Mohon lengkapi semua kolom yang wajib diisi", "Please complete all required fields"), "warning");
     return;
   }
 
@@ -298,7 +309,7 @@ async function handleSubmit(e) {
   // Update UI
   elements.submitBtn.disabled = true;
   elements.submitBtn.innerHTML =
-    '<span class="spinner-border spinner-border-sm me-2"></span>Mengirim...';
+    `<span class="spinner-border spinner-border-sm me-2"></span>${t("Mengirim...", "Sending...")}`;
   elements.loadingOverlay.classList.add("show");
 
   try {
@@ -327,7 +338,7 @@ async function handleSubmit(e) {
 
     // Success
     showAlert(
-      "Lamaran Anda berhasil dikirim! Kami akan menghubungi Anda segera.",
+      t("Lamaran Anda berhasil dikirim! Kami akan menghubungi Anda segera.", "Your application has been sent! We will contact you soon."),
       "success"
     );
 
@@ -342,14 +353,14 @@ async function handleSubmit(e) {
     // Show application number
     setTimeout(() => {
       showAlert(
-        `Nomor Lamaran Anda: ${result.data.application_number}`,
+        t(`Nomor Lamaran Anda: ${result.data.application_number}`, `Your application number: ${result.data.application_number}`),
         "info"
       );
     }, 2000);
 
     // Redirect to jobs list after 4 seconds
     setTimeout(() => {
-      window.location.href = "/karir.html";
+      window.location.href = jalur.karir;
     }, 4000);
   } catch (error) {
     console.error("Submission error:", error);
@@ -358,12 +369,12 @@ async function handleSubmit(e) {
     if (error.response?.status === 422 && error.data?.errors) {
       handleValidationErrors(error.data.errors);
       showAlert(
-        "Terdapat kesalahan pada form. Mohon periksa kembali.",
+        t("Terdapat kesalahan pada formulir. Mohon periksa kembali.", "There are errors in the form. Please check again."),
         "danger"
       );
     } else {
       showAlert(
-        error.data?.message || "Terjadi kesalahan. Silakan coba lagi.",
+        error.data?.message || t("Terjadi kesalahan. Silakan coba lagi.", "Something went wrong. Please try again."),
         "danger"
       );
     }
@@ -372,7 +383,7 @@ async function handleSubmit(e) {
     state.isSubmitting = false;
     elements.submitBtn.disabled = false;
     elements.submitBtn.innerHTML =
-      '<i class="bi bi-send-fill"></i> Kirim Lamaran';
+      `<i class="bi bi-send me-1"></i> ${t("Kirim Lamaran", "Submit Application")}`;
     elements.loadingOverlay.classList.remove("show");
   }
 }
@@ -382,15 +393,11 @@ function handleValidationErrors(errors) {
   Object.keys(errors).forEach((fieldName) => {
     const input = elements.form.querySelector(`[name="${fieldName}"]`);
     if (input) {
-      input.classList.add("is-invalid");
-      input.classList.remove("is-valid");
-
-      const feedback = input.parentElement.querySelector(".invalid-feedback");
-      if (feedback) {
-        feedback.textContent = Array.isArray(errors[fieldName])
-          ? errors[fieldName][0]
-          : errors[fieldName];
-      }
+      tandaiMedan(
+        input,
+        false,
+        Array.isArray(errors[fieldName]) ? errors[fieldName][0] : errors[fieldName]
+      );
     }
   });
 }
