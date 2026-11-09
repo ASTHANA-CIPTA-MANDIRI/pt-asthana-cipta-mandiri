@@ -95,9 +95,9 @@
                     </div>
 
                     <div class="col-md-6 medan">
-                      <label for="coverLetter" class="form-label">Surat Lamaran <span class="label-opsional">(opsional)</span></label>
+                      <label for="coverLetter" class="form-label">Surat Lamaran <span class="wajib">*</span></label>
                       <div class="unggah" id="clUploadWrapper">
-                        <input type="file" id="coverLetter" name="cover_letter" accept=".pdf,application/pdf" />
+                        <input type="file" id="coverLetter" name="cover_letter" accept=".pdf,application/pdf" required />
                         <span class="ikon-petak warna-oranye"><i class="bi bi-file-earmark-text"></i></span>
                         <p>Klik atau seret surat lamaran</p>
                         <small class="text-secondary">PDF, maksimal 2 MB</small>
@@ -109,6 +109,29 @@
                               <small class="text-secondary d-block" id="clFileSize"></small>
                             </div>
                             <button type="button" class="btn btn-sm btn-outline-danger" onclick="clearFile('coverLetter')" aria-label="Hapus berkas surat lamaran">
+                              <i class="bi bi-x-lg"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-12 medan">
+                      <label for="lampiran" class="form-label">Berkas Pendukung <span class="label-opsional">(opsional)</span></label>
+                      <div class="unggah" id="lpUploadWrapper">
+                        <input type="file" id="lampiran" name="lampiran" accept=".pdf,application/pdf" />
+                        <span class="ikon-petak warna-hijau"><i class="bi bi-paperclip"></i></span>
+                        <p>Klik atau seret berkas pendukung</p>
+                        <small class="text-secondary">Portofolio, sertifikat, ijazah, atau transkrip — gabungkan jadi satu PDF, maksimal 2 MB</small>
+                        <div class="file-info" id="lpFileInfo">
+                          <div class="d-flex justify-content-between align-items-center gap-2">
+                            <div>
+                              <i class="bi bi-file-earmark-pdf text-danger me-1"></i>
+                              <span id="lpFileName"></span>
+                              <small class="text-secondary d-block" id="lpFileSize"></small>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="clearFile('lampiran')" aria-label="Hapus berkas pendukung">
                               <i class="bi bi-x-lg"></i>
                             </button>
                           </div>

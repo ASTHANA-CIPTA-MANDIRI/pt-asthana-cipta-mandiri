@@ -45,6 +45,8 @@ async function init() {
     "clFileName",
     "clFileSize"
   );
+  // Berkas pendukung (opsional)
+  setupFileUpload("lampiran", "lpUploadWrapper", "lpFileInfo", "lpFileName", "lpFileSize");
 }
 
 // Check if job is preselected from URL
@@ -214,7 +216,7 @@ window.clearFile = function (inputId) {
   input.classList.remove("is-valid", "is-invalid");
   input.closest(".unggah")?.classList.remove("is-invalid-wrap");
 
-  const prefix = inputId === "cv" ? "cv" : "cl";
+  const prefix = { cv: "cv", coverLetter: "cl", lampiran: "lp" }[inputId];
   document.getElementById(`${prefix}FileInfo`).classList.remove("show");
 };
 
@@ -346,7 +348,7 @@ async function handleSubmit(e) {
     }
     // Lamaran umum dikirim tanpa job_id; isian opsional yang kosong tidak dikirim.
     if (formData.get("job_id") === UMUM) formData.delete("job_id");
-    if (!(formData.get("cover_letter") instanceof File) || !formData.get("cover_letter").size) formData.delete("cover_letter");
+    if (!(formData.get("lampiran") instanceof File) || !formData.get("lampiran").size) formData.delete("lampiran");
     ["portofolio_url", "sumber_info"].forEach((k) => !formData.get(k) && formData.delete(k));
 
     // Submit to API
