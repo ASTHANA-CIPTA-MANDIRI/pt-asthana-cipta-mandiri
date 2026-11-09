@@ -1533,3 +1533,27 @@ main { padding-top: var(--tinggi-nav); }
 
 /* Foto snorkeling + penyu (panorama lebar) di kotak tegak: perenang utuh di tengah */
 .profil-afiliasi .foto-latar[src*="snorkeling-penyu"] { object-position: 67% 40%; }
+
+/* Lencana merek di atas foto (Orcha): ikon + nama, bukan logo lebar di kotak putih */
+.profil-afiliasi .sisi-gambar.berfoto { place-items: end start; }
+.lencana-merek {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px 10px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 12px 30px -12px rgba(15, 27, 61, 0.45);
+}
+.lencana-merek img { width: 52px; height: 52px; object-fit: contain; }
+.lencana-merek strong { display: block; color: var(--tinta); font-size: 1.1rem; font-weight: 800; line-height: 1.15; }
+.lencana-merek small { display: block; color: var(--laut); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; }
+@media (max-width: 767.98px) {
+  .lencana-merek { padding: 7px 16px 7px 7px; gap: 10px; }
+  .lencana-merek img { width: 40px; height: 40px; }
+  .lencana-merek strong { font-size: 0.98rem; }
+}
