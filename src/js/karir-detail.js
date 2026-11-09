@@ -1,253 +1,205 @@
+// Halaman detail lowongan: isi dari penyunting lemon (HTML, dibersihkan),
+// fakta posisi, tombol bagikan, lowongan lain, dan data terstruktur
+// JobPosting untuk Google for Jobs.
 import { API_BASE_URL } from "./config.js";
-import { t, LOKAL, jalur } from "./bahasa.js";
+import { t, jalur } from "./bahasa.js";
+import { esc, htmlAman, munculkan } from "./situs.js";
+import {
+  unitDari,
+  labelJenis,
+  labelPola,
+  lencanaBatas,
+  tanggalPanjang,
+  kartuLowongan,
+} from "./lowongan.js";
 
-// State
-let currentJob = null;
+const $ = (id) => document.getElementById(id);
+let lowongan = null;
 
-// DOM Elements
-const elements = {
-  headerLoading: document.getElementById("headerLoading"),
-  headerContent: document.getElementById("headerContent"),
-  contentLoading: document.getElementById("contentLoading"),
-  detailContent: document.getElementById("detailContent"),
-  errorState: document.getElementById("errorState"),
-  jobTitle: document.getElementById("jobTitle"),
-  postedDate: document.getElementById("postedDate"),
-  descriptions: document.getElementById("descriptions"),
-  requirements: document.getElementById("requirements"),
-  descriptionsSection: document.getElementById("descriptionsSection"),
-  requirementsSection: document.getElementById("requirementsSection"),
-  applyBtn: document.getElementById("applyBtn"),
-  alertContainer: document.getElementById("alertContainer"),
-};
-
-// Initialize
 async function init() {
-  const slug = getSlugFromUrl();
+  const slug = new URLSearchParams(location.search).get("slug");
+  if (!slug) return tampilkanGalat();
 
-  if (!slug) {
-    showError();
-    return;
-  }
-
-  await loadJobDetail(slug);
-  setupEventListeners();
-}
-
-// Get slug from URL
-function getSlugFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get("slug");
-}
-
-// menghapus tag html data hasil rich text editor
-function htmlToText(html) {
-  const div = document.createElement("div");
-  div.innerHTML = html;
-
-  function traverse(node) {
-    let text = "";
-
-    node.childNodes.forEach((child) => {
-      if (child.nodeType === 3) {
-        // Text node
-        text += child.textContent;
-      } else if (child.nodeType === 1) {
-        const tag = child.tagName.toLowerCase();
-
-        switch (tag) {
-          case "h1":
-          case "h2":
-          case "h3":
-          case "h4":
-          case "h5":
-          case "h6":
-            text += "\n\n" + child.textContent.toUpperCase() + "\n";
-            break;
-
-          case "strong":
-          case "b":
-            text += "**" + child.textContent + "**";
-            break;
-
-          case "em":
-          case "i":
-            text += "_" + child.textContent + "_";
-            break;
-
-          case "p":
-            text += "\n\n" + traverse(child).trim() + "\n";
-            break;
-
-          case "br":
-            text += "\n";
-            break;
-
-          case "ul":
-            child.querySelectorAll(":scope > li").forEach((li) => {
-              text += `• ${traverse(li).trim()}\n`;
-            });
-            text += "\n";
-            break;
-
-          case "ol":
-            let number = 1;
-            child.querySelectorAll(":scope > li").forEach((li) => {
-              text += `${number}. ${traverse(li).trim()}\n`;
-              number++;
-            });
-            text += "\n";
-            break;
-
-          case "li":
-            text += traverse(child) + "\n";
-            break;
-
-          default:
-            text += traverse(child);
-            break;
-        }
-      }
-    });
-
-    return text;
-  }
-
-  return traverse(div)
-    .replace(/\n{3,}/g, "\n\n") // fix too many newlines
-    .trim();
-}
-
-// Load job detail from API
-async function loadJobDetail(slug) {
   try {
-    showLoading(true);
+    const res = await fetch(`${API_BASE_URL}/jobs/${encodeURIComponent(slug)}`, { headers: { Accept: "application/json" } });
+    if (!res.ok) throw new Error(`API ${res.status}`);
+    lowongan = (await res.json()).data;
+  } catch (e) {
+    console.error("Gagal memuat lowongan:", e);
+    return tampilkanGalat();
+  }
 
-    const response = await fetch(`${API_BASE_URL}/jobs/${slug}`);
+  gambar(lowongan);
+  pasangBagikan(lowongan);
+  pasangJobPosting(lowongan);
+  muatLowonganLain(lowongan);
+  $("applyBtn").addEventListener("click", keFormulir);
+}
 
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error("Job not found");
+function gambar(job) {
+  const unit = unitDari(job);
+  document.title = `${job.title} — ${unit.nama} | ${t("Karir", "Careers")}`;
+
+  $("unitKepala").innerHTML = `<img src="${unit.ikon}" alt="" width="28" height="28" />${esc(unit.nama)}`;
+  $("lencanaKepala").innerHTML = lencanaBatas(job);
+  $("jobTitle").textContent = job.title;
+
+  const meta = [
+    labelJenis(job.jenis) && ["bi-briefcase", labelJenis(job.jenis)],
+    labelPola(job.pola_kerja) && ["bi-house-gear", labelPola(job.pola_kerja)],
+    job.lokasi && ["bi-geo-alt", job.lokasi],
+    job.posted_at && ["bi-calendar-event", `${t("Diposting", "Posted")} ${tanggalPanjang(job.posted_at)}`],
+  ].filter(Boolean);
+  $("metaKepala").innerHTML = meta.map(([i, x]) => `<span><i class="bi ${i}"></i>${esc(x)}</span>`).join("");
+
+  isiBagian("descriptions", job.descriptions);
+  isiBagian("requirements", job.requirements);
+
+  const fakta = [
+    ["bi-building", t("Perusahaan", "Company"), unit.nama],
+    ["bi-briefcase", t("Jenis", "Type"), labelJenis(job.jenis)],
+    ["bi-house-gear", t("Pola kerja", "Work mode"), labelPola(job.pola_kerja)],
+    ["bi-geo-alt", t("Lokasi", "Location"), job.lokasi],
+    ["bi-people", t("Dibutuhkan", "Openings"), job.jumlah_posisi && t(`${job.jumlah_posisi} orang`, `${job.jumlah_posisi}`)],
+    ["bi-cash-stack", t("Kisaran gaji", "Salary range"), job.gaji],
+    ["bi-hourglass-split", t("Batas lamaran", "Apply by"), job.batas_lamaran && tanggalPanjang(job.batas_lamaran)],
+  ].filter(([, , nilai]) => nilai);
+  $("faktaLowongan").innerHTML = fakta
+    .map(([i, label, nilai]) => `<li><span><i class="bi ${i}"></i>${label}</span><strong>${esc(nilai)}</strong></li>`)
+    .join("");
+
+  $("headerLoading").style.display = "none";
+  $("contentLoading").style.display = "none";
+  $("headerContent").style.display = "block";
+  $("detailContent").style.display = "block";
+}
+
+/**
+ * Quill 2 menyimpan daftar butir sebagai <ol><li data-list="bullet">.
+ * htmlAman membuang atribut data-*, jadi tanpa ini daftar butir tampil
+ * bernomor. Daftar campuran dipecah per jenis berurutan.
+ */
+function rapikanDaftarQuill(html) {
+  const doc = new DOMParser().parseFromString(`<div>${html}</div>`, "text/html");
+  doc.querySelectorAll("ol").forEach((ol) => {
+    const butir = [...ol.children];
+    if (!butir.some((li) => li.dataset.list)) return;
+    const pengganti = [];
+    butir.forEach((li) => {
+      const tag = li.dataset.list === "bullet" ? "ul" : "ol";
+      let wadah = pengganti[pengganti.length - 1];
+      if (!wadah || wadah.tagName.toLowerCase() !== tag) {
+        wadah = doc.createElement(tag);
+        pengganti.push(wadah);
       }
-      throw new Error("Failed to load job detail");
+      li.querySelectorAll(".ql-ui").forEach((x) => x.remove());
+      wadah.appendChild(li);
+    });
+    ol.replaceWith(...pengganti);
+  });
+  return doc.body.firstElementChild.innerHTML;
+}
+
+function isiBagian(id, html) {
+  const bersih = htmlAman(rapikanDaftarQuill(html || "")).trim();
+  const kosong = !bersih || !new DOMParser().parseFromString(bersih, "text/html").body.textContent.trim();
+  $(`${id}Section`).hidden = kosong;
+  if (!kosong) $(id).innerHTML = bersih;
+}
+
+function pasangBagikan(job) {
+  const url = location.href;
+  const teks = t(`Lowongan ${job.title} di ${unitDari(job).nama}`, `${job.title} opening at ${unitDari(job).nama}`);
+  $("bagikanWa").href = `https://wa.me/?text=${encodeURIComponent(`${teks}\n${url}`)}`;
+  $("bagikanLi").href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+
+  const tombol = $("salinTautan");
+  tombol.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      // Peramban tanpa izin papan klip: pilih lewat prompt sebagai cadangan.
+      window.prompt(t("Salin tautan ini:", "Copy this link:"), url);
+      return;
     }
-
-    const result = await response.json();
-    currentJob = result.data;
-
-    showLoading(false);
-    renderJobDetail(currentJob);
-  } catch (error) {
-    console.error("Error loading job detail:", error);
-    showLoading(false);
-    showError();
-    showAlert(t("Gagal memuat detail lowongan.", "Could not load the job details."), "danger");
-  }
-}
-
-// Render job detail
-function renderJobDetail(job) {
-  // Update page title
-  document.title = `${job.title} | ${t("Karir", "Careers")} PT. Asthana Cipta Mandiri`;
-
-  // Header
-  elements.jobTitle.textContent = job.title;
-
-  if (job.posted_at) {
-    elements.postedDate.innerHTML = `
-      <i class="bi bi-calendar-event me-2"></i>
-      ${t("Diposting", "Posted")}: ${formatDate(job.posted_at)}
-    `;
-  }
-
-  // Descriptions
-  if (job.descriptions && job.descriptions.trim()) {
-    elements.descriptions.textContent = htmlToText(job.descriptions);
-    elements.descriptionsSection.style.display = "block";
-  } else {
-    elements.descriptionsSection.style.display = "none";
-  }
-
-  // Requirements
-  if (job.requirements && job.requirements.trim()) {
-    elements.requirements.textContent = htmlToText(job.requirements);
-    elements.requirementsSection.style.display = "block";
-  } else {
-    elements.requirementsSection.style.display = "none";
-  }
-
-  // Show content
-  elements.headerContent.style.display = "block";
-  elements.detailContent.style.display = "block";
-}
-
-// Setup event listeners
-function setupEventListeners() {
-  elements.applyBtn.addEventListener("click", goToApplicationForm);
-}
-
-// Navigate to application form
-function goToApplicationForm() {
-  if (!currentJob) return;
-
-  // Pass job info via URL params
-  const params = new URLSearchParams({
-    job_id: currentJob.id,
-    job_slug: currentJob.slug,
-    job_title: currentJob.title,
-  });
-
-  window.location.href = `${jalur.karirFormulir}?${params.toString()}`;
-}
-
-// Show/hide loading state
-function showLoading(show) {
-  elements.headerLoading.style.display = show ? "block" : "none";
-  elements.headerContent.style.display = show ? "none" : "block";
-  elements.contentLoading.style.display = show ? "block" : "none";
-  elements.detailContent.style.display = show ? "none" : "block";
-  elements.errorState.style.display = "none";
-}
-
-// Show error state
-function showError() {
-  elements.headerLoading.style.display = "none";
-  elements.headerContent.style.display = "none";
-  elements.contentLoading.style.display = "none";
-  elements.detailContent.style.display = "none";
-  elements.errorState.style.display = "block";
-}
-
-// Format date
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  return date.toLocaleDateString(LOKAL, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+    tombol.classList.add("tersalin");
+    tombol.innerHTML = '<i class="bi bi-check2"></i>';
+    tombol.title = t("Tautan tersalin", "Link copied");
+    setTimeout(() => {
+      tombol.classList.remove("tersalin");
+      tombol.innerHTML = '<i class="bi bi-link-45deg"></i>';
+      tombol.title = t("Salin tautan", "Copy link");
+    }, 2000);
   });
 }
 
-// Show alert
-function showAlert(message, type = "info") {
-  const alert = document.createElement("div");
-  alert.className = `alert alert-${type} alert-dismissible fade show`;
-  alert.setAttribute("role", "alert");
-  alert.innerHTML = `
-    ${message}
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-  `;
+/** schema.org JobPosting — supaya lowongan bisa tampil di Google for Jobs. */
+function pasangJobPosting(job) {
+  const unit = unitDari(job);
+  const jenisSchema = { penuh_waktu: "FULL_TIME", kontrak: "CONTRACTOR", magang: "INTERN", freelance: "TEMPORARY" };
+  const data = {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    title: job.title,
+    description: [job.descriptions, job.requirements].filter(Boolean).join("") || job.ringkasan || job.title,
+    datePosted: job.posted_at,
+    hiringOrganization: {
+      "@type": "Organization",
+      name: unit.nama,
+      logo: new URL(unit.ikon, location.origin).href,
+    },
+    directApply: true,
+  };
+  if (job.batas_lamaran) data.validThrough = `${job.batas_lamaran}T23:59:59+07:00`;
+  if (jenisSchema[job.jenis]) data.employmentType = jenisSchema[job.jenis];
+  if (job.pola_kerja === "remote") {
+    data.jobLocationType = "TELECOMMUTE";
+    data.applicantLocationRequirements = { "@type": "Country", name: "Indonesia" };
+  }
+  if (job.lokasi && job.pola_kerja !== "remote") {
+    data.jobLocation = {
+      "@type": "Place",
+      address: { "@type": "PostalAddress", addressLocality: job.lokasi, addressCountry: "ID" },
+    };
+  }
 
-  elements.alertContainer.appendChild(alert);
-
-  setTimeout(() => {
-    alert.remove();
-  }, 5000);
+  const skrip = document.createElement("script");
+  skrip.type = "application/ld+json";
+  skrip.textContent = JSON.stringify(data).replace(/</g, "\\u003c");
+  document.head.appendChild(skrip);
 }
 
-// Initialize on DOM ready
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", init);
-} else {
-  init();
+async function muatLowonganLain(job) {
+  try {
+    const res = await fetch(`${API_BASE_URL}/jobs`, { headers: { Accept: "application/json" } });
+    if (!res.ok) return;
+    const semua = ((await res.json()).data || []).filter((j) => j.id !== job.id);
+    // Unit yang sama lebih dulu, lalu sisanya.
+    semua.sort((a, b) => (b.unit === job.unit) - (a.unit === job.unit));
+    const pilihan = semua.slice(0, 3);
+    if (!pilihan.length) return;
+    $("daftarLain").innerHTML = pilihan
+      .map((j, i) => `<div class="col-md-6 col-lg-4" data-muncul style="--tunda:${i * 0.06}s">${kartuLowongan(j)}</div>`)
+      .join("");
+    $("lowonganLain").hidden = false;
+    munculkan($("daftarLain"));
+  } catch {
+    // Bagian tambahan: diam saja bila gagal.
+  }
 }
+
+function keFormulir() {
+  if (!lowongan) return;
+  const params = new URLSearchParams({ job_id: lowongan.id, job_slug: lowongan.slug, job_title: lowongan.title });
+  location.href = `${jalur.karirFormulir}?${params}`;
+}
+
+function tampilkanGalat() {
+  $("headerLoading").style.display = "none";
+  $("headerContent").style.display = "none";
+  $("contentLoading").style.display = "none";
+  $("detailContent").style.display = "none";
+  $("errorState").style.display = "block";
+}
+
+init();

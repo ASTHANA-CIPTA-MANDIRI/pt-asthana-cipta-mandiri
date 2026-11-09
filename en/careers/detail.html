@@ -23,9 +23,12 @@
           </div>
 
           <div id="headerContent" style="display: none">
-            <span class="lencana-buka mb-3" style="background: #fff">Now hiring</span>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <span class="kepala-unit" id="unitKepala"></span>
+              <span id="lencanaKepala" class="mb-3"></span>
+            </div>
             <h1 id="jobTitle"></h1>
-            <p id="postedDate"></p>
+            <div class="meta-kepala" id="metaKepala"></div>
           </div>
         </div>
         <span class="lengkung" aria-hidden="true"></span>
@@ -58,14 +61,14 @@
           <div id="detailContent" style="display: none">
             <div class="row g-4">
               <div class="col-lg-8">
-                <article class="isi-lowongan" id="descriptionsSection">
+                <article class="isi-lowongan warna-biru" id="descriptionsSection">
                   <h2>
                     <span class="ikon-petak warna-biru"><i class="bi bi-card-text"></i></span>
                     Job Description
                   </h2>
                   <div class="teks-lowongan" id="descriptions"></div>
                 </article>
-                <article class="isi-lowongan" id="requirementsSection">
+                <article class="isi-lowongan warna-oranye" id="requirementsSection">
                   <h2>
                     <span class="ikon-petak warna-oranye"><i class="bi bi-list-check"></i></span>
                     Requirements
@@ -76,28 +79,45 @@
               <div class="col-lg-4">
                 <aside class="kartu-lamar">
                   <h3>Interested in this role?</h3>
-                  <p>
-                    Send your application with your CV and cover letter in PDF format.
-                  </p>
+                  <p>Send your CV as a PDF. A cover letter and portfolio are optional.</p>
+                  <ul class="fakta-lowongan" id="faktaLowongan"></ul>
                   <button type="button" class="btn btn-warna btn-lg w-100" id="applyBtn">
                     <i class="bi bi-send me-1"></i> Apply Now
                   </button>
                   <a href="/en/careers/" class="btn btn-kaca w-100 mt-3">
                     <i class="bi bi-arrow-left me-1"></i> Other openings
                   </a>
+                  <div class="bagikan">
+                    <span>Share</span>
+                    <a class="wa" id="bagikanWa" href="#" target="_blank" rel="noopener" aria-label="Share on WhatsApp" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    <a class="li" id="bagikanLi" href="#" target="_blank" rel="noopener" aria-label="Share on LinkedIn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <button type="button" class="salin" id="salinTautan" aria-label="Copy link" title="Copy link"><i class="bi bi-link-45deg"></i></button>
+                  </div>
                 </aside>
               </div>
             </div>
           </div>
 
           <!-- Error -->
+          <!-- Lowongan lain -->
+          <div id="lowonganLain" class="mt-5 pt-3" hidden>
+            <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
+              <h2 class="judul-bagian h3 mb-0">Other roles you may like</h2>
+              <a href="/en/careers/#lowongan" class="tautan-panah">All openings <i class="bi bi-arrow-right"></i></a>
+            </div>
+            <div class="row g-4" id="daftarLain"></div>
+          </div>
+
           <div id="errorState" class="keadaan-kosong" style="display: none">
             <span class="ikon-petak warna-jambu"><i class="bi bi-search"></i></span>
             <h3>Job not found</h3>
             <p>
               The position may have closed, or the link is incomplete.
             </p>
-            <a href="/en/careers/" class="btn btn-warna">View all openings</a>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+              <a href="/en/careers/" class="btn btn-warna">View all openings</a>
+              <a href="/en/careers/apply.html?umum=1" class="btn btn-garis">Send a general application</a>
+            </div>
           </div>
         </div>
       </section>

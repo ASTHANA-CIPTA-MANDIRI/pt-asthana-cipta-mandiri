@@ -1,6 +1,8 @@
 import { API_BASE_URL } from "./config.js";
 import { t, jalur } from "./bahasa.js";
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB in bytes
+// Nilai pilihan "Lamaran umum" di formulir; dikirim ke lemon TANPA job_id.
+const UMUM = "umum";
 
 // State management
 const state = {
@@ -52,6 +54,17 @@ function checkPreselectedJob() {
   const jobSlug = params.get("job_slug");
   const jobTitle = params.get("job_title");
 
+  // Lamaran umum (talent pool): datang dari tombol "Kirim Lamaran Umum".
+  if (params.get("umum")) {
+    state.preselectedJob = { id: UMUM, slug: null, title: t("Lamaran umum", "General application") };
+    elements.jobInfoBadge.style.display = "flex";
+    elements.jobTitleDisplay.textContent = t("Lamaran umum", "General application");
+    const keterangan = elements.jobInfoBadge.querySelector("small");
+    if (keterangan) keterangan.textContent = t("CV Anda kami simpan untuk posisi yang cocok", "We keep your CV for a matching role");
+    elements.jobSelectWrapper.style.display = "none";
+    return;
+  }
+
   if (jobId && jobTitle) {
     state.preselectedJob = {
       id: jobId,
@@ -60,7 +73,7 @@ function checkPreselectedJob() {
     };
 
     // Show job info badge
-    elements.jobInfoBadge.style.display = "block";
+    elements.jobInfoBadge.style.display = "flex";
     elements.jobTitleDisplay.textContent = jobTitle;
 
     // Hide job select dropdown
@@ -82,7 +95,8 @@ async function loadJobs() {
 
     // Populate job select
     elements.jobSelect.innerHTML =
-      `<option value="" selected disabled>${t("Pilih posisi yang tersedia...", "Choose an open position...")}</option>`;
+      `<option value="" selected disabled>${t("Pilih posisi yang tersedia...", "Choose an open position...")}</option>` +
+      `<option value="${UMUM}">${t("Lamaran umum (belum ada posisi yang cocok)", "General application (no matching role yet)")}</option>`;
 
     state.jobs.forEach((job) => {
       const option = document.createElement("option");
@@ -104,6 +118,10 @@ async function loadJobs() {
     }
   } catch (error) {
     console.error("Error loading jobs:", error);
+    // Lamaran umum tetap bisa dikirim walau daftar posisi gagal dimuat.
+    elements.jobSelect.innerHTML =
+      `<option value="" selected disabled>${t("Pilih posisi...", "Choose a position...")}</option>` +
+      `<option value="${UMUM}">${t("Lamaran umum", "General application")}</option>`;
     showAlert(t("Gagal memuat daftar posisi. Silakan muat ulang halaman.", "Could not load positions. Please refresh the page."), "danger");
   }
 }
@@ -235,6 +253,12 @@ function validateField(input) {
     }
   }
 
+  // Tautan portofolio: hanya http(s)
+  if (input.type === "url" && value && !/^https?:\/\/[^\s.]+\.[^\s]+$/i.test(value)) {
+    isValid = false;
+    message = t("Tautan harus diawali http:// atau https://", "The link must start with http:// or https://");
+  }
+
   // File validation
   if (input.type === "file" && input.files.length > 0) {
     const file = input.files[0];
@@ -320,6 +344,10 @@ async function handleSubmit(e) {
     if (state.preselectedJob) {
       formData.set("job_id", state.preselectedJob.id);
     }
+    // Lamaran umum dikirim tanpa job_id; isian opsional yang kosong tidak dikirim.
+    if (formData.get("job_id") === UMUM) formData.delete("job_id");
+    if (!(formData.get("cover_letter") instanceof File) || !formData.get("cover_letter").size) formData.delete("cover_letter");
+    ["portofolio_url", "sumber_info"].forEach((k) => !formData.get(k) && formData.delete(k));
 
     // Submit to API
     const response = await fetch(`${API_BASE_URL}/applications`, {

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="id">
   <head>
-    <!-- @include head padanan="/en/careers/" judul="Karir" deskripsi="Lowongan kerja di PT. Asthana Cipta Mandiri. Temukan peluang karir di bidang teknologi dan pariwisata." -->
+    <!-- @include head padanan="/en/careers/" judul="Karir" deskripsi="Lowongan kerja di PT. Asthana Cipta Mandiri, Reka Technology, dan Orcha Journey. Temukan peluang karir di bidang teknologi dan pariwisata." -->
   </head>
   <body>
     <!-- @include header padanan="/en/careers/" aktif="karir" -->
@@ -20,36 +20,58 @@
             Temukan peluang terbaik dan kembangkan potensi Anda di tim
             teknologi dan pariwisata kami.
           </p>
-          <a href="#lowongan" class="btn btn-putih mt-4">
-            Lihat Lowongan <i class="bi bi-arrow-down ms-1"></i>
-          </a>
+          <div class="d-flex flex-wrap align-items-center gap-3 mt-4">
+            <a href="#lowongan" class="btn btn-putih">
+              Lihat Lowongan <i class="bi bi-arrow-down ms-1"></i>
+            </a>
+            <span class="pil-jumlah" data-jumlah-lowongan hidden></span>
+          </div>
         </div>
         <span class="lengkung" aria-hidden="true"></span>
       </section>
 
       <!-- Kenapa bergabung -->
-      <section class="bagian pt-5 pb-0">
+      <section class="bagian pt-5">
         <div class="container">
-          <div class="row g-4">
-            <div class="col-md-4" data-muncul>
-              <div class="kartu kartu-hidup warna-biru">
-                <span class="ikon-petak"><i class="bi bi-rocket-takeoff"></i></span>
-                <h3>Belajar &amp; Bertumbuh</h3>
-                <p>Ruang untuk mencoba hal baru dan mengasah keahlian setiap hari.</p>
+          <div class="row align-items-center g-5">
+            <div class="col-lg-5" data-muncul>
+              <div class="bingkai-aksen me-lg-3">
+                <span class="titik" aria-hidden="true"></span>
+                <img src="/src/assets/img/foto/tos-berhasil.webp" alt="Dua rekan kerja Asthana bertos merayakan keberhasilan" loading="lazy" />
               </div>
             </div>
-            <div class="col-md-4" data-muncul style="--tunda: 0.08s">
-              <div class="kartu kartu-hidup warna-oranye">
-                <span class="ikon-petak"><i class="bi bi-people"></i></span>
-                <h3>Tim Kolaboratif</h3>
-                <p>Ekosistem kerja yang sehat, saling mendukung, dan terbuka pada ide.</p>
-              </div>
-            </div>
-            <div class="col-md-4" data-muncul style="--tunda: 0.16s">
-              <div class="kartu kartu-hidup warna-hijau">
-                <span class="ikon-petak"><i class="bi bi-compass"></i></span>
-                <h3>Proyek Beragam</h3>
-                <p>Terlibat di dua dunia sekaligus: teknologi dan pariwisata.</p>
+            <div class="col-lg-7" data-muncul style="--tunda: 0.1s">
+              <span class="label-bagian">Kenapa Bergabung</span>
+              <h2 class="judul-bagian">Tempat untuk belajar, berkarya, dan bertumbuh</h2>
+              <p class="sub-bagian">
+                Di Asthana Anda bekerja bersama tim kecil yang saling mendukung,
+                pada proyek nyata di dua dunia sekaligus: teknologi dan pariwisata.
+              </p>
+              <div class="row g-3 mt-2">
+                <div class="col-sm-6">
+                  <div class="manfaat warna-biru">
+                    <span class="ikon-petak"><i class="bi bi-rocket-takeoff"></i></span>
+                    <div><h3>Belajar &amp; bertumbuh</h3><p>Ruang untuk mencoba hal baru dan mengasah keahlian setiap hari.</p></div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="manfaat warna-oranye">
+                    <span class="ikon-petak"><i class="bi bi-people"></i></span>
+                    <div><h3>Tim kolaboratif</h3><p>Ekosistem kerja yang sehat, saling mendukung, dan terbuka pada ide.</p></div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="manfaat warna-hijau">
+                    <span class="ikon-petak"><i class="bi bi-compass"></i></span>
+                    <div><h3>Proyek beragam</h3><p>Dari website &amp; aplikasi klien hingga perjalanan wisata rombongan.</p></div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="manfaat warna-laut">
+                    <span class="ikon-petak"><i class="bi bi-diagram-3"></i></span>
+                    <div><h3>Tiga perusahaan, satu tim</h3><p>Asthana, Reka Technology, dan Orcha Journey bekerja berdampingan.</p></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -57,50 +79,171 @@
       </section>
 
       <!-- Daftar lowongan -->
-      <section class="bagian" id="lowongan">
+      <section class="bagian bagian-latar" id="lowongan">
         <div class="container">
-          <div class="kepala-bagian" data-muncul>
-            <span class="label-bagian warna-ungu">Lowongan Terbuka</span>
-            <h2 class="judul-bagian mb-0">Posisi yang sedang kami cari</h2>
+          <div class="kepala-bagian d-flex flex-wrap align-items-end justify-content-between gap-3" data-muncul>
+            <div>
+              <span class="label-bagian warna-ungu">Lowongan Terbuka</span>
+              <h2 class="judul-bagian mb-0">Posisi yang sedang kami cari</h2>
+            </div>
+            <span class="pil-jumlah gelap" data-jumlah-lowongan hidden></span>
           </div>
 
-          <!-- Loading State -->
+          <!-- Saringan -->
+          <div class="saringan-lowongan" id="saringanLowongan" hidden>
+            <div class="kotak-cari">
+              <i class="bi bi-search" aria-hidden="true"></i>
+              <input type="search" id="cariLowongan" class="form-control" placeholder="Cari posisi, lokasi, atau kata kunci…" aria-label="Cari lowongan" />
+            </div>
+            <div class="kotak-pilih">
+              <select id="pilihJenis" class="form-select" aria-label="Jenis pekerjaan"></select>
+            </div>
+            <div class="chip-unit" id="chipUnit" role="group" aria-label="Saring menurut perusahaan"></div>
+            <small class="text-secondary ms-auto" id="ringkasJumlah" aria-live="polite"></small>
+          </div>
+
+          <!-- Memuat -->
           <div id="loadingState" class="row g-4">
             <div class="col-md-6 col-lg-4">
               <div class="kartu-lowongan">
-                <div class="kerangka mb-4" style="width: 56px; height: 56px; border-radius: 16px"></div>
+                <div class="kerangka mb-4" style="width: 140px; height: 28px; border-radius: 999px"></div>
                 <div class="kerangka kerangka-baris" style="width: 80%"></div>
                 <div class="kerangka kerangka-baris" style="width: 50%"></div>
               </div>
             </div>
             <div class="col-md-6 col-lg-4">
               <div class="kartu-lowongan">
-                <div class="kerangka mb-4" style="width: 56px; height: 56px; border-radius: 16px"></div>
+                <div class="kerangka mb-4" style="width: 140px; height: 28px; border-radius: 999px"></div>
                 <div class="kerangka kerangka-baris" style="width: 70%"></div>
                 <div class="kerangka kerangka-baris" style="width: 40%"></div>
               </div>
             </div>
             <div class="col-md-6 col-lg-4 d-none d-lg-block">
               <div class="kartu-lowongan">
-                <div class="kerangka mb-4" style="width: 56px; height: 56px; border-radius: 16px"></div>
+                <div class="kerangka mb-4" style="width: 140px; height: 28px; border-radius: 999px"></div>
                 <div class="kerangka kerangka-baris" style="width: 75%"></div>
                 <div class="kerangka kerangka-baris" style="width: 45%"></div>
               </div>
             </div>
           </div>
 
-          <!-- Jobs List -->
-          <div id="jobsList" class="row g-4" style="display: none"></div>
+          <div id="jobsList" class="row g-4" hidden></div>
 
-          <!-- Empty State -->
-          <div id="emptyState" class="keadaan-kosong" style="display: none">
+          <!-- Saringan tanpa hasil -->
+          <div id="noMatchState" class="keadaan-kosong" hidden>
+            <span class="ikon-petak warna-oranye"><i class="bi bi-funnel"></i></span>
+            <h3>Tidak ada posisi yang cocok</h3>
+            <p>Coba kata kunci lain atau hapus saringan.</p>
+            <button type="button" class="btn btn-garis" id="hapusSaringan">Hapus saringan</button>
+          </div>
+
+          <!-- Belum ada lowongan -->
+          <div id="emptyState" class="keadaan-kosong" hidden>
             <span class="ikon-petak warna-ungu"><i class="bi bi-inbox"></i></span>
             <h3>Belum ada lowongan yang dibuka</h3>
             <p>
-              Saat ini belum ada posisi yang tersedia. Silakan cek kembali
-              nanti, atau kenali kami lebih dulu.
+              Saat ini belum ada posisi yang tersedia. Anda tetap bisa
+              mengirim CV — kami simpan dan hubungi bila ada posisi yang cocok.
             </p>
-            <a href="/tentang/" class="btn btn-garis">Tentang Kami</a>
+            <a href="/karir/formulir.html?umum=1" class="btn btn-warna">
+              <i class="bi bi-send me-1"></i> Kirim Lamaran Umum
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alur rekrutmen -->
+      <section class="bagian">
+        <div class="container">
+          <div class="kepala-bagian tengah" data-muncul>
+            <span class="label-bagian warna-oranye">Alur Rekrutmen</span>
+            <h2 class="judul-bagian">Empat langkah menuju tim kami</h2>
+            <p class="sub-bagian">Prosesnya jelas sejak lamaran dikirim, dan Anda selalu tahu kabarnya.</p>
+          </div>
+          <div class="row g-5">
+            <div class="col-sm-6 col-lg-3" data-muncul>
+              <div class="langkah warna-biru">
+                <div class="nomor-langkah"><i class="bi bi-send"></i><span>1</span></div>
+                <h3>Kirim lamaran</h3>
+                <p>Isi formulir dan unggah CV (PDF). Nomor lamaran dikirim ke email Anda.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3" data-muncul style="--tunda: 0.08s">
+              <div class="langkah warna-ungu">
+                <div class="nomor-langkah"><i class="bi bi-file-earmark-check"></i><span>2</span></div>
+                <h3>Seleksi berkas</h3>
+                <p>Tim kami meninjau CV dan portofolio Anda terhadap kebutuhan posisi.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3" data-muncul style="--tunda: 0.16s">
+              <div class="langkah warna-laut">
+                <div class="nomor-langkah"><i class="bi bi-chat-square-text"></i><span>3</span></div>
+                <h3>Wawancara</h3>
+                <p>Bila sesuai, kami hubungi lewat email atau telepon untuk wawancara.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3" data-muncul style="--tunda: 0.24s">
+              <div class="langkah warna-hijau">
+                <div class="nomor-langkah"><i class="bi bi-hand-thumbs-up"></i><span>4</span></div>
+                <h3>Tawaran &amp; bergabung</h3>
+                <p>Kami sampaikan tawaran kerja, lalu Anda mulai bergabung bersama tim.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tanya jawab -->
+      <section class="bagian bagian-latar">
+        <div class="container">
+          <div class="row g-5">
+            <div class="col-lg-4" data-muncul>
+              <span class="label-bagian warna-hijau">Tanya Jawab</span>
+              <h2 class="judul-bagian">Yang sering ditanyakan pelamar</h2>
+              <p class="sub-bagian">Pertanyaan lain? Hubungi kami lewat WhatsApp atau halaman kontak.</p>
+              <a href="/kontak/" class="btn btn-garis mt-2">Hubungi Kami</a>
+            </div>
+            <div class="col-lg-8" data-muncul style="--tunda: 0.1s">
+              <div class="daftar-tanya">
+                <details open>
+                  <summary>Berkas apa saja yang perlu disiapkan?</summary>
+                  <p>Cukup CV dalam format PDF (maksimal 2 MB). Surat lamaran dan tautan portofolio bersifat opsional, tetapi sangat membantu — terutama untuk posisi desain dan pengembangan.</p>
+                </details>
+                <details>
+                  <summary>Kapan saya akan dihubungi?</summary>
+                  <p>Setiap lamaran kami tinjau. Bila profil Anda sesuai, tim kami menghubungi lewat email atau telepon untuk tahap berikutnya. Nomor lamaran di email konfirmasi bisa Anda sebutkan saat bertanya.</p>
+                </details>
+                <details>
+                  <summary>Bolehkah melamar lebih dari satu posisi?</summary>
+                  <p>Boleh. Kirim formulir terpisah untuk tiap posisi, supaya lamaran Anda ditinjau oleh tim yang tepat.</p>
+                </details>
+                <details>
+                  <summary>Tidak ada posisi yang cocok, apa yang bisa saya lakukan?</summary>
+                  <p>Kirim <a href="/karir/formulir.html?umum=1">lamaran umum</a>. CV Anda kami simpan dan kami tinjau setiap ada posisi yang sesuai di Asthana, Reka Technology, maupun Orcha Journey.</p>
+                </details>
+                <details>
+                  <summary>Bagaimana data saya digunakan?</summary>
+                  <p>Data dan berkas Anda hanya dipakai untuk proses rekrutmen dan disimpan secara privat. Selengkapnya di <a href="/kebijakan-privasi/">Kebijakan Privasi</a>.</p>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lamaran umum -->
+      <section class="pb-5 mb-4 pt-5">
+        <div class="container">
+          <div class="ajakan" data-muncul>
+            <div class="row align-items-center g-4">
+              <div class="col-lg">
+                <h2>Tidak menemukan posisi yang cocok?</h2>
+                <p>Kirim CV Anda sebagai lamaran umum. Kami hubungi saat ada peluang yang sesuai.</p>
+              </div>
+              <div class="col-lg-auto ms-lg-auto d-flex flex-wrap gap-3">
+                <a href="/karir/formulir.html?umum=1" class="btn btn-putih btn-lg"><i class="bi bi-send me-1"></i> Kirim Lamaran Umum</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

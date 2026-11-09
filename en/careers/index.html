@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- @include head padanan="/karir/" judul="Careers" deskripsi="Job openings at PT. Asthana Cipta Mandiri. Find career opportunities in technology and tourism." -->
+    <!-- @include head padanan="/karir/" judul="Careers" deskripsi="Job openings at PT. Asthana Cipta Mandiri, Reka Technology, and Orcha Journey. Find career opportunities in technology and tourism." -->
   </head>
   <body>
     <!-- @include header-en padanan="/karir/" aktif="karir" -->
@@ -17,38 +17,61 @@
           </ol>
           <h1>Grow your career with us</h1>
           <p>
-            Find the right opportunity and grow your potential in our technology and tourism teams.
+            Find the right opportunity and grow your potential in our
+            technology and tourism teams.
           </p>
-          <a href="#lowongan" class="btn btn-putih mt-4">
-            View Openings <i class="bi bi-arrow-down ms-1"></i>
-          </a>
+          <div class="d-flex flex-wrap align-items-center gap-3 mt-4">
+            <a href="#lowongan" class="btn btn-putih">
+              View Openings <i class="bi bi-arrow-down ms-1"></i>
+            </a>
+            <span class="pil-jumlah" data-jumlah-lowongan hidden></span>
+          </div>
         </div>
         <span class="lengkung" aria-hidden="true"></span>
       </section>
 
       <!-- Kenapa bergabung -->
-      <section class="bagian pt-5 pb-0">
+      <section class="bagian pt-5">
         <div class="container">
-          <div class="row g-4">
-            <div class="col-md-4" data-muncul>
-              <div class="kartu kartu-hidup warna-biru">
-                <span class="ikon-petak"><i class="bi bi-rocket-takeoff"></i></span>
-                <h3>Learn &amp; Grow</h3>
-                <p>Room to try new things and sharpen your skills every day.</p>
+          <div class="row align-items-center g-5">
+            <div class="col-lg-5" data-muncul>
+              <div class="bingkai-aksen me-lg-3">
+                <span class="titik" aria-hidden="true"></span>
+                <img src="/src/assets/img/foto/tos-berhasil.webp" alt="Two Asthana colleagues high-fiving to celebrate a win" loading="lazy" />
               </div>
             </div>
-            <div class="col-md-4" data-muncul style="--tunda: 0.08s">
-              <div class="kartu kartu-hidup warna-oranye">
-                <span class="ikon-petak"><i class="bi bi-people"></i></span>
-                <h3>Collaborative Team</h3>
-                <p>A healthy, supportive workplace that is open to ideas.</p>
-              </div>
-            </div>
-            <div class="col-md-4" data-muncul style="--tunda: 0.16s">
-              <div class="kartu kartu-hidup warna-hijau">
-                <span class="ikon-petak"><i class="bi bi-compass"></i></span>
-                <h3>Varied Projects</h3>
-                <p>Work across two worlds at once: technology and tourism.</p>
+            <div class="col-lg-7" data-muncul style="--tunda: 0.1s">
+              <span class="label-bagian">Why Join Us</span>
+              <h2 class="judul-bagian">A place to learn, create, and grow</h2>
+              <p class="sub-bagian">
+                At Asthana you work in a small, supportive team on real projects
+                across two worlds at once: technology and tourism.
+              </p>
+              <div class="row g-3 mt-2">
+                <div class="col-sm-6">
+                  <div class="manfaat warna-biru">
+                    <span class="ikon-petak"><i class="bi bi-rocket-takeoff"></i></span>
+                    <div><h3>Learn &amp; grow</h3><p>Room to try new things and sharpen your skills every day.</p></div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="manfaat warna-oranye">
+                    <span class="ikon-petak"><i class="bi bi-people"></i></span>
+                    <div><h3>Collaborative team</h3><p>A healthy, supportive workplace that is open to ideas.</p></div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="manfaat warna-hijau">
+                    <span class="ikon-petak"><i class="bi bi-compass"></i></span>
+                    <div><h3>Varied projects</h3><p>From client websites &amp; apps to group travel experiences.</p></div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="manfaat warna-laut">
+                    <span class="ikon-petak"><i class="bi bi-diagram-3"></i></span>
+                    <div><h3>Three companies, one team</h3><p>Asthana, Reka Technology, and Orcha Journey work side by side.</p></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -56,49 +79,171 @@
       </section>
 
       <!-- Daftar lowongan -->
-      <section class="bagian" id="lowongan">
+      <section class="bagian bagian-latar" id="lowongan">
         <div class="container">
-          <div class="kepala-bagian" data-muncul>
-            <span class="label-bagian warna-ungu">Open Positions</span>
-            <h2 class="judul-bagian mb-0">Roles we are hiring for</h2>
+          <div class="kepala-bagian d-flex flex-wrap align-items-end justify-content-between gap-3" data-muncul>
+            <div>
+              <span class="label-bagian warna-ungu">Open Positions</span>
+              <h2 class="judul-bagian mb-0">Roles we are hiring for</h2>
+            </div>
+            <span class="pil-jumlah gelap" data-jumlah-lowongan hidden></span>
           </div>
 
-          <!-- Loading State -->
+          <!-- Saringan -->
+          <div class="saringan-lowongan" id="saringanLowongan" hidden>
+            <div class="kotak-cari">
+              <i class="bi bi-search" aria-hidden="true"></i>
+              <input type="search" id="cariLowongan" class="form-control" placeholder="Search role, location, or keyword…" aria-label="Search openings" />
+            </div>
+            <div class="kotak-pilih">
+              <select id="pilihJenis" class="form-select" aria-label="Job type"></select>
+            </div>
+            <div class="chip-unit" id="chipUnit" role="group" aria-label="Filter by company"></div>
+            <small class="text-secondary ms-auto" id="ringkasJumlah" aria-live="polite"></small>
+          </div>
+
+          <!-- Memuat -->
           <div id="loadingState" class="row g-4">
             <div class="col-md-6 col-lg-4">
               <div class="kartu-lowongan">
-                <div class="kerangka mb-4" style="width: 56px; height: 56px; border-radius: 16px"></div>
+                <div class="kerangka mb-4" style="width: 140px; height: 28px; border-radius: 999px"></div>
                 <div class="kerangka kerangka-baris" style="width: 80%"></div>
                 <div class="kerangka kerangka-baris" style="width: 50%"></div>
               </div>
             </div>
             <div class="col-md-6 col-lg-4">
               <div class="kartu-lowongan">
-                <div class="kerangka mb-4" style="width: 56px; height: 56px; border-radius: 16px"></div>
+                <div class="kerangka mb-4" style="width: 140px; height: 28px; border-radius: 999px"></div>
                 <div class="kerangka kerangka-baris" style="width: 70%"></div>
                 <div class="kerangka kerangka-baris" style="width: 40%"></div>
               </div>
             </div>
             <div class="col-md-6 col-lg-4 d-none d-lg-block">
               <div class="kartu-lowongan">
-                <div class="kerangka mb-4" style="width: 56px; height: 56px; border-radius: 16px"></div>
+                <div class="kerangka mb-4" style="width: 140px; height: 28px; border-radius: 999px"></div>
                 <div class="kerangka kerangka-baris" style="width: 75%"></div>
                 <div class="kerangka kerangka-baris" style="width: 45%"></div>
               </div>
             </div>
           </div>
 
-          <!-- Jobs List -->
-          <div id="jobsList" class="row g-4" style="display: none"></div>
+          <div id="jobsList" class="row g-4" hidden></div>
 
-          <!-- Empty State -->
-          <div id="emptyState" class="keadaan-kosong" style="display: none">
+          <!-- Saringan tanpa hasil -->
+          <div id="noMatchState" class="keadaan-kosong" hidden>
+            <span class="ikon-petak warna-oranye"><i class="bi bi-funnel"></i></span>
+            <h3>No matching roles</h3>
+            <p>Try another keyword or clear the filters.</p>
+            <button type="button" class="btn btn-garis" id="hapusSaringan">Clear filters</button>
+          </div>
+
+          <!-- Belum ada lowongan -->
+          <div id="emptyState" class="keadaan-kosong" hidden>
             <span class="ikon-petak warna-ungu"><i class="bi bi-inbox"></i></span>
-            <h3>No open positions right now</h3>
+            <h3>No openings right now</h3>
             <p>
-              There are no openings at the moment. Please check back later, or get to know us first.
+              There are no open positions at the moment. You can still send
+              your CV — we keep it and contact you when a matching role opens.
             </p>
-            <a href="/en/about/" class="btn btn-garis">About Us</a>
+            <a href="/en/careers/apply.html?umum=1" class="btn btn-warna">
+              <i class="bi bi-send me-1"></i> Send a General Application
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alur rekrutmen -->
+      <section class="bagian">
+        <div class="container">
+          <div class="kepala-bagian tengah" data-muncul>
+            <span class="label-bagian warna-oranye">Hiring Process</span>
+            <h2 class="judul-bagian">Four steps to join our team</h2>
+            <p class="sub-bagian">A clear process from the moment you apply, so you always know where you stand.</p>
+          </div>
+          <div class="row g-5">
+            <div class="col-sm-6 col-lg-3" data-muncul>
+              <div class="langkah warna-biru">
+                <div class="nomor-langkah"><i class="bi bi-send"></i><span>1</span></div>
+                <h3>Apply</h3>
+                <p>Fill in the form and upload your CV (PDF). Your application number is emailed to you.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3" data-muncul style="--tunda: 0.08s">
+              <div class="langkah warna-ungu">
+                <div class="nomor-langkah"><i class="bi bi-file-earmark-check"></i><span>2</span></div>
+                <h3>Screening</h3>
+                <p>Our team reviews your CV and portfolio against the role.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3" data-muncul style="--tunda: 0.16s">
+              <div class="langkah warna-laut">
+                <div class="nomor-langkah"><i class="bi bi-chat-square-text"></i><span>3</span></div>
+                <h3>Interview</h3>
+                <p>If it is a match, we reach out by email or phone to set up an interview.</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3" data-muncul style="--tunda: 0.24s">
+              <div class="langkah warna-hijau">
+                <div class="nomor-langkah"><i class="bi bi-hand-thumbs-up"></i><span>4</span></div>
+                <h3>Offer &amp; onboarding</h3>
+                <p>We send you an offer, and you start working with the team.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tanya jawab -->
+      <section class="bagian bagian-latar">
+        <div class="container">
+          <div class="row g-5">
+            <div class="col-lg-4" data-muncul>
+              <span class="label-bagian warna-hijau">FAQ</span>
+              <h2 class="judul-bagian">Questions applicants often ask</h2>
+              <p class="sub-bagian">Another question? Reach us on WhatsApp or via the contact page.</p>
+              <a href="/en/contact/" class="btn btn-garis mt-2">Contact Us</a>
+            </div>
+            <div class="col-lg-8" data-muncul style="--tunda: 0.1s">
+              <div class="daftar-tanya">
+                <details open>
+                  <summary>What documents do I need?</summary>
+                  <p>Just your CV as a PDF (max 2 MB). A cover letter and portfolio link are optional but very helpful — especially for design and development roles.</p>
+                </details>
+                <details>
+                  <summary>When will I hear back?</summary>
+                  <p>We review every application. If your profile is a match, our team contacts you by email or phone for the next step. Mention the application number from your confirmation email when you ask about it.</p>
+                </details>
+                <details>
+                  <summary>Can I apply for more than one role?</summary>
+                  <p>Yes. Send a separate form for each role so the right team reviews your application.</p>
+                </details>
+                <details>
+                  <summary>No role fits me — what can I do?</summary>
+                  <p>Send a <a href="/en/careers/apply.html?umum=1">general application</a>. We keep your CV and review it whenever a matching role opens at Asthana, Reka Technology, or Orcha Journey.</p>
+                </details>
+                <details>
+                  <summary>How is my data used?</summary>
+                  <p>Your data and files are used only for recruitment and stored privately. See our <a href="/en/privacy/">Privacy Policy</a>.</p>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lamaran umum -->
+      <section class="pb-5 mb-4 pt-5">
+        <div class="container">
+          <div class="ajakan" data-muncul>
+            <div class="row align-items-center g-4">
+              <div class="col-lg">
+                <h2>Did not find the right role?</h2>
+                <p>Send your CV as a general application. We will reach out when a suitable opportunity opens.</p>
+              </div>
+              <div class="col-lg-auto ms-lg-auto d-flex flex-wrap gap-3">
+                <a href="/en/careers/apply.html?umum=1" class="btn btn-putih btn-lg"><i class="bi bi-send me-1"></i> Send a General Application</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

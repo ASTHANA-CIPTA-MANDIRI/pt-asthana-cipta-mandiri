@@ -23,9 +23,12 @@
           </div>
 
           <div id="headerContent" style="display: none">
-            <span class="lencana-buka mb-3" style="background: #fff">Lowongan dibuka</span>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <span class="kepala-unit" id="unitKepala"></span>
+              <span id="lencanaKepala" class="mb-3"></span>
+            </div>
             <h1 id="jobTitle"></h1>
-            <p id="postedDate"></p>
+            <div class="meta-kepala" id="metaKepala"></div>
           </div>
         </div>
         <span class="lengkung" aria-hidden="true"></span>
@@ -58,14 +61,14 @@
           <div id="detailContent" style="display: none">
             <div class="row g-4">
               <div class="col-lg-8">
-                <article class="isi-lowongan" id="descriptionsSection">
+                <article class="isi-lowongan warna-biru" id="descriptionsSection">
                   <h2>
                     <span class="ikon-petak warna-biru"><i class="bi bi-card-text"></i></span>
                     Deskripsi Pekerjaan
                   </h2>
                   <div class="teks-lowongan" id="descriptions"></div>
                 </article>
-                <article class="isi-lowongan" id="requirementsSection">
+                <article class="isi-lowongan warna-oranye" id="requirementsSection">
                   <h2>
                     <span class="ikon-petak warna-oranye"><i class="bi bi-list-check"></i></span>
                     Kualifikasi
@@ -76,19 +79,32 @@
               <div class="col-lg-4">
                 <aside class="kartu-lamar">
                   <h3>Tertarik dengan posisi ini?</h3>
-                  <p>
-                    Kirim lamaran Anda lengkap dengan CV dan surat lamaran
-                    dalam format PDF.
-                  </p>
+                  <p>Kirim CV Anda dalam format PDF. Surat lamaran dan portofolio opsional.</p>
+                  <ul class="fakta-lowongan" id="faktaLowongan"></ul>
                   <button type="button" class="btn btn-warna btn-lg w-100" id="applyBtn">
                     <i class="bi bi-send me-1"></i> Lamar Sekarang
                   </button>
                   <a href="/karir/" class="btn btn-kaca w-100 mt-3">
                     <i class="bi bi-arrow-left me-1"></i> Lowongan lainnya
                   </a>
+                  <div class="bagikan">
+                    <span>Bagikan</span>
+                    <a class="wa" id="bagikanWa" href="#" target="_blank" rel="noopener" aria-label="Bagikan lewat WhatsApp" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    <a class="li" id="bagikanLi" href="#" target="_blank" rel="noopener" aria-label="Bagikan lewat LinkedIn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <button type="button" class="salin" id="salinTautan" aria-label="Salin tautan" title="Salin tautan"><i class="bi bi-link-45deg"></i></button>
+                  </div>
                 </aside>
               </div>
             </div>
+          </div>
+
+          <!-- Lowongan lain -->
+          <div id="lowonganLain" class="mt-5 pt-3" hidden>
+            <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
+              <h2 class="judul-bagian h3 mb-0">Lowongan lain yang mungkin cocok</h2>
+              <a href="/karir/#lowongan" class="tautan-panah">Semua lowongan <i class="bi bi-arrow-right"></i></a>
+            </div>
+            <div class="row g-4" id="daftarLain"></div>
           </div>
 
           <!-- Error -->
@@ -99,7 +115,10 @@
               Lowongan yang Anda cari mungkin sudah ditutup atau tautannya
               tidak lengkap.
             </p>
-            <a href="/karir/" class="btn btn-warna">Lihat semua lowongan</a>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+              <a href="/karir/" class="btn btn-warna">Lihat semua lowongan</a>
+              <a href="/karir/formulir.html?umum=1" class="btn btn-garis">Kirim lamaran umum</a>
+            </div>
           </div>
         </div>
       </section>

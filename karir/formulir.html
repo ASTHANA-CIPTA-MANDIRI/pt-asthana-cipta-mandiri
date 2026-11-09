@@ -49,6 +49,7 @@
                       <select class="form-select" id="jobId" name="job_id" required>
                         <option value="" selected disabled>Memuat posisi...</option>
                       </select>
+                      <small class="text-secondary d-block mt-2">Belum ada posisi yang cocok? Pilih <strong>Lamaran umum</strong> — CV Anda kami simpan untuk posisi berikutnya.</small>
                       <div class="invalid-feedback"></div>
                     </div>
 
@@ -94,9 +95,9 @@
                     </div>
 
                     <div class="col-md-6 medan">
-                      <label for="coverLetter" class="form-label">Surat Lamaran <span class="wajib">*</span></label>
+                      <label for="coverLetter" class="form-label">Surat Lamaran <span class="label-opsional">(opsional)</span></label>
                       <div class="unggah" id="clUploadWrapper">
-                        <input type="file" id="coverLetter" name="cover_letter" accept=".pdf,application/pdf" required />
+                        <input type="file" id="coverLetter" name="cover_letter" accept=".pdf,application/pdf" />
                         <span class="ikon-petak warna-oranye"><i class="bi bi-file-earmark-text"></i></span>
                         <p>Klik atau seret surat lamaran</p>
                         <small class="text-secondary">PDF, maksimal 2 MB</small>
@@ -113,6 +114,28 @@
                           </div>
                         </div>
                       </div>
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-6 medan">
+                      <label for="portofolio" class="form-label">Tautan Portofolio / LinkedIn <span class="label-opsional">(opsional)</span></label>
+                      <input type="url" class="form-control" id="portofolio" name="portofolio_url" placeholder="https://behance.net/nama-anda" maxlength="255" inputmode="url" />
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="col-md-6 medan">
+                      <label for="sumberInfo" class="form-label">Tahu lowongan ini dari <span class="label-opsional">(opsional)</span></label>
+                      <select class="form-select" id="sumberInfo" name="sumber_info">
+                        <option value="">Pilih salah satu</option>
+                        <option value="situs">Situs web Asthana</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="tiktok">TikTok</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="jobstreet">Portal lowongan (JobStreet, Glints, dll.)</option>
+                        <option value="kampus">Kampus / sekolah</option>
+                        <option value="teman">Teman / kenalan</option>
+                        <option value="lainnya">Lainnya</option>
+                      </select>
                       <div class="invalid-feedback"></div>
                     </div>
                   </div>
