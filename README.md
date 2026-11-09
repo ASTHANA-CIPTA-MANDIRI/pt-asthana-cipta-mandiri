@@ -12,7 +12,7 @@ dan **Karyawan & Karir**).
 | `/` | `/en/` | Beranda (+ portofolio unggulan, klien, testimoni, berita dari lemon) |
 | `/tentang/` | `/en/about/` | Profil, visi-misi, tim manajemen (lemon), nilai |
 | `/layanan/` | `/en/services/` | Layanan teknologi & pariwisata, alur kerja |
-| `/anak-perusahaan/` | `/en/subsidiaries/` | Orcha Journey & Reka Teknologi |
+| `/anak-perusahaan/` | `/en/subsidiaries/` | Orcha Journey & Reka Technology |
 | `/portofolio/` (+ `detail.html?slug=`) | `/en/portfolio/` | Portofolio (lemon) |
 | `/berita/` (+ `baca.html?slug=`) | `/en/news/` (+ `read.html`) | Berita (lemon) |
 | `/kontak/` | `/en/contact/` | Formulir pesan → lemon "Pesan Masuk", peta |
