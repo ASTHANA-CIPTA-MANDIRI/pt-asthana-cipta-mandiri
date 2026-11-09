@@ -9,8 +9,8 @@
   @font-face { font-family: "PJS"; font-weight: 600; src: url("../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2"); }
   @font-face { font-family: "PJS"; font-weight: 800; src: url("../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2"); }
   @page { size: A4; margin: 0; }
-  :root { --biru:#2455e6; --laut:#0ea5c6; --oranye:#ff8a3d; --hijau:#17a974; --ungu:#7b5cff; --jambu:#f0508a; --tinta:#0f1b3d; --teks:#4a5578; --garis:#e4e8f1; --latar:#f6f8fc;
-    --gradien: linear-gradient(120deg,#2455e6 0%,#7b5cff 55%,#0ea5c6 100%); }
+  :root { --biru:#2455e6; --laut:#0ea5c6; --oranye:#ff8a3d; --hijau:#17a974; --ungu:#e5940a; --jambu:#f0508a; --tinta:#0f1b3d; --teks:#4a5578; --garis:#e4e8f1; --latar:#f6f8fc;
+    --gradien: linear-gradient(120deg,#2455e6 0%,#0ea5c6 55%,#17a974 100%); }
   * { box-sizing: border-box; margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body { font-family: "PJS", sans-serif; color: var(--teks); font-size: 10.5pt; line-height: 1.6; }
   .hal { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; padding: 18mm 20mm 24mm; }
@@ -24,7 +24,7 @@
 
   /* Sampul */
   .sampul { background: var(--gradien); color: #fff; padding: 26mm 22mm; display: flex; flex-direction: column; }
-  .sampul::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 85% 8%, rgba(240,80,138,.45), transparent 32%), radial-gradient(rgba(255,255,255,.16) 1.4px, transparent 1.8px); background-size: auto, 7mm 7mm; }
+  .sampul::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 85% 8%, rgba(255,255,255,.2), transparent 32%), radial-gradient(rgba(255,255,255,.16) 1.4px, transparent 1.8px); background-size: auto, 7mm 7mm; }
   .sampul > * { position: relative; }
   .cincin { position: absolute; right: -40mm; bottom: -50mm; width: 150mm; height: 150mm; border-radius: 50%; border: 18mm solid rgba(255,255,255,.1); }
   .logo-sampul { width: 46mm; height: 46mm; border-radius: 12mm; background: #fff; display: grid; place-items: center; box-shadow: 0 10mm 20mm -8mm rgba(0,0,0,.4); }

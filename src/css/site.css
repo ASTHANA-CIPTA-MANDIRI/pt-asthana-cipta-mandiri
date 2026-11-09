@@ -1,8 +1,10 @@
 /* =========================================================
    PT. Asthana Cipta Mandiri — sistem desain situs
    Warna diambil dari logo grup: biru Asthana, laut & oranye
-   Orcha Journey, hijau Reka Teknologi, ditambah ungu sebagai
-   penghubung gradasi.
+   Orcha Journey, hijau Reka Teknologi. Gradasi utamanya = ketiga
+   perusahaan: biru Asthana → toska Orcha → hijau Reka.
+   Catatan: variabel & kelas bernama "ungu" kini berisi KUNING MENTARI
+   (namanya dipertahankan supaya HTML & skrip tidak perlu diubah).
    ========================================================= */
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "bootstrap-icons/font/bootstrap-icons.css";
@@ -22,8 +24,8 @@
   --oranye-muda: #fff1e6;
   --hijau: #17a974;
   --hijau-muda: #e2f6ee;
-  --ungu: #7b5cff;
-  --ungu-muda: #f0ecff;
+  --ungu: #e5940a;       /* kuning mentari */
+  --ungu-muda: #fff3dc;
   --merah-jambu: #f0508a;
   --merah-jambu-muda: #fde9f1;
 
@@ -34,7 +36,7 @@
   --latar: #f6f8fc;
   --putih: #ffffff;
 
-  --gradien: linear-gradient(120deg, #2455e6 0%, #7b5cff 55%, #0ea5c6 100%);
+  --gradien: linear-gradient(120deg, #2455e6 0%, #0ea5c6 55%, #17a974 100%);
   --gradien-hangat: linear-gradient(120deg, #ff8a3d 0%, #f0508a 100%);
   --radius: 20px;
   --radius-kecil: 12px;
@@ -572,7 +574,7 @@ main { padding-top: var(--tinggi-nav); }
   opacity: 0.45;
 }
 .bagian-gelap::before { width: 420px; height: 420px; background: var(--biru); top: -160px; left: -100px; }
-.bagian-gelap::after { width: 380px; height: 380px; background: var(--ungu); bottom: -160px; right: -80px; }
+.bagian-gelap::after { width: 380px; height: 380px; background: var(--laut); bottom: -160px; right: -80px; }
 .bagian-gelap h2,
 .bagian-gelap h3 { color: #fff; }
 .bagian-gelap .sub-bagian { color: #c9d1e8; }
@@ -643,7 +645,7 @@ main { padding-top: var(--tinggi-nav); }
   z-index: -1;
   inset: 0;
   background:
-    radial-gradient(circle at 8% 0%, rgba(240, 80, 138, 0.45), transparent 38%),
+    radial-gradient(circle at 8% 0%, rgba(255, 255, 255, 0.22), transparent 40%),
     radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.18), transparent 45%);
 }
 .ajakan::after {
@@ -679,7 +681,7 @@ main { padding-top: var(--tinggi-nav); }
   inset: 0;
   z-index: -1;
   background-image:
-    radial-gradient(circle at 78% 0%, rgba(240, 80, 138, 0.42), transparent 34%),
+    radial-gradient(circle at 78% 0%, rgba(255, 255, 255, 0.2), transparent 36%),
     radial-gradient(rgba(255, 255, 255, 0.16) 1.5px, transparent 2px);
   background-size: auto, 22px 22px;
 }
@@ -1078,7 +1080,7 @@ main { padding-top: var(--tinggi-nav); }
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: var(--ungu);
+  background: var(--laut);
   filter: blur(60px);
   opacity: 0.6;
 }
@@ -1171,7 +1173,7 @@ main { padding-top: var(--tinggi-nav); }
   position: absolute;
   inset: 0 0 auto 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--biru), var(--ungu), var(--laut), var(--hijau), var(--oranye));
+  background: linear-gradient(90deg, var(--biru), var(--laut), var(--hijau), var(--ungu), var(--oranye));
 }
 .merek-terang { color: #fff; }
 .merek-terang:hover { color: #fff; }
