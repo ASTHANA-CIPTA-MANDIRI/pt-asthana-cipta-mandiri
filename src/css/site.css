@@ -2037,3 +2037,5 @@ body.ada-bilah-lamar #konten { padding-bottom: 84px; }
   .angka-karir strong { font-size: 1.6rem; }
   .angka-karir span { font-size: 0.74rem; }
 }
+
+.sumber-berita { margin-top: 28px; padding: 14px 18px; border-radius: 14px; background: var(--laut-muda, #e1f6fb); color: var(--tinta); font-size: 0.95rem; }

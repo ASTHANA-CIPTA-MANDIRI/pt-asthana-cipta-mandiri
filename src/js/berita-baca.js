@@ -28,6 +28,15 @@ else
       if (sampul) Object.assign($("sampulBerita"), { src: sampul, hidden: false, alt: b.judul });
       $("prosaBerita").innerHTML = b.isi ? htmlAman(b.isi) : `<p>${esc(b.ringkasan || "")}</p>`;
 
+      // Artikel dari blog Orcha Journey: sebut sumbernya + tautan ke aslinya.
+      const asli = b.sumber === "orcha" ? urlAman(b.tautan_asli) : "";
+      if (asli) {
+        $("prosaBerita").insertAdjacentHTML(
+          "beforeend",
+          `<p class="sumber-berita"><i class="bi bi-airplane me-1"></i>${t("Artikel ini dari blog", "This article is from the")} <a href="${esc(asli)}" target="_blank" rel="noopener">Orcha Journey</a>${t(", anak perusahaan kami.", " blog, our subsidiary.")}</p>`
+        );
+      }
+
       // Lewat lemon: pratinjau WhatsApp/LinkedIn berisi judul & sampul berita ini.
       const tautanBagi = `${PHOENIX_URL}/situs/berita/${encodeURIComponent(slug)}`;
       const url = encodeURIComponent(tautanBagi);
