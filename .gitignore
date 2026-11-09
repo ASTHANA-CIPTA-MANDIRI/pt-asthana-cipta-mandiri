@@ -26,3 +26,7 @@ dist-ssr
 # Konfigurasi lokal & berkas sementara
 .env
 alat/.profil-sementara.html
+
+# Salinan ganda OneDrive/iCloud ("nama 2.ext") — jangan pernah ikut repo
+* 2.*
+* 2
