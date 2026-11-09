@@ -1609,3 +1609,25 @@ main { padding-top: var(--tinggi-nav); }
 }
 .pilar-gambar img[src*="tim-di-laptop"] { object-position: 50% 15%; }
 .profil-afiliasi .foto-latar[src*="reka-meja"] { object-position: 62% 50%; }
+
+/* Tombol situs + media sosial tiap anak perusahaan */
+.aksi-afiliasi { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.sosial-afiliasi { display: flex; align-items: center; gap: 12px; }
+.sosial-afiliasi > span { font-size: 0.82rem; font-weight: 700; color: var(--teks); }
+.tombol-sosmed { display: flex; gap: 8px; }
+.tombol-sosmed a {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  font-size: 1.15rem;
+  color: var(--c, var(--biru));
+  background: var(--c-muda, #eef2ff);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.tombol-sosmed a:hover { color: #fff; transform: translateY(-3px); }
+.tombol-sosmed .sosmed-instagram:hover { background: linear-gradient(45deg, #f9a03f, #e1306c 55%, #833ab4); }
+.tombol-sosmed .sosmed-tiktok:hover { background: #111; }
+.tombol-sosmed .sosmed-youtube:hover { background: #ff0000; }
