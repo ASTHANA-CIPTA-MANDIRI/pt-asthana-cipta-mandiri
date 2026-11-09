@@ -337,8 +337,11 @@ main { padding-top: var(--tinggi-nav); }
 }
 .hero .lead { font-size: 1.15rem; color: var(--teks); max-width: 560px; }
 .ketik {
-  display: inline-block;
-  min-width: 1ch;
+  /* Selalu di baris sendiri, tinggi baris dipesan: kata yang sedang diketik
+     tidak lagi mulai di samping "yang" lalu melompat turun saat memanjang,
+     dan teks di bawahnya tidak ikut naik-turun. */
+  display: block;
+  min-height: 1.12em;
   transition: opacity 0.35s ease;
 }
 .ketik::after {
@@ -380,6 +383,9 @@ main { padding-top: var(--tinggi-nav); }
 .kolase .besar { grid-row: span 2; border-radius: 120px 28px 28px 28px; }
 .kolase .atas { border-radius: 28px 28px 28px 80px; }
 .kolase .bawah { border-radius: 28px 80px 28px 28px; }
+/* Foto trip tegak: pusatkan pada orangnya, bukan langit/tanah */
+.kolase img[src*="trip-savana"] { object-position: 50% 20%; }
+.kolase img[src*="trip-snorkeling"] { object-position: 50% 38%; }
 .lencana-apung {
   position: absolute;
   display: flex;
