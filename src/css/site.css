@@ -1557,3 +1557,4 @@ main { padding-top: var(--tinggi-nav); }
   .lencana-merek img { width: 40px; height: 40px; }
   .lencana-merek strong { font-size: 0.98rem; }
 }
+.pilar-gambar img[src*="tim-di-laptop"] { object-position: 50% 15%; }
