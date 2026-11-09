@@ -25,8 +25,8 @@
             <h3 class="judul-kaki">Perusahaan</h3>
             <ul class="daftar-kaki">
               <li><a href="/tentang/">Tentang Kami</a></li>
-              <li><a href="/portofolio/">Portofolio</a></li>
-              <li><a href="/berita/">Berita</a></li>
+              <li data-ada="portofolio" hidden><a href="/portofolio/">Portofolio</a></li>
+              <li data-ada="berita" hidden><a href="/berita/">Berita</a></li>
               <li><a href="/karir/">Karir</a></li>
             </ul>
           </div>
@@ -44,7 +44,7 @@
           <div class="col-lg-4">
             <h3 class="judul-kaki">Kantor</h3>
             <ul class="daftar-kaki daftar-kontak">
-              <li>
+              <li data-jika="alamat_jalan">
                 <i class="bi bi-geo-alt"></i>
                 <span>{{p.alamat_jalan}},<br />{{p.alamat_kota}}</span>
               </li>

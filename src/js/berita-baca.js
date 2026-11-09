@@ -1,4 +1,5 @@
 import { t } from "./bahasa.js";
+import { PHOENIX_URL } from "./config.js";
 import { ambil, esc, urlAman, htmlAman, tanggal, kartuBerita, munculkan } from "./situs.js";
 
 const $ = (id) => document.getElementById(id);
@@ -27,17 +28,19 @@ else
       if (sampul) Object.assign($("sampulBerita"), { src: sampul, hidden: false, alt: b.judul });
       $("prosaBerita").innerHTML = b.isi ? htmlAman(b.isi) : `<p>${esc(b.ringkasan || "")}</p>`;
 
-      const url = encodeURIComponent(location.href);
+      // Lewat lemon: pratinjau WhatsApp/LinkedIn berisi judul & sampul berita ini.
+      const tautanBagi = `${PHOENIX_URL}/situs/berita/${encodeURIComponent(slug)}`;
+      const url = encodeURIComponent(tautanBagi);
       $("bagiWa").href = `https://wa.me/?text=${encodeURIComponent(b.judul + " — ")}${url}`;
       $("bagiLi").href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
       $("salinTautan").addEventListener("click", async (e) => {
         // Diambil sebelum await: sesudahnya currentTarget sudah null.
         const tombol = e.currentTarget;
         try {
-          await navigator.clipboard.writeText(location.href);
+          await navigator.clipboard.writeText(tautanBagi);
           tombol.innerHTML = `<i class="bi bi-check2 me-1"></i>${t("Tersalin", "Copied")}`;
         } catch {
-          prompt(t("Salin tautan ini:", "Copy this link:"), location.href);
+          prompt(t("Salin tautan ini:", "Copy this link:"), tautanBagi);
         }
       });
 

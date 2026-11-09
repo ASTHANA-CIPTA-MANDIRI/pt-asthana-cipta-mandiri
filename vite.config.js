@@ -7,6 +7,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const FOLDER_POTONGAN = resolve(__dirname, "partials");
 const BERKAS_DATA = resolve(__dirname, "data/perusahaan.json");
 
+// Salinan ganda buatan OneDrive/iCloud ("index 2.html", "en/news 2") —
+// dulu ikut terbit sebagai halaman versi lama.
+const SALINAN_GANDA = / \d+(\.[^.]+)?$/;
+
 // Folder yang bukan halaman situs
 const BUKAN_HALAMAN = new Set(["node_modules", "dist", "partials", "public", "src", "data", "alat", ".git"]);
 
@@ -16,8 +20,8 @@ function cariHalaman(dir = __dirname) {
   for (const nama of readdirSync(dir)) {
     const jalur = resolve(dir, nama);
     if (statSync(jalur).isDirectory()) {
-      if (!BUKAN_HALAMAN.has(nama) && !nama.startsWith(".")) hasil.push(...cariHalaman(jalur));
-    } else if (nama.endsWith(".html")) {
+      if (!BUKAN_HALAMAN.has(nama) && !nama.startsWith(".") && !SALINAN_GANDA.test(nama)) hasil.push(...cariHalaman(jalur));
+    } else if (nama.endsWith(".html") && !SALINAN_GANDA.test(nama)) {
       hasil.push(jalur);
     }
   }
@@ -100,6 +104,10 @@ function susunHalaman(env) {
         html = html.replace("{{kepala_situs}}", kepala);
         html = html.replace(/\{\{situs\}\}/g, situs);
 
+        // Blok bersyarat (boleh berisi elemen bersarang):
+        //   <!--jika:alamat_jalan--> … <!--/jika:alamat_jalan-->
+        html = html.replace(/<!--jika:(\w+)-->([\s\S]*?)<!--\/jika:\1-->/g, (_, kunci, isi) => (p[kunci] ? isi : ""));
+
         // Elemen bersyarat: dibuang bila data perusahaannya kosong
         html = html.replace(
           /<(a|li|div|p|span)\b([^>]*?)\sdata-jika="(\w+)"([^>]*)>([\s\S]*?)<\/\1>/g,
@@ -120,7 +128,7 @@ function susunHalaman(env) {
       const halaman = cariHalaman()
         .map(jalurPublik)
         // Halaman yang isinya ditentukan ?slug= tidak berarti apa-apa tanpa slug.
-        .filter((j) => !j.startsWith("/404") && !/\/(detail|baca|read|formulir|apply)\.html$/.test(j));
+        .filter((j) => !/(^|\/)404\.html$/.test(j) && !/\/(detail|baca|read|formulir|apply)\.html$/.test(j));
       if (situs) {
         const url = halaman
           .sort()

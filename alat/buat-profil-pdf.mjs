@@ -14,6 +14,7 @@ const situs = (env.match(/^VITE_SITE_URL=(.*)$/m)?.[1] || "").trim().replace(/\/
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
 const html = readFileSync(resolve(akar, "alat/company-profile.html"), "utf8")
+  .replace(/<!--jika:(\w+)-->([\s\S]*?)<!--\/jika:\1-->/g, (_, k, isi) => (p[k] ? isi : ""))
   .replace(/\{\{p\.(\w+)\}\}/g, (_, k) => esc(p[k] ?? ""))
   // Baris alamat situs hanya ada bila VITE_SITE_URL sudah diisi.
   .replace(/<!--situs-->([\s\S]*?)<!--\/situs-->/, (_, isi) => (situs ? isi : ""))

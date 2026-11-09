@@ -246,6 +246,9 @@ async function handleSubmit(e) {
       email: formValues.email,
       message: formValues.message,
     };
+    // Kolom jebakan bot: hanya ikut bila terisi (manusia tidak melihatnya).
+    const jebakan = document.getElementById("situsWeb")?.value;
+    if (jebakan) requestBody.situs_web = jebakan;
 
     // Submit to API
     const response = await fetch(`${API_BASE_URL}/message`, {

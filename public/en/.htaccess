@@ -1,0 +1,2 @@
+# Halaman /en/ yang tidak ada → halaman 404 berbahasa Inggris
+ErrorDocument 404 /en/404.html

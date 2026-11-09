@@ -1,5 +1,6 @@
 // Perilaku bersama untuk semua halaman.
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { API_BASE_URL } from "./js/config.js";
 
 // Navbar: bayangan saat digulir & tombol kembali ke atas
 const navbar = document.getElementById("navbarSitus");
@@ -96,3 +97,34 @@ if (ketik) {
     putar();
   }
 }
+
+// Menu Portofolio & Berita baru tampil bila isinya minimal satu (dari lemon).
+// Jumlahnya disimpan 10 menit di sessionStorage supaya pindah halaman tidak
+// berkedip dan tidak menembak API setiap kali.
+(async function tampilkanMenuBerisi() {
+  const butir = document.querySelectorAll("[data-ada]");
+  if (!butir.length) return;
+  const terapkan = (ringkas) =>
+    butir.forEach((el) => (el.hidden = !(ringkas?.[el.dataset.ada] > 0)));
+
+  const KUNCI = "asthana:ringkas";
+  try {
+    const simpan = JSON.parse(sessionStorage.getItem(KUNCI) || "null");
+    if (simpan && Date.now() - simpan.t < 10 * 60 * 1000) return terapkan(simpan.data);
+  } catch {
+    // sessionStorage bisa diblokir; lanjut ambil dari API.
+  }
+  try {
+    const res = await fetch(`${API_BASE_URL}/situs/ringkas`, { headers: { Accept: "application/json" } });
+    if (!res.ok) return;
+    const data = (await res.json()).data;
+    terapkan(data);
+    try {
+      sessionStorage.setItem(KUNCI, JSON.stringify({ t: Date.now(), data }));
+    } catch {
+      // abaikan
+    }
+  } catch {
+    // API tak terjangkau: menu tetap tersembunyi.
+  }
+})();

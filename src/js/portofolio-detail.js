@@ -1,3 +1,4 @@
+import { PHOENIX_URL } from "./config.js";
 import { t, labelKategori } from "./bahasa.js";
 import { ambil, esc, urlAman, htmlAman, kartuPortofolio, munculkan } from "./situs.js";
 
@@ -45,6 +46,8 @@ else
         p.tahun && [t("Tahun", "Year"), esc(p.tahun)],
         tautan && [t("Tautan", "Link"), `<a href="${esc(tautan)}" target="_blank" rel="noopener" class="text-white">${esc(new URL(tautan).hostname)} <i class="bi bi-box-arrow-up-right"></i></a>`],
       ].filter(Boolean);
+      pasangBagikan(p);
+
       $("ringkasProyek").innerHTML = baris
         .map(([k, v]) => `<div style="background:rgba(255,255,255,.08)"><small>${k}</small><strong class="text-white">${v}</strong></div>`)
         .join("");
@@ -60,3 +63,20 @@ else
       }
     })
     .catch(galat);
+
+/** Bagikan lewat lemon: pratinjau WhatsApp/LinkedIn berisi judul & sampul proyek. */
+function pasangBagikan(p) {
+  const url = `${PHOENIX_URL}/situs/portofolio/${encodeURIComponent(p.slug)}`;
+  document.getElementById("bagiWa").href = `https://wa.me/?text=${encodeURIComponent(`${p.judul}\n${url}`)}`;
+  document.getElementById("bagiLi").href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+  const tombol = document.getElementById("salinTautan");
+  tombol.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      tombol.innerHTML = '<i class="bi bi-check2"></i>';
+      setTimeout(() => (tombol.innerHTML = '<i class="bi bi-link-45deg"></i>'), 2000);
+    } catch {
+      prompt(t("Salin tautan ini:", "Copy this link:"), url);
+    }
+  });
+}

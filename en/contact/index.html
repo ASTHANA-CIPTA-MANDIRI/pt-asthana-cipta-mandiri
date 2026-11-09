@@ -23,8 +23,9 @@
 
       <section class="bagian pt-5">
         <div class="container">
-          <div class="row g-4 mb-5">
-            <div class="col-md-4" data-muncul>
+          <div class="row g-4 mb-5 justify-content-center">
+            <!--jika:alamat_jalan-->
+            <div class="col-md-6 col-lg" data-muncul>
               <div class="kartu-kontak warna-biru">
                 <span class="ikon-petak"><i class="bi bi-geo-alt"></i></span>
                 <div>
@@ -33,7 +34,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4" data-muncul style="--tunda: 0.08s">
+            <!--/jika:alamat_jalan-->
+            <div class="col-md-6 col-lg" data-muncul style="--tunda: 0.08s">
               <div class="kartu-kontak warna-hijau">
                 <span class="ikon-petak"><i class="bi bi-whatsapp"></i></span>
                 <div>
@@ -43,7 +45,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4" data-muncul style="--tunda: 0.16s">
+            <div class="col-md-6 col-lg" data-muncul style="--tunda: 0.16s">
               <div class="kartu-kontak warna-oranye">
                 <span class="ikon-petak"><i class="bi bi-envelope"></i></span>
                 <div>
@@ -61,6 +63,11 @@
                 <span class="label-bagian">Send a Message</span>
                 <h2 class="h3 mb-4">How can we help?</h2>
                 <form id="contactForm" novalidate>
+                  <!-- Jebakan bot: tersembunyi dari manusia & pembaca layar -->
+                  <div class="medan-jebakan" aria-hidden="true">
+                    <label for="situsWeb">Website (leave empty)</label>
+                    <input type="text" id="situsWeb" name="situs_web" tabindex="-1" autocomplete="off" />
+                  </div>
                   <div class="row g-3">
                     <div class="col-md-6">
                       <label for="name" class="form-label">Name <span class="wajib">*</span></label>
@@ -115,6 +122,7 @@
         </div>
       </section>
 
+      <!--jika:peta_kueri-->
       <section class="pb-5 mb-4">
         <div class="container">
           <div class="peta" data-muncul>
@@ -127,6 +135,7 @@
           </div>
         </div>
       </section>
+      <!--/jika:peta_kueri-->
     </main>
 
     <!-- @include footer-en -->
