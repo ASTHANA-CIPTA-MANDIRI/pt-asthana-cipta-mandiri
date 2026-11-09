@@ -43,6 +43,11 @@
                 </div>
 
                 <form id="applicationForm" novalidate>
+                  <!-- Jebakan bot: tersembunyi dari manusia & pembaca layar -->
+                  <div class="medan-jebakan" aria-hidden="true">
+                    <label for="situsWeb">Situs web (kosongkan)</label>
+                    <input type="text" id="situsWeb" name="situs_web" tabindex="-1" autocomplete="off" />
+                  </div>
                   <div class="row g-4">
                     <div class="col-12 medan" id="jobSelectWrapper">
                       <label for="jobId" class="form-label">Posisi yang Dilamar <span class="wajib">*</span></label>

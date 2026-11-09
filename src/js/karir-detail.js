@@ -1,7 +1,7 @@
 // Halaman detail lowongan: isi dari penyunting lemon (HTML, dibersihkan),
 // fakta posisi, tombol bagikan, lowongan lain, dan data terstruktur
 // JobPosting untuk Google for Jobs.
-import { API_BASE_URL } from "./config.js";
+import { API_BASE_URL, PHOENIX_URL } from "./config.js";
 import { t, jalur } from "./bahasa.js";
 import { esc, htmlAman, munculkan } from "./situs.js";
 import {
@@ -34,6 +34,7 @@ async function init() {
   pasangJobPosting(lowongan);
   muatLowonganLain(lowongan);
   $("applyBtn").addEventListener("click", keFormulir);
+  pasangBilahLamar(lowongan);
 }
 
 function gambar(job) {
@@ -108,7 +109,10 @@ function isiBagian(id, html) {
 }
 
 function pasangBagikan(job) {
-  const url = location.href;
+  // Tautan lewat lemon: perayap WhatsApp/LinkedIn mendapat judul & ringkasan
+  // posisi ini (halaman situs dirakit di peramban, jadi perayap hanya melihat
+  // "Karir"); manusia langsung dialihkan kembali ke halaman ini.
+  const url = `${PHOENIX_URL}/lowongan/${encodeURIComponent(job.slug)}`;
   const teks = t(`Lowongan ${job.title} di ${unitDari(job).nama}`, `${job.title} opening at ${unitDari(job).nama}`);
   $("bagikanWa").href = `https://wa.me/?text=${encodeURIComponent(`${teks}\n${url}`)}`;
   $("bagikanLi").href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
@@ -186,6 +190,31 @@ async function muatLowonganLain(job) {
   } catch {
     // Bagian tambahan: diam saja bila gagal.
   }
+}
+
+/**
+ * Ponsel: panel lamar berada di bawah seluruh deskripsi, jadi bilah kecil
+ * menempel di bawah layar — disembunyikan saat panel lamar sendiri terlihat.
+ */
+function pasangBilahLamar(job) {
+  const bilah = $("bilahLamar");
+  $("bilahJudul").textContent = job.title;
+  $("bilahKet").textContent = unitDari(job).nama;
+  $("bilahTombol").addEventListener("click", keFormulir);
+
+  const ponsel = window.matchMedia("(max-width: 991.98px)");
+  let panelTerlihat = false;
+  const perbarui = () => {
+    const tampil = ponsel.matches && !panelTerlihat;
+    bilah.hidden = !tampil;
+    document.body.classList.toggle("ada-bilah-lamar", tampil);
+  };
+  new IntersectionObserver(([e]) => {
+    panelTerlihat = e.isIntersecting;
+    perbarui();
+  }).observe(document.querySelector(".kartu-lamar"));
+  ponsel.addEventListener("change", perbarui);
+  perbarui();
 }
 
 function keFormulir() {

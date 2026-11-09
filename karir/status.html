@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <!-- @include head padanan="/en/careers/status.html" judul="Cek Status Lamaran" deskripsi="Pantau tahap seleksi lamaran kerja Anda di PT. Asthana Cipta Mandiri dengan nomor lamaran dan email." -->
+  </head>
+  <body>
+    <!-- @include header padanan="/en/careers/status.html" aktif="karir" -->
+
+    <main id="konten">
+      <section class="kepala-halaman">
+        <div class="container">
+          <ol class="remah" aria-label="Remah roti">
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/karir/">Karir</a></li>
+            <li aria-current="page">Cek Status</li>
+          </ol>
+          <h1>Cek status lamaran</h1>
+          <p>Masukkan nomor lamaran dari email konfirmasi dan email yang Anda pakai saat melamar.</p>
+        </div>
+        <span class="lengkung" aria-hidden="true"></span>
+      </section>
+
+      <section class="bagian pt-5">
+        <div class="container">
+          <div class="row g-4 justify-content-center">
+            <div class="col-lg-8">
+              <div class="kartu-borang">
+                <form id="formStatus" class="row g-3 align-items-end" novalidate>
+                  <div class="col-md medan">
+                    <label for="nomor" class="form-label">Nomor lamaran <span class="wajib">*</span></label>
+                    <input type="text" class="form-control text-uppercase font-monospace" id="nomor" name="nomor" placeholder="RKA-101126-7KQ2X" maxlength="30" autocomplete="off" required />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-md medan">
+                    <label for="emailStatus" class="form-label">Email <span class="wajib">*</span></label>
+                    <input type="email" class="form-control" id="emailStatus" name="email" placeholder="contoh@email.com" maxlength="150" autocomplete="email" required />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-md-auto d-grid">
+                    <button type="submit" class="btn btn-warna text-nowrap px-4" id="tombolCek"><i class="bi bi-search me-1"></i>Cek</button>
+                  </div>
+                </form>
+
+                <div id="hasilStatus" class="hasil-status" hidden aria-live="polite"></div>
+              </div>
+              <p class="text-center text-secondary small mt-4">
+                Lupa nomor lamaran? Cari email berjudul “Lamaran Anda sudah kami terima” di kotak masuk atau folder spam, atau
+                <a href="/kontak/">hubungi kami</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- @include footer -->
+    <script type="module" src="/src/js/karir-status.js"></script>
+  </body>
+</html>

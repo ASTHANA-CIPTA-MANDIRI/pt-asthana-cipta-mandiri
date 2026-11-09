@@ -9,22 +9,40 @@
     <main id="konten">
       <div class="alert-container" id="alertContainer"></div>
 
-      <section class="kepala-halaman">
+      <section class="kepala-halaman kepala-karir">
         <div class="container">
-          <ol class="remah" aria-label="Remah roti">
-            <li><a href="/">Beranda</a></li>
-            <li aria-current="page">Karir</li>
-          </ol>
-          <h1>Kembangkan karir Anda bersama kami</h1>
-          <p>
-            Temukan peluang terbaik dan kembangkan potensi Anda di tim
-            teknologi dan pariwisata kami.
-          </p>
-          <div class="d-flex flex-wrap align-items-center gap-3 mt-4">
-            <a href="#lowongan" class="btn btn-putih">
-              Lihat Lowongan <i class="bi bi-arrow-down ms-1"></i>
-            </a>
-            <span class="pil-jumlah" data-jumlah-lowongan hidden></span>
+          <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+              <ol class="remah" aria-label="Remah roti">
+                <li><a href="/">Beranda</a></li>
+                <li aria-current="page">Karir</li>
+              </ol>
+              <h1>Kembangkan karir Anda bersama kami</h1>
+              <p>
+                Temukan peluang terbaik dan kembangkan potensi Anda di tim teknologi dan pariwisata kami.
+              </p>
+              <div class="d-flex flex-wrap align-items-center gap-3 mt-4">
+                <a href="#lowongan" class="btn btn-putih">
+                  Lihat Lowongan <i class="bi bi-arrow-down ms-1"></i>
+                </a>
+                <a href="/karir/status.html" class="btn btn-kaca">
+                  <i class="bi bi-search me-1"></i> Cek Status Lamaran
+                </a>
+              </div>
+              <ul class="angka-karir">
+                <li><strong data-jumlah-angka>—</strong><span>posisi terbuka</span></li>
+                <li><strong>3</strong><span>perusahaan dalam grup</span></li>
+                <li><strong>2</strong><span>bidang: teknologi &amp; pariwisata</span></li>
+              </ul>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+              <div class="kolase-karir" aria-hidden="true">
+                <img class="besar" src="/src/assets/img/foto/tim-asthana-rapat.webp" alt="" />
+                <img class="kecil atas" src="/src/assets/img/foto/tim-di-laptop.webp" alt="" />
+                <img class="kecil bawah" src="/src/assets/img/foto/trip-orcha-banyuwangi.webp" alt="" />
+                <span class="lencana-kolase"><i class="bi bi-stars"></i> Kami sedang merekrut</span>
+              </div>
+            </div>
           </div>
         </div>
         <span class="lengkung" aria-hidden="true"></span>
@@ -193,6 +211,17 @@
         </div>
       </section>
 
+      <!-- Suara karyawan (dari lemon; tersembunyi bila kosong) -->
+      <section class="bagian" id="bagianSuara" hidden>
+        <div class="container">
+          <div class="kepala-bagian tengah" data-muncul>
+            <span class="label-bagian warna-jambu">Suara Karyawan</span>
+            <h2 class="judul-bagian">Kata mereka yang sudah bergabung</h2>
+          </div>
+          <div class="row g-4 justify-content-center" id="daftarSuara"></div>
+        </div>
+      </section>
+
       <!-- Tanya jawab -->
       <section class="bagian bagian-latar">
         <div class="container">
@@ -211,7 +240,7 @@
                 </details>
                 <details>
                   <summary>Kapan saya akan dihubungi?</summary>
-                  <p>Setiap lamaran kami tinjau. Bila profil Anda sesuai, tim kami menghubungi lewat email atau telepon untuk tahap berikutnya. Nomor lamaran di email konfirmasi bisa Anda sebutkan saat bertanya.</p>
+                  <p>Setiap lamaran kami tinjau. Bila profil Anda sesuai, tim kami menghubungi lewat email atau telepon untuk tahap berikutnya. Tahap seleksi bisa Anda pantau kapan saja di halaman <a href="/karir/status.html">Cek Status Lamaran</a> dengan nomor lamaran dari email konfirmasi.</p>
                 </details>
                 <details>
                   <summary>Bolehkah melamar lebih dari satu posisi?</summary>

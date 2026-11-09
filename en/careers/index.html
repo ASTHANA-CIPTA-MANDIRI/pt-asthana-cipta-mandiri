@@ -9,22 +9,40 @@
     <main id="konten">
       <div class="alert-container" id="alertContainer"></div>
 
-      <section class="kepala-halaman">
+      <section class="kepala-halaman kepala-karir">
         <div class="container">
-          <ol class="remah" aria-label="Breadcrumb">
-            <li><a href="/en/">Home</a></li>
-            <li aria-current="page">Careers</li>
-          </ol>
-          <h1>Grow your career with us</h1>
-          <p>
-            Find the right opportunity and grow your potential in our
-            technology and tourism teams.
-          </p>
-          <div class="d-flex flex-wrap align-items-center gap-3 mt-4">
-            <a href="#lowongan" class="btn btn-putih">
-              View Openings <i class="bi bi-arrow-down ms-1"></i>
-            </a>
-            <span class="pil-jumlah" data-jumlah-lowongan hidden></span>
+          <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+              <ol class="remah" aria-label="Breadcrumb">
+                <li><a href="/en/">Home</a></li>
+                <li aria-current="page">Careers</li>
+              </ol>
+              <h1>Grow your career with us</h1>
+              <p>
+                Find the right opportunity and grow your potential in our technology and tourism teams.
+              </p>
+              <div class="d-flex flex-wrap align-items-center gap-3 mt-4">
+                <a href="#lowongan" class="btn btn-putih">
+                  View Openings <i class="bi bi-arrow-down ms-1"></i>
+                </a>
+                <a href="/en/careers/status.html" class="btn btn-kaca">
+                  <i class="bi bi-search me-1"></i> Check Application Status
+                </a>
+              </div>
+              <ul class="angka-karir">
+                <li><strong data-jumlah-angka>—</strong><span>open positions</span></li>
+                <li><strong>3</strong><span>companies in the group</span></li>
+                <li><strong>2</strong><span>fields: tech &amp; tourism</span></li>
+              </ul>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+              <div class="kolase-karir" aria-hidden="true">
+                <img class="besar" src="/src/assets/img/foto/tim-asthana-rapat.webp" alt="" />
+                <img class="kecil atas" src="/src/assets/img/foto/tim-di-laptop.webp" alt="" />
+                <img class="kecil bawah" src="/src/assets/img/foto/trip-orcha-banyuwangi.webp" alt="" />
+                <span class="lencana-kolase"><i class="bi bi-stars"></i> We are hiring</span>
+              </div>
+            </div>
           </div>
         </div>
         <span class="lengkung" aria-hidden="true"></span>
@@ -193,6 +211,17 @@
         </div>
       </section>
 
+      <!-- Suara karyawan (dari lemon; tersembunyi bila kosong) -->
+      <section class="bagian" id="bagianSuara" hidden>
+        <div class="container">
+          <div class="kepala-bagian tengah" data-muncul>
+            <span class="label-bagian warna-jambu">Life at Asthana</span>
+            <h2 class="judul-bagian">From the people who work here</h2>
+          </div>
+          <div class="row g-4 justify-content-center" id="daftarSuara"></div>
+        </div>
+      </section>
+
       <!-- Tanya jawab -->
       <section class="bagian bagian-latar">
         <div class="container">
@@ -211,7 +240,7 @@
                 </details>
                 <details>
                   <summary>When will I hear back?</summary>
-                  <p>We review every application. If your profile is a match, our team contacts you by email or phone for the next step. Mention the application number from your confirmation email when you ask about it.</p>
+                  <p>We review every application. If your profile is a match, our team contacts you by email or phone for the next step. You can follow your hiring stage any time on the <a href="/en/careers/status.html">Check Application Status</a> page using the number from your confirmation email.</p>
                 </details>
                 <details>
                   <summary>Can I apply for more than one role?</summary>

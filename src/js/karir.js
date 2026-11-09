@@ -2,7 +2,7 @@
 // tampilkan jumlah posisi terbuka.
 import { API_BASE_URL } from "./config.js";
 import { t } from "./bahasa.js";
-import { munculkan } from "./situs.js";
+import { munculkan, esc, urlAman, inisial, warnaKe } from "./situs.js";
 import { UNIT, JENIS, kartuLowongan } from "./lowongan.js";
 
 const el = {
@@ -15,6 +15,7 @@ const el = {
   chipUnit: document.getElementById("chipUnit"),
   pilihJenis: document.getElementById("pilihJenis"),
   jumlah: document.querySelectorAll("[data-jumlah-lowongan]"),
+  angka: document.querySelector("[data-jumlah-angka]"),
   ringkasJumlah: document.getElementById("ringkasJumlah"),
   galat: document.getElementById("alertContainer"),
 };
@@ -46,6 +47,7 @@ async function init() {
 }
 
 function tulisJumlah(n) {
+  if (el.angka) el.angka.textContent = n;
   el.jumlah.forEach((x) => {
     x.textContent = n ? t(`${n} posisi terbuka`, `${n} open position${n > 1 ? "s" : ""}`) : t("Belum ada posisi terbuka", "No open positions yet");
     x.hidden = false;
@@ -147,4 +149,35 @@ function tampilkanGalat(pesan) {
   setTimeout(() => a.remove(), 6000);
 }
 
+/** Kutipan karyawan dari lemon; bagiannya tetap tersembunyi bila kosong. */
+async function muatSuara() {
+  try {
+    const res = await fetch(`${API_BASE_URL}/situs/karir`, { headers: { Accept: "application/json" } });
+    if (!res.ok) return;
+    const daftar = (await res.json()).data?.suara_karyawan || [];
+    if (!daftar.length) return;
+    const wadah = document.getElementById("daftarSuara");
+    wadah.innerHTML = daftar
+      .map((s, i) => {
+        const foto = urlAman(s.foto_url);
+        return `
+        <div class="col-md-6 col-lg-4" data-muncul style="--tunda:${(i % 3) * 0.06}s">
+          <figure class="kartu-suara warna-${warnaKe(i)}">
+            <blockquote>${esc(s.isi)}</blockquote>
+            <figcaption>
+              ${foto ? `<img class="foto-suara" src="${esc(foto)}" alt="" loading="lazy" />` : `<span class="inisial-suara">${esc(inisial(s.nama))}</span>`}
+              <span><strong>${esc(s.nama)}</strong><small>${esc([s.jabatan, s.perusahaan].filter(Boolean).join(" · "))}</small></span>
+            </figcaption>
+          </figure>
+        </div>`;
+      })
+      .join("");
+    document.getElementById("bagianSuara").hidden = false;
+    munculkan(wadah);
+  } catch {
+    // Bagian tambahan: diam saja bila gagal.
+  }
+}
+
 init();
+muatSuara();

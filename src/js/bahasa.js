@@ -14,6 +14,7 @@ export const jalur = EN
       karir: "/en/careers/",
       karirDetail: "/en/careers/detail.html",
       karirFormulir: "/en/careers/apply.html",
+      karirStatus: "/en/careers/status.html",
     }
   : {
       portofolioDetail: "/portofolio/detail.html",
@@ -21,6 +22,7 @@ export const jalur = EN
       karir: "/karir/",
       karirDetail: "/karir/detail.html",
       karirFormulir: "/karir/formulir.html",
+      karirStatus: "/karir/status.html",
     };
 
 /** Label kategori portofolio — API mengirim label Indonesia. */

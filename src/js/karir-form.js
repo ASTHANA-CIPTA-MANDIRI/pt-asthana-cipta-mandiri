@@ -349,7 +349,7 @@ async function handleSubmit(e) {
     // Lamaran umum dikirim tanpa job_id; isian opsional yang kosong tidak dikirim.
     if (formData.get("job_id") === UMUM) formData.delete("job_id");
     if (!(formData.get("lampiran") instanceof File) || !formData.get("lampiran").size) formData.delete("lampiran");
-    ["portofolio_url", "sumber_info"].forEach((k) => !formData.get(k) && formData.delete(k));
+    ["portofolio_url", "sumber_info", "situs_web"].forEach((k) => !formData.get(k) && formData.delete(k));
 
     // Submit to API
     const response = await fetch(`${API_BASE_URL}/applications`, {
@@ -366,32 +366,8 @@ async function handleSubmit(e) {
       throw { response, data: result };
     }
 
-    // Success
-    showAlert(
-      t("Lamaran Anda berhasil dikirim! Kami akan menghubungi Anda segera.", "Your application has been sent! We will contact you soon."),
-      "success"
-    );
-
-    elements.form.reset();
-    elements.form.querySelectorAll(".is-valid, .is-invalid").forEach((el) => {
-      el.classList.remove("is-valid", "is-invalid");
-    });
-    document
-      .querySelectorAll(".file-info")
-      .forEach((el) => el.classList.remove("show"));
-
-    // Show application number
-    setTimeout(() => {
-      showAlert(
-        t(`Nomor Lamaran Anda: ${result.data.application_number}`, `Your application number: ${result.data.application_number}`),
-        "info"
-      );
-    }, 2000);
-
-    // Redirect to jobs list after 4 seconds
-    setTimeout(() => {
-      window.location.href = jalur.karir;
-    }, 4000);
+    // Berhasil: ganti formulir dengan layar sukses yang memuat nomor lamaran.
+    tampilkanSukses(result.data?.application_number, formData.get("email"));
   } catch (error) {
     console.error("Submission error:", error);
 
@@ -416,6 +392,57 @@ async function handleSubmit(e) {
       `<i class="bi bi-send me-1"></i> ${t("Kirim Lamaran", "Submit Application")}`;
     elements.loadingOverlay.classList.remove("show");
   }
+}
+
+// Layar sukses: nomor lamaran besar + salin, langkah berikutnya, cek status.
+function tampilkanSukses(nomor, email) {
+  const kartu = elements.form.closest(".kartu-borang");
+  // Peringatan dari percobaan sebelumnya tidak relevan lagi.
+  elements.alertContainer.innerHTML = "";
+  const posisi = state.preselectedJob?.id && state.preselectedJob.id !== UMUM
+    ? state.preselectedJob.title
+    : elements.jobSelect.selectedOptions[0]?.value && elements.jobSelect.value !== UMUM
+      ? elements.jobSelect.selectedOptions[0].textContent
+      : t("Lamaran umum", "General application");
+  const urlStatus = `${jalur.karirStatus}?nomor=${encodeURIComponent(nomor || "")}`;
+  const aman = (x) => String(x ?? "").replace(/[&<>"']/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[m]);
+
+  kartu.innerHTML = `
+    <div class="layar-sukses">
+      <span class="ikon-sukses"><i class="bi bi-check2"></i></span>
+      <h2>${t("Lamaran terkirim!", "Application sent!")}</h2>
+      <p class="text-secondary">${t("Terima kasih telah melamar", "Thank you for applying for")} <strong>${aman(posisi)}</strong>.
+        ${t("Salinan konfirmasi kami kirim ke", "A confirmation has been sent to")} <strong>${aman(email)}</strong>.</p>
+      <div class="kotak-nomor">
+        <small>${t("NOMOR LAMARAN", "APPLICATION NUMBER")}</small>
+        <div class="d-flex align-items-center justify-content-center gap-2">
+          <strong id="nomorSukses">${aman(nomor)}</strong>
+          <button type="button" class="btn btn-sm btn-garis" id="salinNomor" title="${t("Salin nomor", "Copy number")}"><i class="bi bi-copy"></i></button>
+        </div>
+        <span>${t("Simpan nomor ini untuk mengecek status lamaran.", "Keep this number to check your application status.")}</span>
+      </div>
+      <ol class="langkah-sukses">
+        <li><strong>${t("Ditinjau", "Review")}</strong> — ${t("tim kami meninjau berkas Anda.", "our team reviews your documents.")}</li>
+        <li><strong>${t("Dihubungi", "Contact")}</strong> — ${t("bila sesuai, kami hubungi lewat email/telepon.", "if it is a match, we reach out by email/phone.")}</li>
+        <li><strong>${t("Wawancara", "Interview")}</strong> — ${t("kami atur jadwal untuk saling mengenal.", "we schedule a conversation.")}</li>
+      </ol>
+      <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+        <a href="${urlStatus}" class="btn btn-warna"><i class="bi bi-search me-1"></i>${t("Cek status lamaran", "Check application status")}</a>
+        <a href="${jalur.karir}" class="btn btn-garis">${t("Kembali ke lowongan", "Back to openings")}</a>
+      </div>
+    </div>`;
+  kartu.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  const salin = document.getElementById("salinNomor");
+  salin?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(nomor);
+      salin.innerHTML = '<i class="bi bi-check2"></i>';
+      setTimeout(() => (salin.innerHTML = '<i class="bi bi-copy"></i>'), 2000);
+    } catch {
+      window.prompt(t("Salin nomor ini:", "Copy this number:"), nomor);
+    }
+  });
 }
 
 // Handle validation errors from server

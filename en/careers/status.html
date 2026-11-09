@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- @include head padanan="/karir/status.html" judul="Check Application Status" deskripsi="Track the hiring stage of your application at PT. Asthana Cipta Mandiri with your application number and email." -->
+  </head>
+  <body>
+    <!-- @include header-en padanan="/karir/status.html" aktif="karir" -->
+
+    <main id="konten">
+      <section class="kepala-halaman">
+        <div class="container">
+          <ol class="remah" aria-label="Breadcrumb">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/careers/">Careers</a></li>
+            <li aria-current="page">Check Status</li>
+          </ol>
+          <h1>Check your application</h1>
+          <p>Enter the application number from your confirmation email and the email you applied with.</p>
+        </div>
+        <span class="lengkung" aria-hidden="true"></span>
+      </section>
+
+      <section class="bagian pt-5">
+        <div class="container">
+          <div class="row g-4 justify-content-center">
+            <div class="col-lg-8">
+              <div class="kartu-borang">
+                <form id="formStatus" class="row g-3 align-items-end" novalidate>
+                  <div class="col-md medan">
+                    <label for="nomor" class="form-label">Application number <span class="wajib">*</span></label>
+                    <input type="text" class="form-control text-uppercase font-monospace" id="nomor" name="nomor" placeholder="RKA-101126-7KQ2X" maxlength="30" autocomplete="off" required />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-md medan">
+                    <label for="emailStatus" class="form-label">Email <span class="wajib">*</span></label>
+                    <input type="email" class="form-control" id="emailStatus" name="email" placeholder="you@example.com" maxlength="150" autocomplete="email" required />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-md-auto d-grid">
+                    <button type="submit" class="btn btn-warna text-nowrap px-4" id="tombolCek"><i class="bi bi-search me-1"></i>Check</button>
+                  </div>
+                </form>
+
+                <div id="hasilStatus" class="hasil-status" hidden aria-live="polite"></div>
+              </div>
+              <p class="text-center text-secondary small mt-4">
+                Lost your application number? Look for the “application received” email in your inbox or spam folder, or
+                <a href="/en/contact/">contact us</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- @include footer-en -->
+    <script type="module" src="/src/js/karir-status.js"></script>
+  </body>
+</html>

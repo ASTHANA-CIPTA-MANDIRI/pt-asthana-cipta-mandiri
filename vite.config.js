@@ -134,10 +134,14 @@ function susunHalaman(env) {
       } else {
         this.warn("VITE_SITE_URL kosong: sitemap.xml & URL kanonik tidak dibuat.");
       }
+      // Halaman detail lowongan dirakit dari ?slug=, jadi tidak ada di sitemap
+      // situs; daftar alamatnya dibuat lemon (hanya lowongan yang masih buka).
+      const api = (env.VITE_API_URL || "").replace(/\/+$/, "");
+      const peta = [situs && `Sitemap: ${situs}/sitemap.xml`, api && situs && `Sitemap: ${api}/situs/sitemap-lowongan.xml`].filter(Boolean);
       this.emitFile({
         type: "asset",
         fileName: "robots.txt",
-        source: `User-agent: *\nAllow: /\n${situs ? `\nSitemap: ${situs}/sitemap.xml\n` : ""}`,
+        source: `User-agent: *\nAllow: /\n${peta.length ? `\n${peta.join("\n")}\n` : ""}`,
       });
     },
 
