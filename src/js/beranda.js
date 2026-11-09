@@ -9,46 +9,6 @@ const tampilkan = (id) => {
   return el;
 };
 
-function angka(daftar) {
-  if (!daftar.length) return;
-  const kolom = daftar.length >= 4 ? "col-6 col-md" : "col-md";
-  document.getElementById("daftarAngka").innerHTML = daftar
-    .map(
-      (a, i) => `
-      <div class="${kolom}">
-        <div class="angka warna-${warnaKe(i)}">
-          ${a.ikon ? `<i class="bi ${esc(a.ikon)} fs-4" style="color:var(--c)"></i>` : ""}
-          <span class="nilai" data-hitung="${Number(a.nilai) || 0}" data-akhiran="${esc(a.akhiran || "")}">0${esc(a.akhiran || "")}</span>
-          <span class="label">${esc(a.label)}</span>
-        </div>
-      </div>`
-    )
-    .join("");
-  munculkan(tampilkan("pitaAngka"));
-  hitungNaik();
-}
-
-// Angka berjalan naik saat pitanya terlihat.
-function hitungNaik() {
-  const diam = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const el = document.querySelectorAll("[data-hitung]");
-  const jalan = (n) => {
-    const target = Number(n.dataset.hitung);
-    const akhiran = n.dataset.akhiran;
-    const format = (x) => Math.round(x).toLocaleString("id-ID") + akhiran;
-    if (diam) return (n.textContent = format(target));
-    const mulai = performance.now();
-    const langkah = (t) => {
-      const p = Math.min(1, (t - mulai) / 1400);
-      n.textContent = format(target * (1 - Math.pow(1 - p, 3)));
-      if (p < 1) requestAnimationFrame(langkah);
-    };
-    requestAnimationFrame(langkah);
-  };
-  const io = new IntersectionObserver((e) => e.forEach((x) => x.isIntersecting && (jalan(x.target), io.unobserve(x.target))));
-  el.forEach((n) => io.observe(n));
-}
-
 function klien(daftar) {
   if (!daftar.length) return;
   const logo = daftar
@@ -101,7 +61,6 @@ function grid(id, bagian, daftar, kartu) {
 
 ambil("/situs/beranda")
   .then(({ data }) => {
-    angka(data.angka || []);
     grid("daftarPortofolio", "bagianPortofolio", data.portofolio || [], kartuPortofolio);
     klien(data.klien || []);
     testimoni(data.testimoni || []);

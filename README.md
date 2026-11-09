@@ -1,7 +1,7 @@
 # PT. Asthana Cipta Mandiri — Situs Profil Perusahaan
 
 Situs multi-halaman dua bahasa (Vite + Bootstrap 5). Isi dinamis — lowongan,
-lamaran, pesan, portofolio, berita, klien, testimoni, tim, dan angka — diambil
+lamaran, pesan, portofolio, berita, klien, testimoni, dan tim — diambil
 dari API **Phoenix** dan dikelola admin lewat lemon (menu **Situs Asthana**
 dan **Karyawan & Karir**).
 
@@ -9,7 +9,7 @@ dan **Karyawan & Karir**).
 
 | Indonesia | English | Isi |
 | --- | --- | --- |
-| `/` | `/en/` | Beranda (+ angka, portofolio unggulan, klien, testimoni, berita dari lemon) |
+| `/` | `/en/` | Beranda (+ portofolio unggulan, klien, testimoni, berita dari lemon) |
 | `/tentang/` | `/en/about/` | Profil, visi-misi, tim manajemen (lemon), nilai |
 | `/layanan/` | `/en/services/` | Layanan teknologi & pariwisata, alur kerja |
 | `/anak-perusahaan/` | `/en/subsidiaries/` | Orcha Journey & Reka Teknologi |
