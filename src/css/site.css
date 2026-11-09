@@ -742,23 +742,70 @@ main { padding-top: var(--tinggi-nav); }
   height: 100%;
   padding: 40px;
   border-radius: 28px;
-  background: var(--gradien);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.24), transparent 45%),
+    radial-gradient(circle at 0% 100%, rgba(229, 148, 10, 0.28), transparent 50%),
+    var(--gradien);
   color: #fff;
   overflow: hidden;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
+  gap: 18px;
+  box-shadow: 0 24px 48px -24px rgba(36, 85, 230, 0.55);
 }
-.kartu-visi::after {
-  content: "\F18F"; /* bi-binoculars */
-  font-family: "bootstrap-icons";
+/* pola titik halus di pojok kanan atas */
+.kartu-visi::before {
+  content: "";
   position: absolute;
-  right: 24px;
-  bottom: -20px;
-  font-size: 9rem;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.12);
+  top: 18px;
+  right: 18px;
+  width: 132px;
+  height: 104px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1.6px, transparent 1.6px);
+  background-size: 16px 16px;
+  z-index: -1;
+}
+.kutip-visi { font-size: 3.2rem; line-height: 0.6; margin-top: 10px; color: rgba(255, 255, 255, 0.55); }
+.visi-jalan {
+  margin-top: auto;
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+}
+.visi-jalan-judul { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255, 255, 255, 0.82); }
+.pilar-visi {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px 10px 10px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.pilar-visi:hover { background: rgba(255, 255, 255, 0.24); color: #fff; transform: translateX(4px); }
+.pilar-visi .ikon-merek {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+}
+.pilar-visi .ikon-merek img { width: 36px; height: 36px; object-fit: contain; }
+.pilar-visi strong { display: block; font-size: 1rem; line-height: 1.2; }
+.pilar-visi small { display: block; font-size: 0.82rem; color: rgba(255, 255, 255, 0.85); }
+@media (max-width: 575.98px) {
+  .kartu-visi { padding: 28px 22px; }
 }
 .kartu-visi h3 { color: #fff; }
 .kartu-visi p { font-size: 1.25rem; font-weight: 600; line-height: 1.6; color: #fff; margin: 0; }
