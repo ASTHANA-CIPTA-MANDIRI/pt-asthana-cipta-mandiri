@@ -1631,3 +1631,4 @@ main { padding-top: var(--tinggi-nav); }
 .tombol-sosmed .sosmed-instagram:hover { background: linear-gradient(45deg, #f9a03f, #e1306c 55%, #833ab4); }
 .tombol-sosmed .sosmed-tiktok:hover { background: #111; }
 .tombol-sosmed .sosmed-youtube:hover { background: #ff0000; }
+img[src*="layanan-pelanggan"] { object-position: 62% 40%; }
