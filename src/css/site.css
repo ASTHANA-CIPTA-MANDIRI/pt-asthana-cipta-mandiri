@@ -1530,3 +1530,6 @@ main { padding-top: var(--tinggi-nav); }
   padding: 0.4rem 0.8rem !important;
 }
 .navbar-situs .pindah-bahasa:hover { border-color: var(--biru); }
+
+/* Foto snorkeling + penyu (panorama lebar) di kotak tegak: perenang utuh di tengah */
+.profil-afiliasi .foto-latar[src*="snorkeling-penyu"] { object-position: 67% 40%; }
