@@ -409,11 +409,16 @@ main { padding-top: var(--tinggi-nav); }
 
 @media (max-width: 991.98px) {
   .hero { padding: 40px 0 72px; }
-  .kolase { height: 400px; margin-top: 48px; }
+  /* Kolase langsung di bawah teks: jarak antar-kolom row g-5 (3rem) sudah
+     cukup; margin tambahan dulu membuat celah kosong besar di ponsel. */
+  .kolase { height: 400px; margin-top: 0; }
   .lencana-apung.kiri { left: 8px; }
   .lencana-apung.kanan { right: 8px; }
 }
 @media (max-width: 575.98px) {
+  /* Dua tombol utama selebar layar, sama besar. */
+  .aksi-hero .btn { flex: 1 1 100%; justify-content: center; }
+  .grup-merek { margin-top: 28px; }
   .kolase { height: 300px; gap: 10px; }
   .kolase .besar { border-radius: 80px 20px 20px 20px; }
   .lencana-apung { padding: 8px 12px 8px 8px; font-size: 0.8rem; }
