@@ -1,5 +1,5 @@
 import { defineConfig, loadEnv } from "vite";
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { readFileSync, readdirSync, statSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve, relative, sep } from "node:path";
 
@@ -151,6 +151,20 @@ function susunHalaman(env) {
         fileName: "robots.txt",
         source: `User-agent: *\nAllow: /\n${peta.length ? `\n${peta.join("\n")}\n` : ""}`,
       });
+    },
+
+    // Peladen produksi menaruh situs di subfolder (/asthana/) dan CDN Hostinger
+    // tidak menerapkan ulang aturan pengalihan untuk ErrorDocument — jalur
+    // halaman 404 harus ditulis lengkap. VITE_FOLDER_PELADEN di .env.production.
+    closeBundle() {
+      const folder = (env.VITE_FOLDER_PELADEN || "").replace(/\/+$/, "");
+      if (!folder) return;
+      for (const berkas of ["dist/.htaccess", "dist/en/.htaccess"]) {
+        const jalur = resolve(__dirname, berkas);
+        if (!existsSync(jalur)) continue;
+        const isi = readFileSync(jalur, "utf8").replace(/^ErrorDocument 404 \//m, `ErrorDocument 404 ${folder}/`);
+        writeFileSync(jalur, isi);
+      }
     },
 
     configureServer(server) {
